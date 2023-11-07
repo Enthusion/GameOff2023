@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerGroundedState : PlayerState
+{
+    protected float movementInput;
+   public PlayerGroundedState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
+    {}
+
+    public override void FrameUpdate()
+    {
+        base.FrameUpdate();
+        movementInput = Input.GetAxis("Horizontal");
+    }
+}
