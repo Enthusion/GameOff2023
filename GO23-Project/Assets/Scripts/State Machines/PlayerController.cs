@@ -12,6 +12,9 @@ public class PlayerController : Controller
     public Rigidbody2D Body { get; private set; }
     public SpriteRenderer Sprite { get; private set; }
 
+    public float moveForce = 10f;
+    public float maxSpeed = 25f;
+
 
     public override void Awake()
     {
