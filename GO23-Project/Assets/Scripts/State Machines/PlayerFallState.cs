@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerFallState : PlayerState
 {
     protected float initialSpeed;
+    private float speedCap;
     public PlayerFallState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
@@ -12,6 +13,7 @@ public class PlayerFallState : PlayerState
     {
         base.Enter();
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
+        speedCap = (initialSpeed >= 5.0f) ? initialSpeed : 5.0f;
     }
 
     public override void FrameUpdate()
@@ -30,6 +32,6 @@ public class PlayerFallState : PlayerState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        playerController.SetVelocityX(Mathf.Clamp(playerController.Body.velocity.x, -initialSpeed, initialSpeed));
+        playerController.SetVelocityX(Mathf.Clamp(playerController.Body.velocity.x, -speedCap, speedCap));
     }
 }
