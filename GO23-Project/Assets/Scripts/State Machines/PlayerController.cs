@@ -16,10 +16,11 @@ public class PlayerController : Controller
 
     public float moveForce = 10f;
     public float maxSpeed = 25f;
-    public float jumpForce = 5f;
+    public float jumpForce = 25f;
+    public float jumpTime = 0.13f;
     public LayerMask isGround;
-    public Vector2 groundOffset1 = new Vector2(-0.5f, -2.45f);
-    public Vector2 groundOffset2 = new Vector2(0.15f, -2.5f);
+    public Vector2 groundOffset1 = new Vector2(-0.5f, -2.5f);
+    public Vector2 groundOffset2 = new Vector2(0.15f, -2.53f);
 
 
     public override void Awake()
@@ -37,7 +38,7 @@ public class PlayerController : Controller
         Anima = GetComponent<Animator>();
         Body = GetComponent<Rigidbody2D>();
         Sprite = GetComponent<SpriteRenderer>();
-        stateMachine.Iniitialize(IdleState);
+        stateMachine.Iniitialize(FallState);
     }
     public bool GroundCheck(){
         Vector2 position2D = new Vector2 (transform.position.x, transform.position.y);
