@@ -485,8 +485,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 10
-  maxSpeed: 10
-  jumpForce: 5
+  maxSpeed: 15
+  jumpForce: 10
+  jumpTime: 0.13
   isGround:
     serializedVersion: 2
     m_Bits: 64

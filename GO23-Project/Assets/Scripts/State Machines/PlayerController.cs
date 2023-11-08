@@ -15,8 +15,8 @@ public class PlayerController : Controller
     public SpriteRenderer Sprite { get; private set; }
 
     public float moveForce = 10f;
-    public float maxSpeed = 25f;
-    public float jumpForce = 25f;
+    public float maxSpeed = 15f;
+    public float jumpForce = 15f;
     public float jumpTime = 0.13f;
     public LayerMask isGround;
     public Vector2 groundOffset1 = new Vector2(-0.5f, -2.5f);
