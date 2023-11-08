@@ -14,8 +14,8 @@ public class PlayerGroundedState : PlayerState
         base.FrameUpdate();
         movementInput = Input.GetAxis("Horizontal");
 
-        if(movementInput.GetButtonDown("Jump")){
-            stateMachine.ChangeState(playerController);
+        if(Input.GetButtonDown("Jump")){
+            stateMachine.ChangeState(playerController.JumpState);
         }
     }
 

@@ -22,7 +22,7 @@ public class PlayerMoveState : PlayerGroundedState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        playerController.Body.velocity = new Vector2(Mathf.Clamp(playerVelocity.x, -playerController.maxSpeed, playerController.maxSpeed), playerVelocity.y);
+        playerController.SetVelocityX(Mathf.Clamp(playerVelocity.x, -playerController.maxSpeed, playerController.maxSpeed));
     }
 
 }

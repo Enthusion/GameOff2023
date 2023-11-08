@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 326263772}
   - component: {fileID: 326263771}
   - component: {fileID: 326263770}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,9 +344,9 @@ GameObject:
   - component: {fileID: 2026546319}
   - component: {fileID: 2026546323}
   - component: {fileID: 2026546324}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,8 +385,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06999999, y: -0.87449586}
-  m_Size: {x: 1.5075674, y: 3.23331}
+  m_Offset: {x: -0.06999999, y: -0.87852776}
+  m_Size: {x: 1.5075674, y: 3.2413738}
   m_Direction: 0
 --- !u!212 &2026546321
 SpriteRenderer:
@@ -486,3 +486,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 10
   maxSpeed: 10
+  jumpForce: 5
+  isGround:
+    serializedVersion: 2
+    m_Bits: 64
+  groundOffset1: {x: -0.5, y: -2.45}
+  groundOffset2: {x: 0.15, y: -2.5}

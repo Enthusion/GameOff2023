@@ -17,6 +17,9 @@ public class PlayerController : Controller
     public float moveForce = 10f;
     public float maxSpeed = 25f;
     public float jumpForce = 5f;
+    public LayerMask isGround;
+    public Vector2 groundOffset1 = new Vector2(-0.5f, -2.45f);
+    public Vector2 groundOffset2 = new Vector2(0.15f, -2.5f);
 
 
     public override void Awake()
@@ -25,6 +28,8 @@ public class PlayerController : Controller
 
         IdleState = new PlayerIdleState(this, stateMachine, "idle");
         MoveState = new PlayerMoveState(this, stateMachine, "move");
+        JumpState = new PlayerJumpState(this, stateMachine, "jump");
+        FallState = new PlayerFallState(this, stateMachine, "fall");
     }
     // Start is called before the first frame update
     public override void Start()
@@ -32,7 +37,13 @@ public class PlayerController : Controller
         Anima = GetComponent<Animator>();
         Body = GetComponent<Rigidbody2D>();
         Sprite = GetComponent<SpriteRenderer>();
-        
         stateMachine.Iniitialize(IdleState);
     }
+    public bool GroundCheck(){
+        Vector2 position2D = new Vector2 (transform.position.x, transform.position.y);
+        return Physics2D.OverlapArea(groundOffset1 + position2D, groundOffset2 + position2D, isGround);
+    }
+
+    public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
+    public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
 }
