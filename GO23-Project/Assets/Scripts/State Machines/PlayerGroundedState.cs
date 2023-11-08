@@ -13,6 +13,10 @@ public class PlayerGroundedState : PlayerState
     {
         base.FrameUpdate();
         movementInput = Input.GetAxis("Horizontal");
+
+        if(movementInput.GetButtonDown("Jump")){
+            stateMachine.ChangeState(playerController);
+        }
     }
 
     public override void PhysicsUpdate()

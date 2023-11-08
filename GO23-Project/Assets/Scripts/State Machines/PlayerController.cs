@@ -7,6 +7,8 @@ public class PlayerController : Controller
     //STATES
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
+    public PlayerJumpState JumpState { get; private set; }
+    public PlayerFallState FallState { get; private set; }
 
     public Animator Anima { get; private set; }
     public Rigidbody2D Body { get; private set; }
@@ -14,6 +16,7 @@ public class PlayerController : Controller
 
     public float moveForce = 10f;
     public float maxSpeed = 25f;
+    public float jumpForce = 5f;
 
 
     public override void Awake()
