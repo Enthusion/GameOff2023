@@ -14,13 +14,14 @@ public class PlayerController : Controller
     public Rigidbody2D Body { get; private set; }
     public SpriteRenderer Sprite { get; private set; }
 
-    public float moveForce = 10f;
-    public float maxSpeed = 15f;
-    public float jumpForce = 15f;
-    public float jumpTime = 0.13f;
-    public LayerMask isGround;
-    public Vector2 groundOffset1 = new Vector2(-0.5f, -2.5f);
-    public Vector2 groundOffset2 = new Vector2(0.15f, -2.53f);
+    public PlayerData playerData;
+    public float moveForce { get; private set; }
+    public float maxSpeed { get; private set; }
+    public float jumpForce { get; private set; }
+    public float jumpTime { get; private set; }
+    private LayerMask isGround;
+    private Vector2 groundOffset1;
+    private Vector2 groundOffset2;
 
 
     public override void Awake()
@@ -31,6 +32,14 @@ public class PlayerController : Controller
         MoveState = new PlayerMoveState(this, stateMachine, "move");
         JumpState = new PlayerJumpState(this, stateMachine, "jump");
         FallState = new PlayerFallState(this, stateMachine, "fall");
+
+        moveForce = playerData.moveForce;
+        maxSpeed = playerData.maxSpeed;
+        jumpForce = playerData.jumpForce;
+        jumpTime = playerData.jumpTime;
+        isGround = playerData.isGround;
+        groundOffset1 = playerData.groundOffset1;
+        groundOffset2 = playerData.groundOffset2;
     }
     // Start is called before the first frame update
     public override void Start()
