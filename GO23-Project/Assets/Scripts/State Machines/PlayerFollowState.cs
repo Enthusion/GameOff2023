@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFollowState : MonoBehaviour
+public class PlayerFollowState : PlayerInactiveState
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerFollowState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
+    { }
+    public override void FrameUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.FrameUpdate();
+        if(Input.GetButtonDown("Swap") && isSecondGrounded){
+            stateMachine.ChangeState(playerController.IdleState);
+        }
     }
 }

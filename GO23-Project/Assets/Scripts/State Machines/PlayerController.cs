@@ -10,6 +10,7 @@ public class PlayerController : Controller
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
     public PlayerWaitState WaitState { get; private set; }
+    public PlayerFollowState FollowState { get; private set; }
 
     public Animator Anima { get; private set; }
     public Rigidbody2D Body { get; private set; }
@@ -19,6 +20,7 @@ public class PlayerController : Controller
     private GameObject secondaryPlayer;
     public PlayerController controller2 { get; private set; }
     public bool Active;
+    public bool Following;
     public PlayerData playerData;
     public bool primaryPlayer { get; private set; }
     public float moveForce { get; private set; }
@@ -39,6 +41,7 @@ public class PlayerController : Controller
         JumpState = new PlayerJumpState(this, stateMachine, "jump");
         FallState = new PlayerFallState(this, stateMachine, "fall");
         WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
+        FollowState = new PlayerFollowState(this, stateMachine, "follow");
 
         primaryPlayer = playerData.primaryPlayer;
         moveForce = playerData.moveForce;
@@ -68,6 +71,7 @@ public class PlayerController : Controller
         JumpState.Ready();
         FallState.Ready();
         WaitState.Ready();
+        FollowState.Ready();
     }
 
     public bool GroundCheck()
