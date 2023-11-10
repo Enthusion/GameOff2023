@@ -13,5 +13,8 @@ public class PlayerWaitState : PlayerInactiveState
         if(Input.GetButtonDown("Swap") && isSecondGrounded){
             stateMachine.ChangeState(playerController.IdleState);
         }
+        if(Input.GetButtonDown("Follow") && distanceBetween <= 3.0f){
+            stateMachine.ChangeState(playerController.FollowState);
+        }
     }
 }
