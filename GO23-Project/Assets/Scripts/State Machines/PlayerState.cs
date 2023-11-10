@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class PlayerState : State
 {
-    protected PlayerController playerController;
+    protected PlayerController workingController;
+    protected PlayerController playerController1;
     protected string stateName;
     public PlayerState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine)
     {
-        playerController = (PlayerController)controller;
+        playerController1 = (PlayerController)controller;
         this.stateName = stateName;
+        workingController = playerController1;
     }
 
     public override void Enter()
     {
         base.Enter();
-        playerController.Anima.SetBool(stateName, true);
+        workingController.Anima.SetBool(stateName, true);
     }
 
     public override void Exit()
     {
         base.Exit();
-        playerController.Anima.SetBool(stateName, false);
+        workingController.Anima.SetBool(stateName, false);
     }
 }

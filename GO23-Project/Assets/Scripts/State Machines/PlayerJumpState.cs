@@ -10,13 +10,13 @@ public class PlayerJumpState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
-        playerController.SetVelocityY(playerController.jumpForce);
+        workingController.SetVelocityY(workingController.jumpForce);
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        if(runtime >= playerController.jumpTime){
+        if(runtime >= workingController.jumpTime){
             abilityTriggered = true;
         }
     }
