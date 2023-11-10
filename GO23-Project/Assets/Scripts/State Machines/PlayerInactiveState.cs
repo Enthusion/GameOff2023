@@ -11,14 +11,14 @@ public class PlayerInactiveState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        isSecondGrounded = playerController.Active = false;
+        playerController.Active = false;
 
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        playerController2.GroundCheck();
+        isSecondGrounded = playerController2.GroundCheck();
     }
 
     public override void Exit()
