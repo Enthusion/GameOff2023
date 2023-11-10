@@ -26,7 +26,7 @@ public class PlayerFallState : PlayerState
         }
         playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 2));
         if (movementInput > 0) playerController.Sprite.flipX = false;
-        else playerController.Sprite.flipX = true;
+        else if (movementInput < 0) playerController.Sprite.flipX = true;
     }
 
     public override void PhysicsUpdate()
