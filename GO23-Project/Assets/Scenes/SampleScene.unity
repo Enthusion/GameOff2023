@@ -271,8 +271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a867355e4997334384cd9c5728950ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2026546318}
-  offset: {x: 0, y: 0}
+  subject1: {fileID: 2026546318}
+  subject2: {fileID: 1275462652}
+  offsetToCenter: {x: -0.9, y: -0.45}
+  trackingSpeed1: 7
+  trackingSpeed2: 3
+  switchSpeed: 10
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
