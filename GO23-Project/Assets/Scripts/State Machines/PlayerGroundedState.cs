@@ -15,17 +15,21 @@ public class PlayerGroundedState : PlayerState
         movementInput = Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Jump"))
         {
-            stateMachine.ChangeState(workingController.JumpState);
+            stateMachine.ChangeState(playerController.JumpState);
         }
-        else if (!workingController.GroundCheck())
+        else if (!playerController.GroundCheck())
         {
-            stateMachine.ChangeState(workingController.FallState);
+            stateMachine.ChangeState(playerController.FallState);
+        }
+
+        if(Input.GetButtonDown("Swap")){
+            stateMachine.ChangeState(playerController.WaitState);
         }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        playerVelocity = workingController.Body.velocity;
+        playerVelocity = playerController.Body.velocity;
     }
 }

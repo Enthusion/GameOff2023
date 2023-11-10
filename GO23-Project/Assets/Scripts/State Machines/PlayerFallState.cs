@@ -12,7 +12,7 @@ public class PlayerFallState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        initialSpeed = Mathf.Abs(workingController.Body.velocity.x);
+        initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 5.0f) ? initialSpeed : 5.0f;
     }
 
@@ -20,18 +20,18 @@ public class PlayerFallState : PlayerState
     {
         base.FrameUpdate();
         float movementInput = Input.GetAxis("Horizontal");
-        if (workingController.GroundCheck() && workingController.Body.velocity.y < 0.01f)
+        if (playerController.GroundCheck() && playerController.Body.velocity.y < 0.01f)
         {
-            stateMachine.ChangeState(workingController.IdleState);
+            stateMachine.ChangeState(playerController.IdleState);
         }
-        workingController.Body.AddForce(Vector2.right * movementInput * (workingController.moveForce / 2));
-        if (movementInput > 0) workingController.Sprite.flipX = false;
-        else workingController.Sprite.flipX = true;
+        playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 2));
+        if (movementInput > 0) playerController.Sprite.flipX = false;
+        else playerController.Sprite.flipX = true;
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        workingController.SetVelocityX(Mathf.Clamp(workingController.Body.velocity.x, -speedCap, speedCap));
+        playerController.SetVelocityX(Mathf.Clamp(playerController.Body.velocity.x, -speedCap, speedCap));
     }
 }

@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 1275462654}
   - component: {fileID: 1275462653}
   m_Layer: 3
-  m_Name: Player (1)
+  m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,7 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f799ac7676813fe4f9d993f9fc069c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondaryPlayer: {fileID: 0}
+  secondaryPlayer: {fileID: 2026546318}
+  Active: 0
   playerData: {fileID: 11400000, guid: 754cf5687b5c8e94e9d353bff964b3d1, type: 2}
 --- !u!95 &1275462654
 Animator:
@@ -998,4 +999,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondaryPlayer: {fileID: 1275462652}
+  Active: 0
   playerData: {fileID: 11400000, guid: 84a7093f0ccf22846944223c3034893b, type: 2}

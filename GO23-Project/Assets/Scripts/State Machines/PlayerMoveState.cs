@@ -12,17 +12,17 @@ public class PlayerMoveState : PlayerGroundedState
         base.FrameUpdate();
         if (movementInput == 0)
         {
-            stateMachine.ChangeState(workingController.IdleState);
+            stateMachine.ChangeState(playerController.IdleState);
         }
-        else if (movementInput > 0) workingController.Sprite.flipX = false;
-        else workingController.Sprite.flipX = true;
-        workingController.Body.AddForce(Vector2.right * movementInput * workingController.moveForce);
+        else if (movementInput > 0) playerController.Sprite.flipX = false;
+        else playerController.Sprite.flipX = true;
+        playerController.Body.AddForce(Vector2.right * movementInput * playerController.moveForce);
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        workingController.SetVelocityX(Mathf.Clamp(playerVelocity.x, -workingController.maxSpeed, workingController.maxSpeed));
+        playerController.SetVelocityX(Mathf.Clamp(playerVelocity.x, -playerController.maxSpeed, playerController.maxSpeed));
     }
 
 }

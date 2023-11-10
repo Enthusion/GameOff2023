@@ -12,7 +12,7 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        initialVelocity = workingController.Body.velocity;
+        initialVelocity = playerController.Body.velocity;
         runtime = 0.0f;
     }
 
@@ -22,7 +22,7 @@ public class PlayerIdleState : PlayerGroundedState
         runtime += Time.deltaTime;
         if (movementInput != 0)
         {
-            stateMachine.ChangeState(workingController.MoveState);
+            stateMachine.ChangeState(playerController.MoveState);
         }
     }
 
@@ -31,7 +31,7 @@ public class PlayerIdleState : PlayerGroundedState
         base.PhysicsUpdate();
         if (playerVelocity != Vector2.zero)
         {
-            workingController.Body.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, runtime / 0.25f);
+            playerController.Body.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, runtime / 0.25f);
         }
         
     }

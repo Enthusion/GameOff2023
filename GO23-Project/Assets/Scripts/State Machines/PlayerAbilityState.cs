@@ -15,7 +15,7 @@ public class PlayerAbilityState : PlayerState
         base.Enter();
         runtime = 0.0f;
         abilityTriggered = false; //Is turned to true within the ability state.
-        isGrounded = workingController.GroundCheck();
+        isGrounded = playerController.GroundCheck();
     }
 
     public override void FrameUpdate()
@@ -23,11 +23,11 @@ public class PlayerAbilityState : PlayerState
         base.FrameUpdate();
         runtime += Time.deltaTime;
         if(abilityTriggered){
-            if(isGrounded && workingController.Body.velocity.y < 0.01f){
-                stateMachine.ChangeState(workingController.IdleState);
+            if(isGrounded && playerController.Body.velocity.y < 0.01f){
+                stateMachine.ChangeState(playerController.IdleState);
             }
             else{
-                stateMachine.ChangeState(workingController.FallState);
+                stateMachine.ChangeState(playerController.FallState);
             }
         }
     }

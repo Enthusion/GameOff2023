@@ -9,6 +9,7 @@ public class PlayerController : Controller
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
+    public PlayerWaitState WaitState { get; private set; }
 
     public Animator Anima { get; private set; }
     public Rigidbody2D Body { get; private set; }
@@ -16,8 +17,8 @@ public class PlayerController : Controller
 
     [SerializeField]
     private GameObject secondaryPlayer;
-    private PlayerController controller2;
-    public PlayerController workingController { get; private set; }
+    public PlayerController controller2 { get; private set; }
+    public bool Active;
     public PlayerData playerData;
     public bool primaryPlayer { get; private set; }
     public float moveForce { get; private set; }
@@ -32,22 +33,14 @@ public class PlayerController : Controller
     public override void Awake()
     {
         base.Awake();
+
+        IdleState = new PlayerIdleState(this, stateMachine, "idle");
+        MoveState = new PlayerMoveState(this, stateMachine, "move");
+        JumpState = new PlayerJumpState(this, stateMachine, "jump");
+        FallState = new PlayerFallState(this, stateMachine, "fall");
+        WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
+
         primaryPlayer = playerData.primaryPlayer;
-        if (secondaryPlayer)
-        {
-            controller2 = secondaryPlayer.GetComponent<PlayerController>();
-        }
-        if (primaryPlayer)
-        {
-            IdleState = new PlayerIdleState(this, stateMachine, "idle");
-            MoveState = new PlayerMoveState(this, stateMachine, "move");
-            JumpState = new PlayerJumpState(this, stateMachine, "jump");
-            FallState = new PlayerFallState(this, stateMachine, "fall");
-            if (secondaryPlayer)
-            {
-                controller2.StateSetup(IdleState, MoveState, JumpState, FallState);
-            }
-        }
         moveForce = playerData.moveForce;
         maxSpeed = playerData.maxSpeed;
         jumpForce = playerData.jumpForce;
@@ -55,6 +48,8 @@ public class PlayerController : Controller
         isGround = playerData.isGround;
         groundOffset1 = playerData.groundOffset1;
         groundOffset2 = playerData.groundOffset2;
+
+        Active = primaryPlayer;
     }
     // Start is called before the first frame update
     public override void Start()
@@ -62,31 +57,19 @@ public class PlayerController : Controller
         Anima = GetComponent<Animator>();
         Body = GetComponent<Rigidbody2D>();
         Sprite = GetComponent<SpriteRenderer>();
+
+        controller2 = secondaryPlayer.GetComponent<PlayerController>();
+
         if (primaryPlayer) stateMachine.Iniitialize(FallState);
+        else stateMachine.Iniitialize(WaitState);
+
+        IdleState.Ready();
+        MoveState.Ready();
+        JumpState.Ready();
+        FallState.Ready();
+        WaitState.Ready();
     }
 
-    public override void Update()
-    {
-        if (primaryPlayer)
-        {
-            base.Update();
-            if (Input.GetButtonDown("Swap")) workingController = (workingController == this) ? this : controller2;
-        }
-    }
-
-    public override void FixedUpdate()
-    {
-        if (primaryPlayer) base.FixedUpdate();
-    }
-
-    public void StateSetup(PlayerIdleState playerIdleState, PlayerMoveState playerMoveState, PlayerJumpState playerJumpState, PlayerFallState playerFallState)
-    {
-        Debug.Log("States Set");
-        IdleState = playerIdleState;
-        MoveState = playerMoveState;
-        JumpState = playerJumpState;
-        FallState = playerFallState;
-    }
     public bool GroundCheck()
     {
         Vector2 position2D = new Vector2(transform.position.x, transform.position.y);
