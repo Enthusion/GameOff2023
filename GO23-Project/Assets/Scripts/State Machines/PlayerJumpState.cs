@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerAbilityState
 {
+    private float initialSpeed;
+    private float speedCap;
     public PlayerJumpState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
     public override void Enter()
     {
         base.Enter();
+        //Set a horizontal speed capacity based on either the speed when entering the sate or 5, whatever is greater
+        initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
+        speedCap = (initialSpeed >= 7.0f) ? initialSpeed : 7.0f;
+        //Add initial jump force
         playerController.SetVelocityY(playerController.jumpForce);
     }
 
@@ -35,5 +41,12 @@ public class PlayerJumpState : PlayerAbilityState
         {
             abilityTriggered = true;
         }
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        //Ensure horizontal velocity is within speed capacity
+        playerController.SetVelocityX(Mathf.Clamp(playerController.Body.velocity.x, -speedCap, speedCap));
     }
 }
