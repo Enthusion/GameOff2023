@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerIdleState : PlayerGroundedState
 {
     private Vector2 initialVelocity;
-    private float runtime;
     public PlayerIdleState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
@@ -13,13 +12,11 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.Enter();
         initialVelocity = playerController.Body.velocity;
-        runtime = 0.0f;
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        runtime += Time.deltaTime;
         if (movementInput != 0)
         {
             stateMachine.ChangeState(playerController.MoveState);
@@ -31,7 +28,7 @@ public class PlayerIdleState : PlayerGroundedState
         base.PhysicsUpdate();
         if (playerVelocity != Vector2.zero)
         {
-            playerController.Body.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, runtime / 0.25f);
+            playerController.Body.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, runtime / 0.2f);
         }
         
     }

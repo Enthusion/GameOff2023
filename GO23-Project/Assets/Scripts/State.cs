@@ -10,6 +10,7 @@ public class State
     // this.tsm = (TypeStateMachine)stateMachine;
     protected Controller controller;
     protected StateMachine stateMachine;
+    protected float runtime;
 
     public State(Controller controller, StateMachine stateMachine)
     {
@@ -17,8 +18,14 @@ public class State
         this.stateMachine = stateMachine;
     }
     public virtual void Ready() { }
-    public virtual void Enter() { }
-    public virtual void FrameUpdate() { }
+    public virtual void Enter()
+    {
+        runtime = 0.0f;
+    }
+    public virtual void FrameUpdate()
+    {
+        runtime += Time.deltaTime;
+    }
     public virtual void PhysicsUpdate() { }
     public virtual void Exit() { }
 }

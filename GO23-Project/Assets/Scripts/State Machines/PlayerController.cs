@@ -14,6 +14,7 @@ public class PlayerController : Controller
 
     public Animator Anima { get; private set; }
     public Rigidbody2D Body { get; private set; }
+    public CapsuleCollider2D Collider { get; private set; }
     public SpriteRenderer Sprite { get; private set; }
 
     [SerializeField]
@@ -21,15 +22,19 @@ public class PlayerController : Controller
     public PlayerController controller2 { get; private set; }
     public bool Active;
     public bool Following;
+    public Vector2 initialColliderSize { get; private set; }
     public PlayerData playerData;
+    public string characterName { get; private set; }
     public bool primaryPlayer { get; private set; }
     public float moveForce { get; private set; }
     public float maxSpeed { get; private set; }
     public float jumpForce { get; private set; }
     public float jumpTime { get; private set; }
     private LayerMask isGround;
-    private Vector2 groundOffset1;
-    private Vector2 groundOffset2;
+    [SerializeField]
+    private GameObject groundPoint1;
+    [SerializeField]
+    private GameObject groundPoint2;
 
 
     public override void Awake()
@@ -43,14 +48,13 @@ public class PlayerController : Controller
         WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
         FollowState = new PlayerFollowState(this, stateMachine, "follow");
 
+        characterName = playerData.characterName;
         primaryPlayer = playerData.primaryPlayer;
         moveForce = playerData.moveForce;
         maxSpeed = playerData.maxSpeed;
         jumpForce = playerData.jumpForce;
         jumpTime = playerData.jumpTime;
         isGround = playerData.isGround;
-        groundOffset1 = playerData.groundOffset1;
-        groundOffset2 = playerData.groundOffset2;
 
         Active = primaryPlayer;
     }
@@ -59,9 +63,12 @@ public class PlayerController : Controller
     {
         Anima = GetComponent<Animator>();
         Body = GetComponent<Rigidbody2D>();
+        Collider = GetComponent<CapsuleCollider2D>();
         Sprite = GetComponent<SpriteRenderer>();
 
         controller2 = secondaryPlayer.GetComponent<PlayerController>();
+
+        initialColliderSize = Collider.size;
 
         IdleState.Ready();
         MoveState.Ready();
@@ -74,15 +81,11 @@ public class PlayerController : Controller
         else stateMachine.Iniitialize(WaitState);
     }
 
-    public bool GroundCheck()
-    {
-        Vector2 position2D = new Vector2(transform.position.x, transform.position.y);
-        return Physics2D.OverlapArea(groundOffset1 + position2D, groundOffset2 + position2D, isGround);
-    }
-
+    public bool GroundCheck() => Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
     public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
-    public void InterpolateTranslate(Vector2 location, float speed){
-        transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
-    }
+    public void SetGravityScale(float newGravity) => Body.gravityScale = newGravity;
+    public void InterpolateTranslate(Vector2 location, float speed) => transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
+    public void ResizeCollider(Vector2 newSize) => Collider.size = newSize;
+    public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
 }
