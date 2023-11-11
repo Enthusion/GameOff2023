@@ -6,15 +6,20 @@ public class PlayerFallState : PlayerState
 {
     protected float initialSpeed;
     private float speedCap;
+    private bool fromJump;
+    private bool exitToJump;
     public PlayerFallState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
     public override void Enter()
     {
         base.Enter();
+        exitToJump = false;
         //Set a horizontal speed capacity based on either the speed when entering the sate or 5, whatever is greater
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 5.0f) ? initialSpeed : 5.0f;
+        //Check if fall is from a jump
+        fromJump = playerController.Body.gravityScale < 1.0f;
     }
 
     public override void FrameUpdate()
@@ -26,17 +31,30 @@ public class PlayerFallState : PlayerState
         if (movementInput > 0) playerController.Sprite.flipX = false;
         else if (movementInput < 0) playerController.Sprite.flipX = true;
         //Increase gravity scale to fall faster once falling for JumpTime
-        if(runtime >= playerController.jumpTime){
+        if (runtime >= playerController.jumpTime)
+        {
             playerController.SetGravityScale(1.66f);
         }
-        else{
+        else
+        {
             playerController.SetGravityScale(0.8f + runtime * 1.5f);
+            //Coyote time
+            if (!fromJump)
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    // Debug.Log("Coyote Time");
+                    playerController.SetGravityScale(1.0f);
+                    stateMachine.ChangeState(playerController.JumpState);
+                }
+            }
         }
         //Exit fall state and reset gravity when ground is detected
         if (playerController.GroundCheck() && playerController.Body.velocity.y < 0.01f)
         {
             playerController.SetGravityScale(1.0f);
-            stateMachine.ChangeState(playerController.IdleState);
+            if(!exitToJump) stateMachine.ChangeState(playerController.IdleState);
+            else stateMachine.ChangeState(playerController.JumpState);
         }
     }
 
