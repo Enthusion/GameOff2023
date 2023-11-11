@@ -34,7 +34,7 @@ public class PlayerJumpState : PlayerAbilityState
         } //Slightly decrease gravity near peak of jump
         else if (runtime >= playerController.jumpTime && playerController.Body.velocity.y < 1.5f)
         {
-            playerController.SetGravityScale(0.9f);
+            playerController.SetGravityScale(0.8f);
         }
         //Exiting jump state when no longer moving up
         if (playerController.Body.velocity.y <= 0.0f)

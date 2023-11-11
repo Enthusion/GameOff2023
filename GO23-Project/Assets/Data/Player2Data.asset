@@ -17,7 +17,7 @@ MonoBehaviour:
   moveForce: 10
   maxSpeed: 15
   jumpForce: 5
-  jumpTime: 0.15
+  jumpTime: 0.16
   isGround:
     serializedVersion: 2
     m_Bits: 64
