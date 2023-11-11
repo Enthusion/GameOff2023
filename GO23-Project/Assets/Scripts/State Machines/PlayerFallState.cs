@@ -7,14 +7,16 @@ public class PlayerFallState : PlayerState
     protected float initialSpeed;
     private float speedCap;
     private bool fromJump;
-    private bool exitToJump;
+    private bool countForJump;
+    private float sinceJumpPressed;
     public PlayerFallState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
     public override void Enter()
     {
         base.Enter();
-        exitToJump = false;
+        countForJump = false;
+        sinceJumpPressed = 100.0f;
         //Set a horizontal speed capacity based on either the speed when entering the sate or 5, whatever is greater
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 5.0f) ? initialSpeed : 5.0f;
@@ -34,6 +36,11 @@ public class PlayerFallState : PlayerState
         if (runtime >= playerController.jumpTime)
         {
             playerController.SetGravityScale(1.66f);
+            if (Input.GetButtonDown("Jump"))
+            {
+                countForJump = true;
+                sinceJumpPressed = 0.0f;
+            }
         }
         else
         {
@@ -49,11 +56,15 @@ public class PlayerFallState : PlayerState
                 }
             }
         }
+        if (countForJump)
+        {
+            sinceJumpPressed += Time.deltaTime;
+        }
         //Exit fall state and reset gravity when ground is detected
         if (playerController.GroundCheck() && playerController.Body.velocity.y < 0.01f)
         {
             playerController.SetGravityScale(1.0f);
-            if(!exitToJump) stateMachine.ChangeState(playerController.IdleState);
+            if (sinceJumpPressed > playerController.jumpTime) stateMachine.ChangeState(playerController.IdleState);
             else stateMachine.ChangeState(playerController.JumpState);
         }
     }
