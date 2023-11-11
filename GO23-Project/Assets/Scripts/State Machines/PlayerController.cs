@@ -84,6 +84,7 @@ public class PlayerController : Controller
     public bool GroundCheck() => Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
     public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
+    public void SetGravityScale(float newGravity) => Body.gravityScale = newGravity;
     public void InterpolateTranslate(Vector2 location, float speed) => transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
     public void ResizeCollider(Vector2 newSize) => Collider.size = newSize;
     public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
