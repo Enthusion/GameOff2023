@@ -25,9 +25,17 @@ public class PlayerFallState : PlayerState
         playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 2));
         if (movementInput > 0) playerController.Sprite.flipX = false;
         else if (movementInput < 0) playerController.Sprite.flipX = true;
-        //Exit fall state when ground is detected
+        //Increase gravity scale to fall faster once falling for JumpTime
+        if(runtime >= playerController.jumpTime){
+            playerController.SetGravityScale(1.66f);
+        }
+        else{
+            playerController.SetGravityScale(0.8f + runtime * 1.5f);
+        }
+        //Exit fall state and reset gravity when ground is detected
         if (playerController.GroundCheck() && playerController.Body.velocity.y < 0.01f)
         {
+            playerController.SetGravityScale(1.0f);
             stateMachine.ChangeState(playerController.IdleState);
         }
     }
