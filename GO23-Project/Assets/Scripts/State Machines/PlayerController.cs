@@ -63,15 +63,15 @@ public class PlayerController : Controller
 
         controller2 = secondaryPlayer.GetComponent<PlayerController>();
 
-        if (primaryPlayer) stateMachine.Iniitialize(FallState);
-        else stateMachine.Iniitialize(WaitState);
-
         IdleState.Ready();
         MoveState.Ready();
         JumpState.Ready();
         FallState.Ready();
         WaitState.Ready();
         FollowState.Ready();
+
+        if (primaryPlayer) stateMachine.Iniitialize(FallState);
+        else stateMachine.Iniitialize(WaitState);
     }
 
     public bool GroundCheck()
@@ -82,4 +82,7 @@ public class PlayerController : Controller
 
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
     public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
+    public void InterpolateTranslate(Vector2 location, float speed){
+        transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
+    }
 }
