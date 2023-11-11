@@ -11,7 +11,7 @@ public class PlayerMoveState : PlayerGroundedState
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        movementScaleFactor = 1 + (Mathf.Abs(playerVelocity.x) / playerController.maxSpeed) * 2;
+        movementScaleFactor = 1 + (Mathf.Abs(playerVelocity.x) / playerController.maxSpeed) * 4;
         if (movementInput == 0)
         {
             stateMachine.ChangeState(playerController.IdleState);

@@ -28,7 +28,7 @@ public class PlayerIdleState : PlayerGroundedState
         base.PhysicsUpdate();
         if (playerVelocity != Vector2.zero)
         {
-            playerController.Body.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, runtime / 0.25f);
+            playerController.Body.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, runtime / 0.2f);
         }
         
     }
