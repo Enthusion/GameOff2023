@@ -28,8 +28,10 @@ public class PlayerController : Controller
     public float jumpForce { get; private set; }
     public float jumpTime { get; private set; }
     private LayerMask isGround;
-    private Vector2 groundOffset1;
-    private Vector2 groundOffset2;
+    [SerializeField]
+    private GameObject groundPoint1;
+    [SerializeField]
+    private GameObject groundPoint2;
 
 
     public override void Awake()
@@ -49,8 +51,6 @@ public class PlayerController : Controller
         jumpForce = playerData.jumpForce;
         jumpTime = playerData.jumpTime;
         isGround = playerData.isGround;
-        groundOffset1 = playerData.groundOffset1;
-        groundOffset2 = playerData.groundOffset2;
 
         Active = primaryPlayer;
     }
@@ -76,8 +76,7 @@ public class PlayerController : Controller
 
     public bool GroundCheck()
     {
-        Vector2 position2D = new Vector2(transform.position.x, transform.position.y);
-        return Physics2D.OverlapArea(groundOffset1 + position2D, groundOffset2 + position2D, isGround);
+        return Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
     }
 
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
