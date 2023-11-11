@@ -21,6 +21,17 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(playerController.FallState);
         }
+
+        if (Input.GetButtonDown("Swap"))
+        {
+            if (!playerController2.GroundCheck())
+            {
+                stateMachine.ChangeState(playerController.FollowState);
+            }
+            else {
+                stateMachine.ChangeState(playerController.WaitState);
+            }
+        }
     }
 
     public override void PhysicsUpdate()

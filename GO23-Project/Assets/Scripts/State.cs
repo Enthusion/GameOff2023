@@ -15,7 +15,6 @@ public class State
     {
         this.controller = controller;
         this.stateMachine = stateMachine;
-        this.Ready();
     }
     public virtual void Ready() { }
     public virtual void Enter() { }
