@@ -14,6 +14,7 @@ public class PlayerController : Controller
 
     public Animator Anima { get; private set; }
     public Rigidbody2D Body { get; private set; }
+    public CapsuleCollider2D Collider { get; private set; }
     public SpriteRenderer Sprite { get; private set; }
 
     [SerializeField]
@@ -21,6 +22,7 @@ public class PlayerController : Controller
     public PlayerController controller2 { get; private set; }
     public bool Active;
     public bool Following;
+    public Vector2 initialColliderSize { get; private set; }
     public PlayerData playerData;
     public bool primaryPlayer { get; private set; }
     public float moveForce { get; private set; }
@@ -59,9 +61,12 @@ public class PlayerController : Controller
     {
         Anima = GetComponent<Animator>();
         Body = GetComponent<Rigidbody2D>();
+        Collider = GetComponent<CapsuleCollider2D>();
         Sprite = GetComponent<SpriteRenderer>();
 
         controller2 = secondaryPlayer.GetComponent<PlayerController>();
+
+        initialColliderSize = Collider.size;
 
         IdleState.Ready();
         MoveState.Ready();
@@ -78,10 +83,11 @@ public class PlayerController : Controller
     {
         return Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
     }
-
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
     public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
-    public void InterpolateTranslate(Vector2 location, float speed){
+    public void InterpolateTranslate(Vector2 location, float speed)
+    {
         transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
     }
+    public void ResizeCollider(Vector2 newSize) => Collider.size = newSize;
 }

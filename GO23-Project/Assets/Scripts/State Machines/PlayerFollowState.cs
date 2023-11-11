@@ -13,6 +13,7 @@ public class PlayerFollowState : PlayerInactiveState
         base.Enter();
         playerController.Following = true;
         playerController.Body.gravityScale = 0;
+        playerController.ResizeCollider(new Vector2(1, 1));
     }
     public override void FrameUpdate()
     {
@@ -35,5 +36,6 @@ public class PlayerFollowState : PlayerInactiveState
         base.Exit();
         playerController.Following = false;
         playerController.Body.gravityScale = 1;
+        playerController.ResizeCollider(playerController.initialColliderSize);
     }
 }
