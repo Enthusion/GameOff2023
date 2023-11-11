@@ -24,6 +24,7 @@ public class PlayerController : Controller
     public bool Following;
     public Vector2 initialColliderSize { get; private set; }
     public PlayerData playerData;
+    public string characterName { get; private set; }
     public bool primaryPlayer { get; private set; }
     public float moveForce { get; private set; }
     public float maxSpeed { get; private set; }
@@ -47,6 +48,7 @@ public class PlayerController : Controller
         WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
         FollowState = new PlayerFollowState(this, stateMachine, "follow");
 
+        characterName = playerData.characterName;
         primaryPlayer = playerData.primaryPlayer;
         moveForce = playerData.moveForce;
         maxSpeed = playerData.maxSpeed;

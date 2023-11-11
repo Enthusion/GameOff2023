@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName="New Player Data", menuName="Player Data")]
 public class PlayerData : ScriptableObject
 {
+    public string characterName;
     public bool primaryPlayer;
     public float moveForce = 10f;
     public float maxSpeed = 15f;

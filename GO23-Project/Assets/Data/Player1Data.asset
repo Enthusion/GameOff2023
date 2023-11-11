@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce6d2d8a4f593b469583be43e70935c, type: 3}
   m_Name: Player1Data
   m_EditorClassIdentifier: 
+  characterName: Vita
   primaryPlayer: 1
   moveForce: 10
   maxSpeed: 15
@@ -20,5 +21,3 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 64
-  groundOffset1: {x: -0.5, y: -2.5}
-  groundOffset2: {x: 0.15, y: -2.53}
