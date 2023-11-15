@@ -21,3 +21,4 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 64
+  baseDamage: 6
