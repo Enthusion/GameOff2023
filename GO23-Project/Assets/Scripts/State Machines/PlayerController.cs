@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : Controller
@@ -94,12 +95,18 @@ public class PlayerController : Controller
     public void InterpolateTranslate(Vector2 location, float speed) => transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
     public void ResizeCollider(Vector2 newSize) => Collider.size = newSize;
     public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
-    public void SetScale(float scaleFactor) => transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+    public void SetScale(float scaleFactor){
+        float minSize = 0.33333333333f;
+        float maxSize = 1.25f;
+        scaleFactor = Mathf.Clamp(scaleFactor, minSize, maxSize);
+        transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+    }
     public void AdjustEnergy(float energy)
     {
         currentEnergy = Mathf.Clamp(currentEnergy + energy, 0, 100);
         float balance = GameManager.Instance.UpdateEnergy(currentEnergy, characterId);
         Debug.Log(characterName + "'s current energy: " + currentEnergy + "\nScale tilt: " + balance);
         SetScale(1 + balance);
+        controller2.SetScale(1 - balance);
     }
 }
