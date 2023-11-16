@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Player1Data
   m_EditorClassIdentifier: 
   characterName: Vita
+  characterId: 0
   primaryPlayer: 1
   moveForce: 10
   maxSpeed: 15

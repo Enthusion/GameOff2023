@@ -25,6 +25,7 @@ public class PlayerController : Controller
     public Vector2 initialColliderSize { get; private set; }
     public PlayerData playerData;
     public string characterName { get; private set; }
+    public int characterId { get; private set; }
     public bool primaryPlayer { get; private set; }
     public float moveForce { get; private set; }
     public float maxSpeed { get; private set; }
@@ -49,6 +50,7 @@ public class PlayerController : Controller
         FollowState = new PlayerFollowState(this, stateMachine, "follow");
 
         characterName = playerData.characterName;
+        characterId = playerData.characterId;
         primaryPlayer = playerData.primaryPlayer;
         moveForce = playerData.moveForce;
         maxSpeed = playerData.maxSpeed;

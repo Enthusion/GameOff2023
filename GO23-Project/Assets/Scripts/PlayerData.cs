@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     public string characterName;
+    public int characterId;
     public bool primaryPlayer;
     public float moveForce = 10f;
     public float maxSpeed = 15f;

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce6d2d8a4f593b469583be43e70935c, type: 3}
   m_Name: Player2Data
   m_EditorClassIdentifier: 
-  characterName: Morts
+  characterName: Mort
+  characterId: 1
   primaryPlayer: 0
   moveForce: 10
   maxSpeed: 15
