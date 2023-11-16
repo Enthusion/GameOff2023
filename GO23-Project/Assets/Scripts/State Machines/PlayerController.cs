@@ -94,4 +94,10 @@ public class PlayerController : Controller
     public void ResizeCollider(Vector2 newSize) => Collider.size = newSize;
     public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
     public void SetScale(float scaleFactor) => transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+    public void AdjustEnergy(float energy)
+    {
+        currentEnergy += energy;
+        float balance = GameManager.Instance.UpdateEnergy(currentEnergy, characterId);
+        SetScale(1 + balance);
+    }
 }
