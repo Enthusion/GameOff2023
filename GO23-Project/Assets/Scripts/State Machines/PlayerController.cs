@@ -96,7 +96,7 @@ public class PlayerController : Controller
     public void SetScale(float scaleFactor) => transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
     public void AdjustEnergy(float energy)
     {
-        currentEnergy += energy;
+        currentEnergy = Mathf.Clamp(currentEnergy + energy, 0, 100);
         float balance = GameManager.Instance.UpdateEnergy(currentEnergy, characterId);
         SetScale(1 + balance);
     }
