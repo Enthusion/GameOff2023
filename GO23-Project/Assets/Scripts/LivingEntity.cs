@@ -5,19 +5,15 @@ using UnityEngine;
 public class LivingEntity : KillableEntity
 {
     protected Rigidbody2D Body;
-    protected Vector2 damageDriection;
+    protected SpriteRenderer Sprite;
     public override void Start()
     {
         base.Start();
         Body = GetComponent<Rigidbody2D>();
-
-        damageDriection = Vector2.zero;
+        Sprite = GetComponent<SpriteRenderer>();
     }
     public override void TakeDamage(float damageValue, GameObject damageSource)
     {
         base.TakeDamage(damageValue, damageSource);
-        damageDriection = damageSource.transform.position - transform.position;
-        damageDriection = damageDriection.normalized;
-        //TODO: Check for projectile/ranged attack classes and retrieve their origin object for a protected var
     }
 }
