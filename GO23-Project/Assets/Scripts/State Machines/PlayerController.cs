@@ -74,6 +74,7 @@ public class PlayerController : Controller
         controller2 = secondaryPlayer.GetComponent<PlayerController>();
 
         initialColliderSize = Collider.size;
+        currentEnergy = 0.0f; //TODO set based on GameManager in future;
 
         IdleState.Ready();
         MoveState.Ready();
@@ -98,6 +99,7 @@ public class PlayerController : Controller
     {
         currentEnergy = Mathf.Clamp(currentEnergy + energy, 0, 100);
         float balance = GameManager.Instance.UpdateEnergy(currentEnergy, characterId);
+        Debug.Log(characterName + "'s current energy: " + currentEnergy + "\nScale tilt: " + balance);
         SetScale(1 + balance);
     }
 }
