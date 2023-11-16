@@ -33,6 +33,7 @@ public class PlayerController : Controller
     public float jumpTime { get; private set; }
     private LayerMask isGround;
     public float baseDamage { get; private set; }
+    public float currentEnergy { get; private set; }
     [SerializeField]
     private GameObject groundPoint1;
     [SerializeField]
@@ -92,4 +93,5 @@ public class PlayerController : Controller
     public void InterpolateTranslate(Vector2 location, float speed) => transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
     public void ResizeCollider(Vector2 newSize) => Collider.size = newSize;
     public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
+    public void SetScale(float scaleFactor) => transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
 }
