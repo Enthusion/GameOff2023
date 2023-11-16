@@ -16,7 +16,7 @@ public class EnemyEntity : LivingEntity
     {
         base.TakeDamage(damageValue, damageSource);
         //TODO damaged effect on spirte
-        if(TryGetComponent<PlayerController>(out PlayerController player)){
+        if(damageSource.TryGetComponent<PlayerController>(out PlayerController player)){
             player.AdjustEnergy(energyValue);
         }
     }
