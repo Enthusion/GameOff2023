@@ -32,6 +32,7 @@ public class PlayerController : Controller
     public float jumpForce { get; private set; }
     public float jumpTime { get; private set; }
     private LayerMask isGround;
+    public float baseDamage { get; private set; }
     [SerializeField]
     private GameObject groundPoint1;
     [SerializeField]
@@ -57,6 +58,7 @@ public class PlayerController : Controller
         jumpForce = playerData.jumpForce;
         jumpTime = playerData.jumpTime;
         isGround = playerData.isGround;
+        baseDamage = playerData.baseDamage;
 
         Active = primaryPlayer;
     }
