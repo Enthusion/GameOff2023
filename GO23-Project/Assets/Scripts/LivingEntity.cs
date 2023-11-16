@@ -18,6 +18,6 @@ public class LivingEntity : KillableEntity
         base.TakeDamage(damageValue, damageSource);
         damageDriection = damageSource.transform.position - transform.position;
         damageDriection = damageDriection.normalized;
-
+        //TODO: Check for projectile/ranged attack classes and retrieve their origin object for a protected var
     }
 }
