@@ -6,7 +6,7 @@ public class KillableEntity : MonoBehaviour, IDamageable
 {
     protected float health;
     protected Collider2D Collider;
-
+    public virtual void Awake(){}
     public virtual void Start(){
         if(TryGetComponent<BoxCollider2D>(out BoxCollider2D colliderA)){
             Collider = colliderA;
