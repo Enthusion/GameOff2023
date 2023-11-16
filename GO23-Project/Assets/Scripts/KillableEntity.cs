@@ -18,6 +18,8 @@ public class KillableEntity : MonoBehaviour, IDamageable
             Collider = colliderC;
         }
     }
+    public virtual void Update(){}
+    public virtual void FixedUpdate(){}
     public virtual void TakeDamage(float damageValue, GameObject damageSource){
         health -= damageValue;
         if(health <= 0){
