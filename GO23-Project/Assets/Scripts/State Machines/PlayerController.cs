@@ -87,7 +87,15 @@ public class PlayerController : Controller
         if (primaryPlayer) stateMachine.Iniitialize(FallState);
         else stateMachine.Iniitialize(WaitState);
     }
-
+    
+    public void FlipCharacter(bool faceRight){
+        if(faceRight){
+            transform.Rotate(Vector3.zero);
+        }
+        else{
+            transform.Rotate(new Vector3(0, 180, 0));
+        }
+    }
     public bool GroundCheck() => Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
     public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
