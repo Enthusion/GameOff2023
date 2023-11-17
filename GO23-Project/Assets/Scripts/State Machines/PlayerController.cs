@@ -9,6 +9,7 @@ public class PlayerController : Controller
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
+    public PlayerSlashState SlashState { get; private set; }
     public PlayerFallState FallState { get; private set; }
     public PlayerWaitState WaitState { get; private set; }
     public PlayerFollowState FollowState { get; private set; }
@@ -48,6 +49,7 @@ public class PlayerController : Controller
         IdleState = new PlayerIdleState(this, stateMachine, "idle");
         MoveState = new PlayerMoveState(this, stateMachine, "move");
         JumpState = new PlayerJumpState(this, stateMachine, "jump");
+        SlashState = new PlayerSlashState(this, stateMachine, "basicAttack");
         FallState = new PlayerFallState(this, stateMachine, "fall");
         WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
         FollowState = new PlayerFollowState(this, stateMachine, "follow");
@@ -95,7 +97,8 @@ public class PlayerController : Controller
     public void InterpolateTranslate(Vector2 location, float speed) => transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
     public void ResizeCollider(Vector2 newSize) => Collider.size = newSize;
     public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
-    public void SetScale(float scaleFactor){
+    public void SetScale(float scaleFactor)
+    {
         float minSize = 0.33333333333f;
         float maxSize = 1.25f;
         scaleFactor = Mathf.Clamp(scaleFactor, minSize, maxSize);
