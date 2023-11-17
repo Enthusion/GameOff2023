@@ -542,7 +542,6 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 754cf5687b5c8e94e9d353bff964b3d1, type: 2}
   groundPoint1: {fileID: 830650640}
   groundPoint2: {fileID: 1441827055}
-  FollowPoint: {fileID: 1642477153}
 --- !u!95 &1275462654
 Animator:
   serializedVersion: 3
@@ -663,7 +662,6 @@ Transform:
   m_Children:
   - {fileID: 830650641}
   - {fileID: 1441827056}
-  - {fileID: 1642477154}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -740,36 +738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d513f239d2a4c1d43a956efe4a0618b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1554023411
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1554023412}
-  m_Layer: 3
-  m_Name: FollowPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1554023412
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1554023411}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 0.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2026546322}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1560060758
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,36 +846,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1642477153
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1642477154}
-  m_Layer: 3
-  m_Name: FollowPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1642477154
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642477153}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 0.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1275462658}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1723511052
 GameObject:
@@ -1170,7 +1108,6 @@ Transform:
   m_Children:
   - {fileID: 1771663192}
   - {fileID: 1266787155}
-  - {fileID: 1554023412}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1211,4 +1148,3 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 84a7093f0ccf22846944223c3034893b, type: 2}
   groundPoint1: {fileID: 1771663191}
   groundPoint2: {fileID: 1266787154}
-  FollowPoint: {fileID: 1554023411}

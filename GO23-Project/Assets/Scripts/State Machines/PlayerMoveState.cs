@@ -18,7 +18,7 @@ public class PlayerMoveState : PlayerGroundedState
         }
         else if (movementInput > 0)
         {
-            playerController.FlipCharacter(false);
+            playerController.Sprite.flipX = false;
             if (playerVelocity.x >= 0)
             {
                 movementScaleFactor = 1.0f;
@@ -26,7 +26,7 @@ public class PlayerMoveState : PlayerGroundedState
         }
         else
         {
-            playerController.FlipCharacter(true);
+            playerController.Sprite.flipX = true;
             if (playerVelocity.x <= 0)
             {
                 movementScaleFactor = 1.0f;

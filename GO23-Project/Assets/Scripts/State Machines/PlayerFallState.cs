@@ -30,8 +30,8 @@ public class PlayerFallState : PlayerState
         //Air control
         float movementInput = Input.GetAxis("Horizontal");
         playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 2));
-        if (movementInput > 0) playerController.FlipCharacter(false);
-        else if (movementInput < 0) playerController.FlipCharacter(true);
+        if (movementInput > 0) playerController.Sprite.flipX = false;
+        else if (movementInput < 0) playerController.Sprite.flipX = true;
         //Increase gravity scale to fall faster once falling for JumpTime
         if (runtime >= playerController.jumpTime)
         {
