@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class EnemyEntity : LivingEntity
 {
-    //TODO: Create EnemyData ScriptableObject
-    // public EnemyData enemyData;
+    public EnemyData enemyData;
     protected float energyValue;
     public override void Awake()
     {
         base.Awake();
-        // energyValue = enemyData.energyValue;
+        energyValue = enemyData.energyValue;
     }
     public override void TakeDamage(float damageValue, GameObject damageSource)
     {
