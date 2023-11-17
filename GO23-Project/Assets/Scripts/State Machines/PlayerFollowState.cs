@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerFollowState : PlayerInactiveState
 {
-    private Vector2 followOffset;
+    // private Vector2 followOffset;
     public PlayerFollowState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
@@ -24,10 +24,10 @@ public class PlayerFollowState : PlayerInactiveState
         if(Input.GetButtonDown("Follow")){
             stateMachine.ChangeState(playerController.WaitState);
         }
-        followOffset = new Vector2(playerController2.Sprite.flipX ? 0.75f : -0.75f, 0.45f);
-        Vector2 targetPosition = playerController2.Body.position + followOffset;
-        if(Vector3.Distance(playerController.transform.position, new Vector3(targetPosition.x, targetPosition.y, 0.0f)) > 0.005f){
-            playerController.InterpolateTranslate(targetPosition, 7.5f);
+        // followOffset = new Vector2(playerController2.FlipCheck() ? 0.75f : -0.75f, 0.45f);
+        // Vector2 targetPosition = playerController2.Body.position + followOffset;
+        if(Vector3.Distance(playerController.transform.position, playerController2.FollowPoint.transform.position) > 0.005f){
+            playerController.InterpolateTranslate(playerController2.FollowPoint.transform.position, 7.5f);
         }
     }
 

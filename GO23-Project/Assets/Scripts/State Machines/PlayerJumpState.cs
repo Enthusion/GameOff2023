@@ -25,8 +25,8 @@ public class PlayerJumpState : PlayerAbilityState
         //Air control
         float movementInput = Input.GetAxis("Horizontal");
         playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 2));
-        if (movementInput > 0) playerController.Sprite.flipX = false;
-        else if (movementInput < 0) playerController.Sprite.flipX = true;
+        if (movementInput > 0) playerController.FlipCharacter(false);
+        else if (movementInput < 0) playerController.FlipCharacter(true);
         //Variable jump height
         if (runtime < playerController.jumpTime && Input.GetButton("Jump"))
         {

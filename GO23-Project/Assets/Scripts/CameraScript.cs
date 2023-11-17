@@ -33,7 +33,7 @@ public class CameraScript : MonoBehaviour
     {
         if (!target1.Active) activeTarget = target2;
         else activeTarget = target1;
-        lookOffset = activeTarget.Sprite.flipX ? -0.75f : 2.25f;
+        lookOffset = activeTarget.FlipCheck() ? -0.75f : 2.25f;
         targetPosition = new Vector3(activeTarget.transform.position.x + offsetToCenter.x + lookOffset, activeTarget.transform.position.y + offsetToCenter.y, transform.position.z);
         float distanceTo = Vector3.Distance(transform.position, targetPosition);
         if (distanceTo <= distanceMin)

@@ -39,6 +39,7 @@ public class PlayerController : Controller
     private GameObject groundPoint1;
     [SerializeField]
     private GameObject groundPoint2;
+    public GameObject FollowPoint;
 
 
     public override void Awake()
@@ -87,15 +88,19 @@ public class PlayerController : Controller
         if (primaryPlayer) stateMachine.Iniitialize(FallState);
         else stateMachine.Iniitialize(WaitState);
     }
-    
-    public void FlipCharacter(bool faceRight){
-        if(faceRight){
-            transform.Rotate(Vector3.zero);
-        }
-        else{
+
+    public void FlipCharacter(bool faceLeft)
+    {
+        if (faceLeft)
+        {
             transform.Rotate(new Vector3(0, 180, 0));
         }
+        else
+        {
+            transform.Rotate(Vector3.zero);
+        }
     }
+    public bool FlipCheck() => transform.eulerAngles.y == 0;
     public bool GroundCheck() => Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
     public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
@@ -103,7 +108,8 @@ public class PlayerController : Controller
     public void InterpolateTranslate(Vector2 location, float speed) => transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
     public void ResizeCollider(Vector2 newSize) => Collider.size = newSize;
     public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
-    public void SetScale(float scaleFactor){
+    public void SetScale(float scaleFactor)
+    {
         float minSize = 0.33333333333f;
         float maxSize = 1.25f;
         scaleFactor = Mathf.Clamp(scaleFactor, minSize, maxSize);
