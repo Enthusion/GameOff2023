@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D Body;
+    private SpriteRenderer Sprite;
     private bool atTarget;
     private Vector2 targetPoint;
     public EnemyData enemyData;
@@ -39,6 +40,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         Body = GetComponent<Rigidbody2D>();
+        Sprite = GetComponent<SpriteRenderer>();
 
         if (patrolRange == 0)
         {
@@ -64,10 +66,20 @@ public class EnemyController : MonoBehaviour
             atTarget = true;
         }
 
-        //If arrived at target come to a stop
+        // If arrived at target come to a stop
         if (atTarget && Body.velocity != Vector2.zero)
         {
             Body.velocity /= 2;
+        }
+
+        // Flip the enemy to face in the direction they are moving.
+        if(Body.velocity != Vector2.zero){
+            if(Body.velocity.x > 0){
+                Sprite.flipX = false;
+            }
+            else{
+                Sprite.flipX = true;
+            }
         }
 
     }
