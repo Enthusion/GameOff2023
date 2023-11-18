@@ -7,7 +7,9 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D Body;
     private SpriteRenderer Sprite;
     private bool atTarget;
-    private Vector2 targetPoint;
+    private Vector2 targetPoint; 
+    private Vector2 OnePoint;
+    private Vector2 Twopoint;
     public EnemyData enemyData;
     private int enemyId;
     private int aggressionLevel; //0 is non attack, 1 is attack back, 2 is on sight
@@ -45,6 +47,10 @@ public class EnemyController : MonoBehaviour
         if (patrolRange == 0)
         {
             targetPoint = Body.position;
+        }
+        else {
+            OnePoint=Body.position - patrolRange; 
+            Twopoint=Body.position + patrolRange;
         }
     }
 
