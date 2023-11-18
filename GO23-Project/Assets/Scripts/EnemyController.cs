@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D Body;
+    private bool atTarget;
+    private Vector2 targetPoint;
     public EnemyData enemyData;
     private int enemyId;
     private int aggressionLevel; //0 is non attack, 1 is attack back, 2 is on sight
@@ -19,7 +21,8 @@ public class EnemyController : MonoBehaviour
     private float edgeDetection; //Can the enemy see edges
 
     //Awake is called as soon as the script is loaded, before start
-    void Awake(){
+    void Awake()
+    {
         enemyId = enemyData.enemyId;
         aggressionLevel = enemyData.enemyId;
         energyValue = enemyData.energyValue;
@@ -36,14 +39,43 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         Body = GetComponent<Rigidbody2D>();
+
+        if (patrolRange == 0)
+        {
+            targetPoint = Body.position;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //TODO: If enemy is not within BLANK distance to target run MoveTowardTarget function
+        // TODO: Make the enemy patrol (walk between two points)
+        //      HINT: It is already set up to move toward the "targetPoint" variable
         
+
+        // If enemy is not within 0.1f of the targetPoint run MoveTowardTarget function
+        if (!stationary && Vector2.Distance(Body.position, targetPoint) > 0.1f)
+        {
+            atTarget = false;
+            MoveTowardTarget();
+        }
+        else
+        {
+            atTarget = true;
+        }
+
+        //If arrived at target come to a stop
+        if (atTarget && Body.velocity != Vector2.zero)
+        {
+            Body.velocity /= 2;
+        }
+
     }
 
-    //TODO: Set up MoveTowardTarget function that calculates the direction of the target and moves toward them.
+    // Calculates the direction to the targetPoint and moves toward them.
+    private void MoveTowardTarget()
+    {
+        Vector2 directionToTarget = (targetPoint - Body.position).normalized;
+        Body.AddForce(directionToTarget * moveForce);
+    }
 }
