@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : Controller
@@ -8,6 +9,7 @@ public class PlayerController : Controller
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
+    public PlayerSlashState SlashState { get; private set; }
     public PlayerFallState FallState { get; private set; }
     public PlayerWaitState WaitState { get; private set; }
     public PlayerFollowState FollowState { get; private set; }
@@ -25,12 +27,15 @@ public class PlayerController : Controller
     public Vector2 initialColliderSize { get; private set; }
     public PlayerData playerData;
     public string characterName { get; private set; }
+    public int characterId { get; private set; }
     public bool primaryPlayer { get; private set; }
     public float moveForce { get; private set; }
     public float maxSpeed { get; private set; }
     public float jumpForce { get; private set; }
     public float jumpTime { get; private set; }
     private LayerMask isGround;
+    public float baseDamage { get; private set; }
+    public float currentEnergy { get; private set; }
     [SerializeField]
     private GameObject groundPoint1;
     [SerializeField]
@@ -44,17 +49,20 @@ public class PlayerController : Controller
         IdleState = new PlayerIdleState(this, stateMachine, "idle");
         MoveState = new PlayerMoveState(this, stateMachine, "move");
         JumpState = new PlayerJumpState(this, stateMachine, "jump");
+        SlashState = new PlayerSlashState(this, stateMachine, "basicAttack");
         FallState = new PlayerFallState(this, stateMachine, "fall");
         WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
         FollowState = new PlayerFollowState(this, stateMachine, "follow");
 
         characterName = playerData.characterName;
+        characterId = playerData.characterId;
         primaryPlayer = playerData.primaryPlayer;
         moveForce = playerData.moveForce;
         maxSpeed = playerData.maxSpeed;
         jumpForce = playerData.jumpForce;
         jumpTime = playerData.jumpTime;
         isGround = playerData.isGround;
+        baseDamage = playerData.baseDamage;
 
         Active = primaryPlayer;
     }
@@ -69,6 +77,7 @@ public class PlayerController : Controller
         controller2 = secondaryPlayer.GetComponent<PlayerController>();
 
         initialColliderSize = Collider.size;
+        currentEnergy = 0.0f; //TODO set based on GameManager in future;
 
         IdleState.Ready();
         MoveState.Ready();
@@ -88,4 +97,19 @@ public class PlayerController : Controller
     public void InterpolateTranslate(Vector2 location, float speed) => transform.position = Vector3.Lerp(transform.position, new Vector3(location.x, location.y, transform.position.z), speed * Time.deltaTime);
     public void ResizeCollider(Vector2 newSize) => Collider.size = newSize;
     public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
+    public void SetScale(float scaleFactor)
+    {
+        float minSize = 0.33333333333f;
+        float maxSize = 1.25f;
+        scaleFactor = Mathf.Clamp(scaleFactor, minSize, maxSize);
+        transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+    }
+    public void AdjustEnergy(float energy)
+    {
+        currentEnergy = Mathf.Clamp(currentEnergy + energy, 0, 100);
+        float balance = GameManager.Instance.UpdateEnergy(currentEnergy, characterId);
+        Debug.Log(characterName + "'s current energy: " + currentEnergy + "\nScale tilt: " + balance);
+        SetScale(1 + balance);
+        controller2.SetScale(1 - balance);
+    }
 }

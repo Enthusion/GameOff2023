@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Player1Data
   m_EditorClassIdentifier: 
   characterName: Vita
+  characterId: 0
   primaryPlayer: 1
   moveForce: 10
   maxSpeed: 15
@@ -21,3 +22,4 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 64
+  baseDamage: 5
