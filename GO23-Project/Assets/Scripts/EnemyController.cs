@@ -84,7 +84,7 @@ public class EnemyController : MonoBehaviour
         }
 
         // If enemy is not within 0.1f of the targetPoint run MoveTowardTarget function
-        if (readyForAction && !stationary && Vector2.Distance(Body.position, targetPoint) > 0.15f)
+        if (!stationary && Vector2.Distance(Body.position, targetPoint) > 0.15f)
         {
             atTarget = false;
             MoveTowardTarget();
@@ -118,6 +118,7 @@ public class EnemyController : MonoBehaviour
     // Calculates the direction to the targetPoint and moves toward them.
     private void MoveTowardTarget()
     {
+        if(!readyForAction) return;
         Vector2 directionToTarget = (targetPoint - Body.position).normalized;
         Body.AddForce(directionToTarget * moveForce);
     }
