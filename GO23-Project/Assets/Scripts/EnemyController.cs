@@ -135,6 +135,8 @@ public class EnemyController : MonoBehaviour
         {
             approachVelocity = Vector2.zero;
         }
+
+        Body.velocity = new Vector2(Mathf.Clamp(Body.velocity.x, -maxSpeed, maxSpeed), Body.velocity.y);
     }
 
     // Calculates the direction to the targetPoint and moves toward them.
