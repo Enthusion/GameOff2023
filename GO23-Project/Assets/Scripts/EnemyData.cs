@@ -11,10 +11,8 @@ public class EnemyData : ScriptableObject
     public float energyValue; //Energy given to palyers on hit
     public bool contactDamage; //Does the enemy do contact damage
     public float damageAmount; //How much damage does the enemy do
-    public bool stationary; //Does the stay in one place?
     public float moveForce = 8.0f;
     public float maxSpeed = 12.0f;
-    public float patrolRange; //How far back and forth between the original spawn point the enemy will patrol
     public float lineOfSight; //How far an enemy can see
     public float detectionProximity; //How close umtil the enemy automatically knows the player is there.
     public float edgeDetection; //Can the enemy detect edges

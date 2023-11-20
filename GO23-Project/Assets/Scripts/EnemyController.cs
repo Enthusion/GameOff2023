@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
     private Vector2 OnePoint;
     private Vector2 TwoPoint;
     private bool readyForAction;
+    public bool Stationary; //Does the stay in one place?
+    public float PatrolRange; //How far back and forth between the original spawn point the enemy will patrol
     private Vector2 approachVelocity = Vector2.zero;
     public EnemyData enemyData;
     private int enemyId;
@@ -22,10 +24,8 @@ public class EnemyController : MonoBehaviour
     private float energyValue; //Energy given to palyers on hit
     private bool contactDamage; //Does the enemy do contact damage
     private float damageAmount; //How much damage does the enemy do
-    private bool stationary; //Does the stay in one place?
     private float moveForce; //The force the enemy moves with
     private float maxSpeed;
-    private float patrolRange; //How far back and forth between the original spawn point the enemy will patrol
     private float lineOfSight; //How far an enemy can see
     private float detectionProximity; //How close umtil the enemy automatically knows the player is there.
     private float edgeDetection; //Can the enemy see edges
@@ -41,10 +41,8 @@ public class EnemyController : MonoBehaviour
         energyValue = enemyData.energyValue;
         contactDamage = enemyData.contactDamage;
         damageAmount = enemyData.damageAmount;
-        stationary = enemyData.stationary;
         moveForce = enemyData.moveForce;
         maxSpeed = enemyData.maxSpeed;
-        patrolRange = enemyData.patrolRange;
         lineOfSight = enemyData.lineOfSight;
         detectionProximity = enemyData.detectionProximity;
         edgeDetection = enemyData.edgeDetection;
@@ -56,14 +54,14 @@ public class EnemyController : MonoBehaviour
         Body = GetComponent<Rigidbody2D>();
         Sprite = GetComponent<SpriteRenderer>();
 
-        if (patrolRange == 0)
+        if (PatrolRange == 0)
         {
             targetPoint = Body.position;
         }
         else
         {
-            OnePoint = Body.position - new Vector2(patrolRange, 0);
-            TwoPoint = Body.position + new Vector2(patrolRange, 0);
+            OnePoint = Body.position - new Vector2(PatrolRange, 0);
+            TwoPoint = Body.position + new Vector2(PatrolRange, 0);
             targetPoint = OnePoint;
         }
     }
@@ -94,7 +92,7 @@ public class EnemyController : MonoBehaviour
             atTarget = false;
         }
 
-        if (!hitTarget && !stationary) MoveTowardTarget();
+        if (!hitTarget && !Stationary) MoveTowardTarget();
 
         // Flip the enemy to face in the direction they are moving.
         if (Body.velocity.x != 0)

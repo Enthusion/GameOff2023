@@ -514,6 +514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroundPoint: {fileID: 2063555291}
+  Stationary: 0
+  PatrolRange: 5
   enemyData: {fileID: 11400000, guid: edb5e6f8f8b73ee41b03a8d161bbd7b5, type: 2}
 --- !u!1 &1089283713
 GameObject:
