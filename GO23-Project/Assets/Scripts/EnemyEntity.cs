@@ -6,10 +6,14 @@ public class EnemyEntity : LivingEntity
 {
     public EnemyData enemyData;
     protected float energyValue;
+    protected bool contactDamage;
+    protected float damageAmount;
     public override void Awake()
     {
         base.Awake();
         energyValue = enemyData.energyValue;
+        contactDamage = enemyData.contactDamage;
+        damageAmount = enemyData.damageAmount;
     }
     public override void TakeDamage(float damageValue, GameObject damageSource)
     {
