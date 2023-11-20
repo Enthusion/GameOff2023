@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     private Vector2 OnePoint;
     private Vector2 TwoPoint;
     private bool readyForAction;
+    private Vector2 approachVelocity = Vector2.zero;
     public EnemyData enemyData;
     private int enemyId;
     private int aggressionLevel; //0 is non attack, 1 is attack back, 2 is on sight
@@ -99,8 +100,14 @@ public class EnemyController : MonoBehaviour
         // If arrived at target come to a stop
         if (atTarget && Body.velocity != Vector2.zero)
         {
-            Body.velocity = new Vector2(0, Body.velocity.y);
-            // Body.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, runtime / 0.2f);
+            if(approachVelocity == Vector2.zero){
+                approachVelocity = Body.velocity;
+            }
+            // Body.velocity = new Vector2(0, Body.velocity.y);
+            Body.velocity = Vector2.Lerp(approachVelocity, Vector2.zero, 0.2f);
+        }
+        else if (atTarget && Body.velocity == Vector2.zero){
+            approachVelocity = Vector2.zero;
         }
 
         // Flip the enemy to face in the direction they are moving.
