@@ -71,6 +71,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // When first touching the ground update patrol points to ground level
         if (!readyForAction && GroundCheck())
         {
             OnePoint = new Vector2(OnePoint.x, Body.position.y);
@@ -79,7 +80,8 @@ public class EnemyController : MonoBehaviour
             readyForAction = true;
         }
 
-        if (atTarget == true)
+        // Switch target points if arrived at target
+        if (atTarget)
         {
             if (targetPoint == TwoPoint)
             {
@@ -95,7 +97,7 @@ public class EnemyController : MonoBehaviour
         if (!hitTarget && !stationary) MoveTowardTarget();
 
         // Flip the enemy to face in the direction they are moving.
-        if (Body.velocity != Vector2.zero)
+        if (Body.velocity.x != 0)
         {
             if (Body.velocity.x > 0)
             {
@@ -114,7 +116,7 @@ public class EnemyController : MonoBehaviour
         distanceToTarget = Vector2.Distance(Body.position, targetPoint);
         if (distanceToTarget <= 0.2f) hitTarget = true;
 
-        // If arrived at target come to a stop
+        // If passed the target come to a stop
         if (hitTarget)
         {
             timeSinceReached += Time.fixedDeltaTime;
@@ -123,7 +125,6 @@ public class EnemyController : MonoBehaviour
                 approachVelocity = Body.velocity;
                 timeSinceReached = 0.0f;
             }
-            // Body.velocity = new Vector2(0, Body.velocity.y);
             Body.velocity = Vector2.Lerp(approachVelocity, Vector2.zero, timeSinceReached / 0.2f);
             if (Body.velocity == Vector2.zero)
             {
@@ -135,7 +136,7 @@ public class EnemyController : MonoBehaviour
         {
             approachVelocity = Vector2.zero;
         }
-
+        // Limit movement speed by maxSpeed;
         Body.velocity = new Vector2(Mathf.Clamp(Body.velocity.x, -maxSpeed, maxSpeed), Body.velocity.y);
     }
 
