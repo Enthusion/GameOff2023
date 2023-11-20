@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     private float damageAmount; //How much damage does the enemy do
     private bool stationary; //Does the stay in one place?
     private float moveForce; //The force the enemy moves with
+    private float maxSpeed;
     private float patrolRange; //How far back and forth between the original spawn point the enemy will patrol
     private float lineOfSight; //How far an enemy can see
     private float detectionProximity; //How close umtil the enemy automatically knows the player is there.
@@ -38,6 +39,7 @@ public class EnemyController : MonoBehaviour
         damageAmount = enemyData.damageAmount;
         stationary = enemyData.stationary;
         moveForce = enemyData.moveForce;
+        maxSpeed = enemyData.maxSpeed;
         patrolRange = enemyData.patrolRange;
         lineOfSight = enemyData.lineOfSight;
         detectionProximity = enemyData.detectionProximity;
@@ -98,6 +100,7 @@ public class EnemyController : MonoBehaviour
         if (atTarget && Body.velocity != Vector2.zero)
         {
             Body.velocity = new Vector2(0, Body.velocity.y);
+            // Body.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, runtime / 0.2f);
         }
 
         // Flip the enemy to face in the direction they are moving.
