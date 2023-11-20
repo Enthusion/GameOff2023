@@ -8,6 +8,9 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer Sprite;
     public GameObject GroundPoint;
     private bool atTarget;
+    private bool hitTarget;
+    private float timeSinceReached;
+    private float distanceToTarget;
     private Vector2 targetPoint;
     private Vector2 OnePoint;
     private Vector2 TwoPoint;
@@ -68,12 +71,14 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!readyForAction && GroundCheck()){
+        if (!readyForAction && GroundCheck())
+        {
             OnePoint = new Vector2(OnePoint.x, Body.position.y);
             TwoPoint = new Vector2(TwoPoint.x, Body.position.y);
+            targetPoint = OnePoint;
             readyForAction = true;
         }
-        
+
         if (atTarget == true)
         {
             if (targetPoint == TwoPoint)
@@ -84,31 +89,10 @@ public class EnemyController : MonoBehaviour
             {
                 targetPoint = TwoPoint;
             }
-        }
-
-        // If enemy is not within 0.1f of the targetPoint run MoveTowardTarget function
-        if (!stationary && Vector2.Distance(Body.position, targetPoint) > 0.15f)
-        {
             atTarget = false;
-            MoveTowardTarget();
-        }
-        else
-        {
-            atTarget = true;
         }
 
-        // If arrived at target come to a stop
-        if (atTarget && Body.velocity != Vector2.zero)
-        {
-            if(approachVelocity == Vector2.zero){
-                approachVelocity = Body.velocity;
-            }
-            // Body.velocity = new Vector2(0, Body.velocity.y);
-            Body.velocity = Vector2.Lerp(approachVelocity, Vector2.zero, 0.2f);
-        }
-        else if (atTarget && Body.velocity == Vector2.zero){
-            approachVelocity = Vector2.zero;
-        }
+        if (!hitTarget && !stationary) MoveTowardTarget();
 
         // Flip the enemy to face in the direction they are moving.
         if (Body.velocity != Vector2.zero)
@@ -125,10 +109,38 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    void FixedUpdate()
+    {
+        distanceToTarget = Vector2.Distance(Body.position, targetPoint);
+        if (distanceToTarget <= 0.2f) hitTarget = true;
+
+        // If arrived at target come to a stop
+        if (hitTarget)
+        {
+            timeSinceReached += Time.fixedDeltaTime;
+            if (approachVelocity == Vector2.zero)
+            {
+                approachVelocity = Body.velocity;
+                timeSinceReached = 0.0f;
+            }
+            // Body.velocity = new Vector2(0, Body.velocity.y);
+            Body.velocity = Vector2.Lerp(approachVelocity, Vector2.zero, timeSinceReached / 0.2f);
+            if (Body.velocity == Vector2.zero)
+            {
+                hitTarget = false;
+                atTarget = true;
+            }
+        }
+        else
+        {
+            approachVelocity = Vector2.zero;
+        }
+    }
+
     // Calculates the direction to the targetPoint and moves toward them.
     private void MoveTowardTarget()
     {
-        if(!readyForAction) return;
+        if (!readyForAction) return;
         Vector2 directionToTarget = (targetPoint - Body.position).normalized;
         Body.AddForce(directionToTarget * moveForce);
     }
