@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     private Vector2 targetPoint;
     private Vector2 OnePoint;
     private Vector2 TwoPoint;
+    private bool readyForAction;
     public EnemyData enemyData;
     private int enemyId;
     private int aggressionLevel; //0 is non attack, 1 is attack back, 2 is on sight
@@ -26,6 +27,8 @@ public class EnemyController : MonoBehaviour
     //Awake is called as soon as the script is loaded, before start
     void Awake()
     {
+        readyForAction = false;
+
         enemyId = enemyData.enemyId;
         aggressionLevel = enemyData.enemyId;
         energyValue = enemyData.energyValue;
@@ -59,22 +62,20 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO: Make the enemy patrol (walk between two points)
-        //      HINT: It is already set up to move toward the "targetPoint" variable
         if (atTarget == true)
         {
-           if(targetPoint == TwoPoint){
-            targetPoint = OnePoint;
-           }
-           else{
-            targetPoint = TwoPoint;
-           }
+            if (targetPoint == TwoPoint)
+            {
+                targetPoint = OnePoint;
+            }
+            else
+            {
+                targetPoint = TwoPoint;
+            }
         }
 
-
-
         // If enemy is not within 0.1f of the targetPoint run MoveTowardTarget function
-        if (!stationary && Vector2.Distance(Body.position, targetPoint) > 0.1f)
+        if (readyForAction && !stationary && Vector2.Distance(Body.position, targetPoint) > 0.1f)
         {
             atTarget = false;
             MoveTowardTarget();
