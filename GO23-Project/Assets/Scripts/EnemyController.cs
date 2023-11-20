@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer Sprite;
     private bool atTarget;
     private Vector2 targetPoint;
+    private Vector2 OnePoint;
+    private Vector2 Twopoint;
     public EnemyData enemyData;
     private int enemyId;
     private int aggressionLevel; //0 is non attack, 1 is attack back, 2 is on sight
@@ -46,6 +48,12 @@ public class EnemyController : MonoBehaviour
         {
             targetPoint = Body.position;
         }
+        else
+        {
+            OnePoint = Body.position - new Vector2(patrolRange, 0);
+            Twopoint = Body.position + new Vector2(patrolRange, 0);
+            targetPoint = OnePoint;
+        }
     }
 
     // Update is called once per frame
@@ -53,7 +61,17 @@ public class EnemyController : MonoBehaviour
     {
         // TODO: Make the enemy patrol (walk between two points)
         //      HINT: It is already set up to move toward the "targetPoint" variable
-        
+        if (atTarget == true)
+        {
+           if(targetPoint == Twopoint){
+            targetPoint = OnePoint;
+           }
+           else{
+            targetPoint = Twopoint;
+           }
+        }
+
+
 
         // If enemy is not within 0.1f of the targetPoint run MoveTowardTarget function
         if (!stationary && Vector2.Distance(Body.position, targetPoint) > 0.1f)
@@ -69,15 +87,18 @@ public class EnemyController : MonoBehaviour
         // If arrived at target come to a stop
         if (atTarget && Body.velocity != Vector2.zero)
         {
-            Body.velocity /= 2;
+            Body.velocity *= 0;
         }
 
         // Flip the enemy to face in the direction they are moving.
-        if(Body.velocity != Vector2.zero){
-            if(Body.velocity.x > 0){
+        if (Body.velocity != Vector2.zero)
+        {
+            if (Body.velocity.x > 0)
+            {
                 Sprite.flipX = false;
             }
-            else{
+            else
+            {
                 Sprite.flipX = true;
             }
         }
