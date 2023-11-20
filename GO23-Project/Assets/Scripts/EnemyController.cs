@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     private bool atTarget;
     private Vector2 targetPoint;
     private Vector2 OnePoint;
-    private Vector2 Twopoint;
+    private Vector2 TwoPoint;
     public EnemyData enemyData;
     private int enemyId;
     private int aggressionLevel; //0 is non attack, 1 is attack back, 2 is on sight
@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             OnePoint = Body.position - new Vector2(patrolRange, 0);
-            Twopoint = Body.position + new Vector2(patrolRange, 0);
+            TwoPoint = Body.position + new Vector2(patrolRange, 0);
             targetPoint = OnePoint;
         }
     }
@@ -63,11 +63,11 @@ public class EnemyController : MonoBehaviour
         //      HINT: It is already set up to move toward the "targetPoint" variable
         if (atTarget == true)
         {
-           if(targetPoint == Twopoint){
+           if(targetPoint == TwoPoint){
             targetPoint = OnePoint;
            }
            else{
-            targetPoint = Twopoint;
+            targetPoint = TwoPoint;
            }
         }
 
