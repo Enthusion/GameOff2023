@@ -23,4 +23,5 @@ public class EnemyData : ScriptableObject
     // public float attackCooldown; //Time between each attack
     // public int multiAttack = 0; //How many attacks does one attack contain
     // public float burstCooldown; //What is the time between each attack in a multi-attack
+    public LayerMask isGround;
 }

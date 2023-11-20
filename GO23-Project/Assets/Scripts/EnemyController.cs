@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D Body;
     private SpriteRenderer Sprite;
+    public GameObject GroundPoint;
     private bool atTarget;
     private Vector2 targetPoint;
     private Vector2 OnePoint;
@@ -23,6 +24,7 @@ public class EnemyController : MonoBehaviour
     private float lineOfSight; //How far an enemy can see
     private float detectionProximity; //How close umtil the enemy automatically knows the player is there.
     private float edgeDetection; //Can the enemy see edges
+    private LayerMask isGround;
 
     //Awake is called as soon as the script is loaded, before start
     void Awake()
@@ -40,6 +42,7 @@ public class EnemyController : MonoBehaviour
         lineOfSight = enemyData.lineOfSight;
         detectionProximity = enemyData.detectionProximity;
         edgeDetection = enemyData.edgeDetection;
+        isGround = enemyData.isGround;
     }
     // Start is called before the first frame update
     void Start()
@@ -62,6 +65,12 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!readyForAction && GroundCheck()){
+            OnePoint = new Vector2(OnePoint.x, Body.position.y);
+            TwoPoint = new Vector2(TwoPoint.x, Body.position.y);
+            readyForAction = true;
+        }
+        
         if (atTarget == true)
         {
             if (targetPoint == TwoPoint)
@@ -75,7 +84,7 @@ public class EnemyController : MonoBehaviour
         }
 
         // If enemy is not within 0.1f of the targetPoint run MoveTowardTarget function
-        if (readyForAction && !stationary && Vector2.Distance(Body.position, targetPoint) > 0.1f)
+        if (readyForAction && !stationary && Vector2.Distance(Body.position, targetPoint) > 0.15f)
         {
             atTarget = false;
             MoveTowardTarget();
@@ -88,7 +97,7 @@ public class EnemyController : MonoBehaviour
         // If arrived at target come to a stop
         if (atTarget && Body.velocity != Vector2.zero)
         {
-            Body.velocity *= 0;
+            Body.velocity = new Vector2(0, Body.velocity.y);
         }
 
         // Flip the enemy to face in the direction they are moving.
@@ -112,4 +121,5 @@ public class EnemyController : MonoBehaviour
         Vector2 directionToTarget = (targetPoint - Body.position).normalized;
         Body.AddForce(directionToTarget * moveForce);
     }
+    public bool GroundCheck() => Physics2D.OverlapCircle(GroundPoint.transform.position, 0.15f, isGround);
 }

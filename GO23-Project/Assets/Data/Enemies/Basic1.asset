@@ -20,7 +20,10 @@ MonoBehaviour:
   damageAmount: 5
   stationary: 0
   moveForce: 8
-  patrolRange: 3
+  patrolRange: 5
   lineOfSight: 0
   detectionProximity: 0
   edgeDetection: 0
+  isGround:
+    serializedVersion: 2
+    m_Bits: 64
