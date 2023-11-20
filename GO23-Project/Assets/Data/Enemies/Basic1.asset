@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a27b6f00ba07054cbf15b3798762c47, type: 3}
   m_Name: Basic1
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: Basic
   enemyId: 0
   aggressionLevel: 0
-  energyValue: 0
-  contactDamage: 0
-  damageAmount: 0
+  energyValue: 5
+  contactDamage: 1
+  damageAmount: 5
   stationary: 0
   moveForce: 8
-  patrolRange: 0
+  patrolRange: 3
   lineOfSight: 0
   detectionProximity: 0
   edgeDetection: 0
