@@ -23,4 +23,10 @@ public class EnemyEntity : LivingEntity
             player.AdjustEnergy(energyValue);
         }
     }
+
+    protected void OnCollisionEnter2D(Collider otherEntity){
+        if(otherEntity.gameObject.TryGetComponent(out IDamageable damageableEntity)){
+            // damageableEntity.TakeDamage
+        }
+    }
 }
