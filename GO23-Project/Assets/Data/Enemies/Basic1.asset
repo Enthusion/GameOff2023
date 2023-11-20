@@ -19,7 +19,8 @@ MonoBehaviour:
   contactDamage: 1
   damageAmount: 5
   stationary: 0
-  moveForce: 8
+  moveForce: 5
+  maxSpeed: 10
   patrolRange: 5
   lineOfSight: 0
   detectionProximity: 0
