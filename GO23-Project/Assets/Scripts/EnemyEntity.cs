@@ -24,9 +24,9 @@ public class EnemyEntity : LivingEntity
         }
     }
 
-    protected void OnCollisionEnter2D(Collider otherEntity){
-        if(otherEntity.gameObject.TryGetComponent(out IDamageable damageableEntity)){
-            // damageableEntity.TakeDamage
+    protected void OnCollisionEnter2D(Collision2D col){
+        if(col.gameObject.TryGetComponent(out IDamageable damageableEntity)){
+            damageableEntity.TakeDamage(damageAmount, this.gameObject);
         }
     }
 }
