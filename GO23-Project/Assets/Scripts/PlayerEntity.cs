@@ -23,6 +23,9 @@ public class PlayerEntity : LivingEntity
     public override void TakeDamage(float damageValue, GameObject damageSource)
     {
         base.TakeDamage(damageValue, damageSource);
+        if(playerContol.GroundCheck()){
+            kbForce += Vector2.up;
+        }
         playerContol.ApplyKnockback(kbForce);
         Debug.Log("Health: " + health);
     }

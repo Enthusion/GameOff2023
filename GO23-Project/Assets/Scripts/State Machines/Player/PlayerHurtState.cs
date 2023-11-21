@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHurtState : MonoBehaviour
+public class PlayerHurtState : PlayerAbilityState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public PlayerHurtState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
+    { }
 
-    // Update is called once per frame
-    void Update()
+    public override void FrameUpdate()
     {
-        
+        base.FrameUpdate();
+        if(runtime >= 0.5f) abilityTriggered = true;
     }
 }

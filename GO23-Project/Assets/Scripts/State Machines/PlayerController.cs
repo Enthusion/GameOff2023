@@ -13,6 +13,7 @@ public class PlayerController : Controller
     public PlayerFallState FallState { get; private set; }
     public PlayerWaitState WaitState { get; private set; }
     public PlayerFollowState FollowState { get; private set; }
+    public PlayerHurtState HurtState { get; private set; }
 
     public Animator Anima { get; private set; }
     public Rigidbody2D Body { get; private set; }
@@ -53,6 +54,7 @@ public class PlayerController : Controller
         FallState = new PlayerFallState(this, stateMachine, "fall");
         WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
         FollowState = new PlayerFollowState(this, stateMachine, "follow");
+        HurtState = new PlayerHurtState(this, stateMachine, "fall"); //TODO: Placeholder animation
 
         characterName = playerData.characterName;
         characterId = playerData.characterId;
@@ -112,8 +114,9 @@ public class PlayerController : Controller
         SetScale(1 + balance);
         controller2.SetScale(1 - balance);
     }
-    public void ApplyKnockback(Vector2 knockbackForce){
-        //TODO: Hurt state
+    public void ApplyKnockback(Vector2 knockbackForce)
+    {
+        stateMachine.ChangeState(HurtState);
         Body.velocity = knockbackForce;
     }
 }
