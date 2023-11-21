@@ -35,17 +35,18 @@ public class EnemyEntity : LivingEntity
         {
             if (col.gameObject.TryGetComponent(out IDamageable damageableEntity))
             {
-                damageableEntity.TakeDamage(damageAmount, this.gameObject);
                 Rigidbody2D damagingBody = col.rigidbody;
-                if (damagingBody == null) return;
-                Vector2 collisionDir = damagingBody.position - col.GetContact(0).point;
-                Debug.DrawLine(col.GetContact(0).point, damagingBody.position, Color.red);
-                if (col.gameObject.TryGetComponent(out PlayerEntity player))
+                if (damagingBody != null)
                 {
-                    player.KnockbackInfo(collisionDir * 6);
-                    return;
+                    Vector2 collisionDir = damagingBody.position - col.GetContact(0).point;
+                    Debug.DrawLine(col.GetContact(0).point, damagingBody.position, Color.red);
+                    if (col.gameObject.TryGetComponent(out PlayerEntity player))
+                    {
+                        player.KnockbackInfo(collisionDir * 5);
+                    }
+                    else damagingBody.AddForce(collisionDir.normalized * 10, ForceMode2D.Impulse);
                 }
-                damagingBody.AddForce(collisionDir.normalized * 10, ForceMode2D.Impulse);
+                damageableEntity.TakeDamage(damageAmount, this.gameObject);
             }
         }
     }
