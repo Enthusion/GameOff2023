@@ -6,6 +6,7 @@ public class PlayerEntity : LivingEntity
 {
     protected PlayerController playerContol;
     protected Vector2 kbForce;
+    protected float invincibilityTime = 0;
     public override void Awake()
     {
         base.Awake();
@@ -19,10 +20,13 @@ public class PlayerEntity : LivingEntity
     public override void Update()
     {
         base.Update();
+        if(invincibilityTime > 0) invincibilityTime -= Time.deltaTime;
     }
     public override void TakeDamage(float damageValue, GameObject damageSource)
     {
+        if(invincibilityTime > 0) return;
         base.TakeDamage(damageValue, damageSource);
+        invincibilityTime = 0.5f;
         if(playerContol.GroundCheck()){
             kbForce += Vector2.up;
         }
