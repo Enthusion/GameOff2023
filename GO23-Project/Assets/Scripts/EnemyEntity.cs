@@ -23,14 +23,30 @@ public class EnemyEntity : LivingEntity
     {
         base.TakeDamage(damageValue, damageSource);
         //TODO damaged effect on spirte
-        if(damageSource.TryGetComponent<PlayerController>(out PlayerController player)){
+        if (damageSource.TryGetComponent<PlayerController>(out PlayerController player))
+        {
             player.AdjustEnergy(energyValue);
         }
     }
 
-    protected void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject.TryGetComponent(out IDamageable damageableEntity)){
-            damageableEntity.TakeDamage(damageAmount, this.gameObject);
+    protected void OnCollisionEnter2D(Collision2D col)
+    {
+        if (contactDamage)
+        {
+            if (col.gameObject.TryGetComponent(out IDamageable damageableEntity))
+            {
+                damageableEntity.TakeDamage(damageAmount, this.gameObject);
+                Rigidbody2D damagingBody = col.rigidbody;
+                if (damagingBody == null) return;
+                Vector2 collisionDir = damagingBody.position - col.GetContact(0).point;
+                Debug.DrawLine(col.GetContact(0).point, damagingBody.position, Color.red);
+                if (col.gameObject.TryGetComponent(out PlayerEntity player))
+                {
+                    player.KnockbackInfo(collisionDir * 6);
+                    return;
+                }
+                damagingBody.AddForce(collisionDir.normalized * 10, ForceMode2D.Impulse);
+            }
         }
     }
 }

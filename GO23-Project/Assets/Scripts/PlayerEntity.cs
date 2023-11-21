@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class PlayerEntity : LivingEntity
 {
+    protected PlayerController playerContol;
+    protected Vector2 kbForce;
     public override void Awake()
     {
         base.Awake();
+        health = 15;
+    }
+    public override void Start()
+    {
+        base.Start();
+        playerContol = GetComponent<PlayerController>();
     }
     public override void Update()
     {
@@ -15,9 +23,12 @@ public class PlayerEntity : LivingEntity
     public override void TakeDamage(float damageValue, GameObject damageSource)
     {
         base.TakeDamage(damageValue, damageSource);
+        playerContol.ApplyKnockback(kbForce);
+        Debug.Log("Health: " + health);
     }
     public override void Die()
     {
         base.Die();
     }
+    public void KnockbackInfo(Vector2 knockbackForce) => kbForce = knockbackForce;
 }

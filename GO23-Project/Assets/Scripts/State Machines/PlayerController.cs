@@ -112,4 +112,8 @@ public class PlayerController : Controller
         SetScale(1 + balance);
         controller2.SetScale(1 - balance);
     }
+    public void ApplyKnockback(Vector2 knockbackForce){
+        //TODO: Hurt state
+        Body.velocity = knockbackForce;
+    }
 }
