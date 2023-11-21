@@ -5,15 +5,19 @@ using UnityEngine;
 public class EnemyEntity : LivingEntity
 {
     public EnemyData enemyData;
+    protected float baseHealth;
     protected float energyValue;
     protected bool contactDamage;
     protected float damageAmount;
     public override void Awake()
     {
         base.Awake();
+        baseHealth = enemyData.baseHealth;
         energyValue = enemyData.energyValue;
         contactDamage = enemyData.contactDamage;
         damageAmount = enemyData.damageAmount;
+
+        health = baseHealth;
     }
     public override void TakeDamage(float damageValue, GameObject damageSource)
     {

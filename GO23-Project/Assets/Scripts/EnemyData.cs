@@ -8,6 +8,7 @@ public class EnemyData : ScriptableObject
     public string enemyName;
     public int enemyId;
     public int aggressionLevel; //0 is non attack, 1 is attack back, 2 is on sight
+    public float baseHealth = 5;
     public float energyValue; //Energy given to palyers on hit
     public bool contactDamage; //Does the enemy do contact damage
     public float damageAmount; //How much damage does the enemy do

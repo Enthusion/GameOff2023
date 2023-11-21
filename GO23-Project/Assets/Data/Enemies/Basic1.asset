@@ -15,13 +15,12 @@ MonoBehaviour:
   enemyName: Basic
   enemyId: 0
   aggressionLevel: 0
+  baseHealth: 10
   energyValue: 5
   contactDamage: 1
   damageAmount: 5
-  stationary: 0
   moveForce: 5
   maxSpeed: 10
-  patrolRange: 5
   lineOfSight: 0
   detectionProximity: 0
   edgeDetection: 0
