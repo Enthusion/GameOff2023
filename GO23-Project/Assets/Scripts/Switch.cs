@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Switch : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public SwitchReciever Reciever;
+    public bool Active { get; protected set; }
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public virtual void Start(){
+        Reciever?.StartUp(Active);
     }
 }
