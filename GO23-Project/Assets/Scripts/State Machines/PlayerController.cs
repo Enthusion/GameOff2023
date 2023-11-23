@@ -119,4 +119,7 @@ public class PlayerController : Controller
         stateMachine.ChangeState(HurtState);
         Body.velocity = knockbackForce;
     }
+    public void ForceToWaiting(){
+        stateMachine.ChangeState(WaitState);
+    }
 }
