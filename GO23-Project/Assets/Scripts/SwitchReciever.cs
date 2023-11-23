@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class SwitchReciever : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected int neededActivations;
+    protected int currentActivations;
+    protected bool activatedAtStart;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public virtual void Awake(){
+        neededActivations = 0;
+        currentActivations = 0;
+    }
+    public virtual void StartUp(bool isActive){
+        neededActivations++;
+        if(isActive) currentActivations++;
+        activatedAtStart = neededActivations == currentActivations;
     }
 }
