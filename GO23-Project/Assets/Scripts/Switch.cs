@@ -13,4 +13,6 @@ public class Switch : MonoBehaviour
     public virtual void Start(){
         Reciever?.StartUp(Active);
     }
+    public virtual void Activating(){}
+    public virtual void Activated(){}
 }
