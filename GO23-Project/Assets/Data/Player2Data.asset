@@ -22,4 +22,7 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 64
+  isInteractable:
+    serializedVersion: 2
+    m_Bits: 1
   baseDamage: 6
