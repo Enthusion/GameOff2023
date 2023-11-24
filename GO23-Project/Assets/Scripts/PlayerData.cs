@@ -15,5 +15,6 @@ public class PlayerData : ScriptableObject
     public LayerMask isGround;
     // public Vector2 groundOffset1 = new Vector2(-0.5f, -2.5f);
     // public Vector2 groundOffset2 = new Vector2(0.15f, -2.53f);
+    public LayerMask isInteractable;
     public float baseDamage;
 }

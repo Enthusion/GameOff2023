@@ -33,6 +33,10 @@ public class PlayerGroundedState : PlayerState
             }
         }
 
+        if(Input.GetButtonDown("Interact")){
+            playerController.Interaction();
+        }
+
         if (Input.GetKeyDown("q"))
         {
             playerController.AdjustEnergy(25f);

@@ -18,6 +18,7 @@ public class PlayerController : Controller
     public Animator Anima { get; private set; }
     public Rigidbody2D Body { get; private set; }
     public CapsuleCollider2D Collider { get; private set; }
+    // public BoxCollider2D TriggerCollider { get; private set; }
     public SpriteRenderer Sprite { get; private set; }
 
     [SerializeField]
@@ -35,6 +36,7 @@ public class PlayerController : Controller
     public float jumpForce { get; private set; }
     public float jumpTime { get; private set; }
     private LayerMask isGround;
+    private LayerMask isInteractable;
     public float baseDamage { get; private set; }
     public float currentEnergy { get; private set; }
     [SerializeField]
@@ -64,6 +66,7 @@ public class PlayerController : Controller
         jumpForce = playerData.jumpForce;
         jumpTime = playerData.jumpTime;
         isGround = playerData.isGround;
+        isInteractable = playerData.isInteractable;
         baseDamage = playerData.baseDamage;
 
         Active = primaryPlayer;
@@ -74,6 +77,7 @@ public class PlayerController : Controller
         Anima = GetComponent<Animator>();
         Body = GetComponent<Rigidbody2D>();
         Collider = GetComponent<CapsuleCollider2D>();
+        // TriggerCollider = GetComponent<BoxCollider2D>();
         Sprite = GetComponent<SpriteRenderer>();
 
         controller2 = secondaryPlayer.GetComponent<PlayerController>();
@@ -119,7 +123,20 @@ public class PlayerController : Controller
         stateMachine.ChangeState(HurtState);
         Body.velocity = knockbackForce;
     }
-    public void ForceToWaiting(){
+    public void ForceToWaiting()
+    {
         stateMachine.ChangeState(WaitState);
+    }
+    public void Interaction(){
+        ContactFilter2D interactionFilter = new ContactFilter2D();
+        interactionFilter.SetLayerMask(isInteractable);
+        Collider2D[] possibleInteractions = new Collider2D[2];
+        Physics2D.OverlapCollider(Collider, interactionFilter,possibleInteractions);
+        for (int i = 0; i < possibleInteractions.Length; i++)
+        {
+            if(possibleInteractions[i].TryGetComponent(out IInteractable interactableObject)){
+                interactableObject.Interact(this);
+            }
+        }
     }
 }
