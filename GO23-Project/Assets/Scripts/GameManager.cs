@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
             if(!switchString.Contains(ID)) return;
             switchString = switchString.Replace(ID, "");
         }
-
     }
+
+    public bool CheckSwitches(string ID) => switchString.Contains(ID);
 }
