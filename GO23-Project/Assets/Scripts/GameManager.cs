@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-
     public float UpdateEnergy(float newValue, int playerId)
     {
         float characterBalance = 0;
@@ -36,34 +35,34 @@ public class GameManager : MonoBehaviour
         }
         return characterBalance * GetBalance();
     }
-
     public float GetBalance()
     {
         float greaterEnergy = vitaEnergy > mortEnergy ? vitaEnergy : mortEnergy;
         if (greaterEnergy == 0) return 0;
         return (vitaEnergy - mortEnergy) / greaterEnergy;
     }
-
-    public void UpdateSwitches(string ID, bool status){
-        if(status){
-            if(switchString.Contains(ID)) return;
+    public void UpdateSwitches(string ID, bool status)
+    {
+        if (status)
+        {
+            if (switchString.Contains(ID)) return;
             switchString += ID;
         }
-        else{
-            if(!switchString.Contains(ID)) return;
+        else
+        {
+            if (!switchString.Contains(ID)) return;
             switchString = switchString.Replace(ID, "");
         }
     }
-
     public bool CheckSwitches(string ID) => switchString.Contains(ID);
-
-    public void RegisterCheckpoint(string ID, Vector2 position){
-        if(checkpoints.ContainsKey(ID)) return;
+    public void RegisterCheckpoint(string ID, Vector2 position)
+    {
+        if (checkpoints.ContainsKey(ID)) return;
         checkpoints.Add(ID, position);
     }
-
-    public void SetCheckpoint(string ID){
-        if(!checkpoints.ContainsKey(ID)) return;
+    public void SetCheckpoint(string ID)
+    {
+        if (!checkpoints.ContainsKey(ID)) return;
         currentCheckpoint = ID;
     }
     public Vector2 GetCheckpoint() => checkpoints[currentCheckpoint];
