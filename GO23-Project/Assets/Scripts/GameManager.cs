@@ -59,10 +59,15 @@ public class GameManager : MonoBehaviour
     {
         if (checkpoints.ContainsKey(ID)) return;
         checkpoints.Add(ID, position);
+        Debug.Log("Checkpoint " + ID + " rigistered");
     }
     public void SetCheckpoint(string ID)
     {
-        if (!checkpoints.ContainsKey(ID)) return;
+        if (!checkpoints.ContainsKey(ID))
+        {
+            Debug.Log("Checkpoint " + ID + " not found!");
+            return;
+        }
         currentCheckpoint = ID;
     }
     public Vector2 GetCheckpoint() => checkpoints[currentCheckpoint];
