@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject VitaHealthMask;
+    public GameObject MortHealthMask;
+    public GameObject BalanceScale;
+    public GameObject VitaEnergyMeter;
+    public GameObject MortEnergyMeter;
+    private Image vHealth;
+    private Image mHealth;
+    private RectTransform scaleTilt;
+    private Image vEnergy;
+    private Image mEnergy;
 }
