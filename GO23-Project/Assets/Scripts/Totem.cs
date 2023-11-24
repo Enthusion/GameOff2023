@@ -10,22 +10,26 @@ public class Totem : Switch
     private float currentEnergy;
     public override void Start()
     {
-        if(GameManager.Instance.CheckSwitches(SwitchID)) Activated();
+        if (GameManager.Instance.CheckSwitches(SwitchID)) Activated();
         base.Start();
     }
 
-    public virtual void Interact(PlayerController interactingPlayer){
-        if(CharacterSpecificID != -1 && interactingPlayer.characterId != CharacterSpecificID){
+    public virtual void Interact(PlayerController interactingPlayer)
+    {
+        if (CharacterSpecificID != -1 && interactingPlayer.characterId != CharacterSpecificID)
+        {
             //Display message about character needed to activate?
             return;
         }
 
-        if(EnergyRequisite != 0){
+        if (EnergyRequisite != 0)
+        {
             float neededEnergy = currentEnergy - EnergyRequisite;
-            float energyChange = interactingPlayer.currentEnergy - neededEnergy >= 0?neededEnergy:interactingPlayer.currentEnergy;
-            currentEnergy +=  energyChange;
+            float energyChange = interactingPlayer.currentEnergy - neededEnergy >= 0 ? neededEnergy : interactingPlayer.currentEnergy;
+            currentEnergy += energyChange;
             interactingPlayer.AdjustEnergy(-energyChange);
-            if(currentEnergy == EnergyRequisite){
+            if (currentEnergy == EnergyRequisite)
+            {
                 Activating();
                 return;
             }
