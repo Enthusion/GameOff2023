@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     private float vitaEnergy;
     private float mortEnergy;
+    private string switchString;
 
     public void Awake()
     {
@@ -37,5 +38,17 @@ public class GameManager : MonoBehaviour
         float greaterEnergy = vitaEnergy > mortEnergy ? vitaEnergy : mortEnergy;
         if (greaterEnergy == 0) return 0;
         return (vitaEnergy - mortEnergy) / greaterEnergy;
+    }
+
+    public void UpdateSwitches(string ID, bool status){
+        if(status){
+            if(switchString.Contains(ID)) return;
+            switchString += ID;
+        }
+        else{
+            if(!switchString.Contains(ID)) return;
+            switchString = switchString.Replace(ID, "");
+        }
+
     }
 }
