@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Totem : MonoBehaviour
+public class Totem : Switch
 {
-    // Start is called before the first frame update
-    void Start()
+    public string SwitchID;
+    public float EnergyRequisite = 0;
+    public int CharacterSpecificID = -1;
+    private float currentEnergy;
+    public override void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(GameManager.Instance.CheckSwitches(SwitchID)) Activated();
+        base.Start();
     }
 }
