@@ -15,4 +15,12 @@ public class UiHandler : MonoBehaviour
     private RectTransform scaleTilt;
     private Image vEnergy;
     private Image mEnergy;
+
+    public void Start(){
+        vHealth = VitaHealthMask.GetComponent<Image>();
+        mHealth = MortHealthMask.GetComponent<Image>();
+        scaleTilt = BalanceScale.GetComponent<RectTransform>();
+        vEnergy = VitaEnergyMeter.GetComponent<Image>();
+        mEnergy = MortEnergyMeter.GetComponent<Image>();
+    }
 }
