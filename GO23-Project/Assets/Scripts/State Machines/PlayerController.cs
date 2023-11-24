@@ -43,6 +43,7 @@ public class PlayerController : Controller
     private GameObject groundPoint1;
     [SerializeField]
     private GameObject groundPoint2;
+    private ContactFilter2D interactionFilter = new ContactFilter2D();
 
 
     public override void Awake()
@@ -70,6 +71,9 @@ public class PlayerController : Controller
         baseDamage = playerData.baseDamage;
 
         Active = primaryPlayer;
+        
+        interactionFilter.SetLayerMask(isInteractable);
+        interactionFilter.useTriggers = true;
     }
     // Start is called before the first frame update
     public override void Start()
@@ -128,9 +132,6 @@ public class PlayerController : Controller
         stateMachine.ChangeState(WaitState);
     }
     public void Interaction(){
-        ContactFilter2D interactionFilter = new ContactFilter2D();
-        interactionFilter.SetLayerMask(isInteractable);
-        interactionFilter.useTriggers = true;
         Collider2D[] possibleInteractions = new Collider2D[3];
         Physics2D.OverlapCollider(Collider, interactionFilter,possibleInteractions);
         for (int i = 0; i < possibleInteractions.Length; i++)
