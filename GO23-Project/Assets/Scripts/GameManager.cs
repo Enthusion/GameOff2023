@@ -67,4 +67,6 @@ public class GameManager : MonoBehaviour
         currentCheckpoint = ID;
     }
     public Vector2 GetCheckpoint() => checkpoints[currentCheckpoint];
+    public void SetRespawnPoint(Vector2 position) => respawnPoint = position;
+    public Vector2 GetRespawnPoint() => (respawnPoint != null || respawnPoint != Vector2.zero) ? respawnPoint : checkpoints[currentCheckpoint];
 }
