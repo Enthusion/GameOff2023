@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour
     private float vitaEnergy;
     private float mortEnergy;
     private string switchString;
+    private Vector2 respawnPoint;
+    private Dictionary<string, Vector2> checkpoints;
+    private string currentCheckpoint;
 
     public void Awake()
     {
@@ -52,4 +56,15 @@ public class GameManager : MonoBehaviour
     }
 
     public bool CheckSwitches(string ID) => switchString.Contains(ID);
+
+    public void RegisterCheckpoint(string ID, Vector2 position){
+        if(checkpoints.ContainsKey(ID)) return;
+        checkpoints.Add(ID, position);
+    }
+
+    public void SetCheckpoint(string ID){
+        if(!checkpoints.ContainsKey(ID)) return;
+        currentCheckpoint = ID;
+    }
+    public Vector2 GetCheckpoint() => checkpoints[currentCheckpoint];
 }
