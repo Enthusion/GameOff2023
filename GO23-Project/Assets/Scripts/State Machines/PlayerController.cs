@@ -130,12 +130,15 @@ public class PlayerController : Controller
     public void Interaction(){
         ContactFilter2D interactionFilter = new ContactFilter2D();
         interactionFilter.SetLayerMask(isInteractable);
-        Collider2D[] possibleInteractions = new Collider2D[2];
+        interactionFilter.useTriggers = true;
+        Collider2D[] possibleInteractions = new Collider2D[3];
         Physics2D.OverlapCollider(Collider, interactionFilter,possibleInteractions);
         for (int i = 0; i < possibleInteractions.Length; i++)
         {
+            if(possibleInteractions[i] == null) break;
             if(possibleInteractions[i].TryGetComponent(out IInteractable interactableObject)){
                 interactableObject.Interact(this);
+                break;
             }
         }
     }
