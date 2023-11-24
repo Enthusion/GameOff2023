@@ -50,4 +50,10 @@ public class PlayerGroundedState : PlayerState
         base.PhysicsUpdate();
         playerVelocity = playerController.Body.velocity;
     }
+
+    public override void Exit()
+    {
+        GameManager.Instance.SetRespawnPoint(playerController.transform.position);
+        base.Exit();
+    }
 }
