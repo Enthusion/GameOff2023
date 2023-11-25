@@ -10,12 +10,13 @@ public class PlayerEntity : LivingEntity
     public override void Awake()
     {
         base.Awake();
-        health = 15;
     }
     public override void Start()
     {
         base.Start();
         playerContol = GetComponent<PlayerController>();
+        health = GameManager.Instance.GetHealth(playerContol.characterId);
+        GameManager.Instance.UpdateHealth(health, playerContol.characterId);
     }
     public override void Update()
     {
@@ -31,7 +32,8 @@ public class PlayerEntity : LivingEntity
             kbForce += Vector2.up;
         }
         playerContol.ApplyKnockback(kbForce);
-        Debug.Log("Health: " + health);
+        // Debug.Log("Health: " + health);
+        GameManager.Instance.UpdateHealth(health, playerContol.characterId);
     }
     public override void Die()
     {
