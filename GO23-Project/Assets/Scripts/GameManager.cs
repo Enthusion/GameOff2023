@@ -52,6 +52,11 @@ public class GameManager : MonoBehaviour
             mortHealth = newValue;
         }
     }
+    public float GetHealth(int characterId){
+        if(characterId == 0) return vitaHealth;
+        else if(characterId == 1) return mortHealth;
+        else return -1;
+    }
     public void UpdateSwitches(string ID, bool status)
     {
         if (status)
