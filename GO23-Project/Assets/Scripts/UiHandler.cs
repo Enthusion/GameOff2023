@@ -38,6 +38,7 @@ public class UiHandler : MonoBehaviour
         float mHealthFill = mHealthLog / maxHealth;
         float vEnergyFill = vEnergyLog / 100;
         float mEnergyFill = mEnergyLog / 100;
+        float balanceRotation = balanceLog * maxTilt;
         // Update health values
         if (vHealth.fillAmount != vHealthFill)
         {
@@ -94,6 +95,18 @@ public class UiHandler : MonoBehaviour
             {
                 mEnergy.fillAmount += Time.deltaTime;
                 mEnergy.fillAmount = Mathf.Clamp(mEnergy.fillAmount, initialFillAmount, mEnergyFill);
+            }
+        }
+
+        if(scaleTilt.eulerAngles.z != balanceRotation){
+            float initialRotation = scaleTilt.eulerAngles.z;
+            if(initialRotation > balanceRotation){
+                scaleTilt.eulerAngles -= new Vector3(0, 0, Time.deltaTime);
+                scaleTilt.eulerAngles = new Vector3(scaleTilt.eulerAngles.x, scaleTilt.eulerAngles.y, Mathf.Clamp(scaleTilt.eulerAngles.z, balanceRotation, initialRotation));
+            }
+            else{
+                scaleTilt.eulerAngles += new Vector3(0, 0, Time.deltaTime);
+                scaleTilt.eulerAngles = new Vector3(scaleTilt.eulerAngles.x, scaleTilt.eulerAngles.y, Mathf.Clamp(scaleTilt.eulerAngles.z, initialRotation, balanceRotation));
             }
         }
     }
