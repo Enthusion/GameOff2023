@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private Vector2 respawnPoint;
     private Dictionary<string, Vector2> checkpoints;
     private string currentCheckpoint;
+    private float vitaHealth;
+    private float mortHealth;
 
     public void Awake()
     {
@@ -40,6 +42,15 @@ public class GameManager : MonoBehaviour
         float greaterEnergy = vitaEnergy > mortEnergy ? vitaEnergy : mortEnergy;
         if (greaterEnergy == 0) return 0;
         return (vitaEnergy - mortEnergy) / greaterEnergy;
+    }
+    public void UpdateHealth(float newValue, int playerId){
+        if(newValue > 15) newValue = 15;
+        if(playerId == 0){
+            vitaHealth = newValue;
+        }
+        else if(playerId == 1){
+            mortHealth = newValue;
+        }
     }
     public void UpdateSwitches(string ID, bool status)
     {
