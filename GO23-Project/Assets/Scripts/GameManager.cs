@@ -37,6 +37,11 @@ public class GameManager : MonoBehaviour
         }
         return characterBalance * GetBalance();
     }
+    public float GetEnergy(int characterId){
+        if(characterId == 0) return vitaEnergy;
+        else if(characterId == 1) return mortEnergy;
+        else return -1;
+    }
     public float GetBalance()
     {
         float greaterEnergy = vitaEnergy > mortEnergy ? vitaEnergy : mortEnergy;
