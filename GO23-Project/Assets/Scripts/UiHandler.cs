@@ -30,4 +30,12 @@ public class UiHandler : MonoBehaviour
         vEnergy = VitaEnergyMeter.GetComponent<Image>();
         mEnergy = MortEnergyMeter.GetComponent<Image>();
     }
+
+    public void LogStats(){
+        vHealthLog = GameManager.Instance.GetHealth(0);
+        vEnergyLog = GameManager.Instance.GetEnergy(0);
+        balanceLog = GameManager.Instance.GetBalance();
+        mHealthLog = GameManager.Instance.GetHealth(1);
+        mEnergyLog = GameManager.Instance.GetEnergy(1);
+    }
 }
