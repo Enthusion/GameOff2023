@@ -6,8 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    [SerializeField]
-    private GameObject UiObject;
     private UiHandler uiHandler;
     private float vitaEnergy;
     private float mortEnergy;
@@ -25,9 +23,10 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-    public void Start(){
-        if(uiHandler == null) uiHandler = UiObject.GetComponent<UiHandler>();
+    public void SetUI(UiHandler UiObject){
+        uiHandler = UiObject;
     }
+
     public float UpdateEnergy(float newValue, int playerId)
     {
         float characterBalance = 0;
@@ -41,7 +40,7 @@ public class GameManager : MonoBehaviour
             mortEnergy = newValue;
             characterBalance = -1;
         }
-        uiHandler.LogStats();
+        uiHandler?.LogStats();
         return characterBalance * GetBalance();
     }
     public float GetEnergy(int characterId){
@@ -63,7 +62,7 @@ public class GameManager : MonoBehaviour
         else if(playerId == 1){
             mortHealth = newValue;
         }
-        uiHandler.LogStats();
+        uiHandler?.LogStats();
     }
     public float GetHealth(int characterId){
         if(characterId == 0) return vitaHealth;

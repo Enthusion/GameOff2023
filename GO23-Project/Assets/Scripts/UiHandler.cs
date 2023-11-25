@@ -25,6 +25,7 @@ public class UiHandler : MonoBehaviour
 
     public void Start()
     {
+        GameManager.Instance.SetUI(this);
         vHealth = VitaHealthMask.GetComponent<Image>();
         mHealth = MortHealthMask.GetComponent<Image>();
         scaleTilt = BalanceScale.GetComponent<RectTransform>();
@@ -39,6 +40,7 @@ public class UiHandler : MonoBehaviour
         float vEnergyFill = vEnergyLog / 100;
         float mEnergyFill = mEnergyLog / 100;
         float balanceRotation = balanceLog * maxTilt;
+        float currentRotation = scaleTilt.eulerAngles.z > 300 ? scaleTilt.eulerAngles.z - 360 : scaleTilt.eulerAngles.z;
         // Update health values
         if (vHealth.fillAmount != vHealthFill)
         {
@@ -98,16 +100,23 @@ public class UiHandler : MonoBehaviour
             }
         }
 
-        if(scaleTilt.eulerAngles.z != balanceRotation){
-            float initialRotation = scaleTilt.eulerAngles.z;
-            if(initialRotation > balanceRotation){
-                scaleTilt.eulerAngles -= new Vector3(0, 0, Time.deltaTime);
-                scaleTilt.eulerAngles = new Vector3(scaleTilt.eulerAngles.x, scaleTilt.eulerAngles.y, Mathf.Clamp(scaleTilt.eulerAngles.z, balanceRotation, initialRotation));
+        if (balanceRotation != currentRotation)
+        {
+            float initialRotation = currentRotation;
+            Debug.Log("Target: " + balanceRotation + " Current Initial: " + initialRotation + " Current Angle: " + scaleTilt.eulerAngles.z);
+            if (initialRotation > balanceRotation)
+            {
+                currentRotation -= Time.deltaTime * 20;
+                currentRotation = Mathf.Clamp(currentRotation, balanceRotation, initialRotation);
+                Debug.Log("Less tilt");
             }
-            else{
-                scaleTilt.eulerAngles += new Vector3(0, 0, Time.deltaTime);
-                scaleTilt.eulerAngles = new Vector3(scaleTilt.eulerAngles.x, scaleTilt.eulerAngles.y, Mathf.Clamp(scaleTilt.eulerAngles.z, initialRotation, balanceRotation));
+            else
+            {
+                Debug.Log("Add tilt");
+                currentRotation += Time.deltaTime * 20;
+                currentRotation = Mathf.Clamp(currentRotation, initialRotation, balanceRotation);
             }
+            scaleTilt.eulerAngles = new Vector3(scaleTilt.eulerAngles.x, scaleTilt.eulerAngles.y, currentRotation < 0 ? currentRotation + 360 : currentRotation);
         }
     }
 

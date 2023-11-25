@@ -118,7 +118,7 @@ public class PlayerController : Controller
     {
         currentEnergy = Mathf.Clamp(currentEnergy + energy, 0, 100);
         float balance = GameManager.Instance.UpdateEnergy(currentEnergy, characterId);
-        Debug.Log(characterName + "'s current energy: " + currentEnergy + "\nScale tilt: " + balance);
+        // Debug.Log(characterName + "'s current energy: " + currentEnergy + "\nScale tilt: " + balance);
         SetScale(1 + balance);
         controller2.SetScale(1 - balance);
     }

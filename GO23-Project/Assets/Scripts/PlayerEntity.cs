@@ -16,6 +16,7 @@ public class PlayerEntity : LivingEntity
         base.Start();
         playerContol = GetComponent<PlayerController>();
         health = GameManager.Instance.GetHealth(playerContol.characterId);
+        if(health == 0) health = 15;
         GameManager.Instance.UpdateHealth(health, playerContol.characterId);
     }
     public override void Update()
