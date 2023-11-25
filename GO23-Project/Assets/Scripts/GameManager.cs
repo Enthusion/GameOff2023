@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public void Start(){
-        uiHandler = UiObject.GetComponent<UiHandler>();
+        if(uiHandler == null) uiHandler = UiObject.GetComponent<UiHandler>();
     }
     public float UpdateEnergy(float newValue, int playerId)
     {
