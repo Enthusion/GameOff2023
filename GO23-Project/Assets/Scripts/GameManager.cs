@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
             mortEnergy = newValue;
             characterBalance = -1;
         }
+        uiHandler.LogStats();
         return characterBalance * GetBalance();
     }
     public float GetEnergy(int characterId){
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
         else if(playerId == 1){
             mortHealth = newValue;
         }
+        uiHandler.LogStats();
     }
     public float GetHealth(int characterId){
         if(characterId == 0) return vitaHealth;
