@@ -6,6 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [SerializeField]
+    private GameObject UiObject;
+    private UiHandler uiHandler;
     private float vitaEnergy;
     private float mortEnergy;
     private string switchString;
@@ -21,6 +24,9 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+    public void Start(){
+        uiHandler = UiObject.GetComponent<UiHandler>();
     }
     public float UpdateEnergy(float newValue, int playerId)
     {
