@@ -32,6 +32,11 @@ public class UiHandler : MonoBehaviour
     }
 
     public void Update(){
+        float vitaHealthFill = vHealthLog / maxHealth;
+        float mortHealthFill = mHealthLog / maxHealth;
+        float vitaEnergyFill = vEnergyLog / 100;
+        float mortEnergyFill = mEnergyLog / 100;
+        // Update health values
         if(vHealth.fillAmount != vHealthLog/maxHealth){
             float initialFillAmount = vHealth.fillAmount;
             if(vHealth.fillAmount > vHealthLog/maxHealth){
@@ -54,6 +59,29 @@ public class UiHandler : MonoBehaviour
             {
                 mHealth.fillAmount += Time.deltaTime;
                 mHealth.fillAmount = Mathf.Clamp(mHealth.fillAmount, initialFillAmount, mHealthLog/maxHealth);
+            }
+        }
+        // Update energy values
+        if(vEnergy.fillAmount != vitaEnergyFill){
+            float initialFillAmount = vEnergy.fillAmount;
+            if(initialFillAmount > vitaEnergyFill){
+                vEnergy.fillAmount -= Time.deltaTime;
+                vEnergy.fillAmount = Mathf.Clamp(vEnergy.fillAmount, vitaEnergyFill, initialFillAmount);
+            }
+            else{
+                vEnergy.fillAmount += Time.deltaTime;
+                vEnergy.fillAmount = Mathf.Clamp(vEnergy.fillAmount, initialFillAmount, vitaEnergyFill);
+            }
+        }
+        if(mEnergy.fillAmount != mortEnergyFill){
+            float initialFillAmount = mEnergy.fillAmount;
+            if(initialFillAmount > mortEnergyFill){
+                mEnergy.fillAmount -= Time.deltaTime;
+                mEnergy.fillAmount = Mathf.Clamp(mEnergy.fillAmount, mortEnergyFill, initialFillAmount);
+            }
+            else{
+                mEnergy.fillAmount += Time.deltaTime;
+                mEnergy.fillAmount = Mathf.Clamp(mEnergy.fillAmount, initialFillAmount, mortEnergyFill);
             }
         }
     }
