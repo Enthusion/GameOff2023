@@ -103,16 +103,16 @@ public class UiHandler : MonoBehaviour
         if (balanceRotation != currentRotation)
         {
             float initialRotation = currentRotation;
-            Debug.Log("Target: " + balanceRotation + " Current Initial: " + initialRotation + " Current Angle: " + scaleTilt.eulerAngles.z);
+            // Debug.Log("Target: " + balanceRotation + " Current Initial: " + initialRotation + " Current Angle: " + scaleTilt.eulerAngles.z);
             if (initialRotation > balanceRotation)
             {
                 currentRotation -= Time.deltaTime * 20;
                 currentRotation = Mathf.Clamp(currentRotation, balanceRotation, initialRotation);
-                Debug.Log("Less tilt");
+                // Debug.Log("Less tilt");
             }
             else
             {
-                Debug.Log("Add tilt");
+                // Debug.Log("Add tilt");
                 currentRotation += Time.deltaTime * 20;
                 currentRotation = Mathf.Clamp(currentRotation, initialRotation, balanceRotation);
             }
