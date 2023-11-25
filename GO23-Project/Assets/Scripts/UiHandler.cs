@@ -31,6 +31,33 @@ public class UiHandler : MonoBehaviour
         mEnergy = MortEnergyMeter.GetComponent<Image>();
     }
 
+    public void Update(){
+        if(vHealth.fillAmount != vHealthLog/maxHealth){
+            float initialFillAmount = vHealth.fillAmount;
+            if(vHealth.fillAmount > vHealthLog/maxHealth){
+                vHealth.fillAmount -= Time.deltaTime;
+                vHealth.fillAmount = Mathf.Clamp(vHealth.fillAmount, vHealthLog/maxHealth, initialFillAmount);
+            }
+            else
+            {
+                vHealth.fillAmount += Time.deltaTime;
+                vHealth.fillAmount = Mathf.Clamp(vHealth.fillAmount, initialFillAmount, vHealthLog/maxHealth);
+            }
+        }
+        if(mHealth.fillAmount != mHealthLog/maxHealth){
+            float initialFillAmount = mHealth.fillAmount;
+            if(mHealth.fillAmount > mHealthLog/maxHealth){
+                mHealth.fillAmount -= Time.deltaTime;
+                mHealth.fillAmount = Mathf.Clamp(mHealth.fillAmount, mHealthLog/maxHealth, initialFillAmount);
+            }
+            else
+            {
+                mHealth.fillAmount += Time.deltaTime;
+                mHealth.fillAmount = Mathf.Clamp(mHealth.fillAmount, initialFillAmount, mHealthLog/maxHealth);
+            }
+        }
+    }
+
     public void LogStats(){
         vHealthLog = GameManager.Instance.GetHealth(0);
         vEnergyLog = GameManager.Instance.GetEnergy(0);
