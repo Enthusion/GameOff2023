@@ -44,6 +44,7 @@ public class PlayerController : Controller
     [SerializeField]
     private GameObject groundPoint2;
     private ContactFilter2D interactionFilter = new ContactFilter2D();
+    private float targetScale = 1;
 
 
     public override void Awake()
@@ -99,7 +100,24 @@ public class PlayerController : Controller
         if (primaryPlayer) stateMachine.Iniitialize(FallState);
         else stateMachine.Iniitialize(WaitState);
     }
+    public override void Update()
+    {
+        base.Update();
+        float initialScale = transform.localScale.x;
+        if(initialScale != targetScale){
+            float newScale = initialScale;
+            if(initialScale < targetScale){
+                newScale += Time.deltaTime;
+                newScale = Mathf.Clamp(newScale, initialScale, targetScale);
+            }
+            else{
+                newScale -= Time.deltaTime;
+                newScale = Mathf.Clamp(newScale, targetScale, initialScale);
+            }
+            transform.localScale = new Vector3(newScale, newScale, newScale);
 
+        }
+    }
     public bool GroundCheck() => Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
     public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
@@ -109,10 +127,9 @@ public class PlayerController : Controller
     public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
     public void SetScale(float scaleFactor)
     {
-        float minSize = 0.33333333333f;
-        float maxSize = 1.25f;
-        scaleFactor = Mathf.Clamp(scaleFactor, minSize, maxSize);
-        transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        float minSize = 0.5f;
+        float maxSize = 1.2f;
+        targetScale = Mathf.Clamp(scaleFactor, minSize, maxSize);
     }
     public void AdjustEnergy(float energy)
     {
