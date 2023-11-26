@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>Z:/Applications/Audiokinetic/Wwise 2021.1.13.8036/Wwise-101_v2021.1/Lesson 1/gameoff 2023 ver 2021/</ProjectRoot>
+		<SourceFilesRoot>Z:/Applications/Audiokinetic/Wwise 2021.1.13.8036/Wwise-101_v2021.1/Lesson 1/gameoff 2023 ver 2021/.cache/Windows/</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>Z:/Applications/Audiokinetic/Wwise 2021.1.13.8036/Wwise-101_v2021.1/Lesson 1/gameoff 2023 ver 2021/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{7B4C0194-4C47-FB39-12A6-25047AFD09E3}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="215992295" Name="Player_Health"/>
+				<GameParameter Id="822163944" Name="SS_Air_RPM"/>
+				<GameParameter Id="1029930033" Name="SS_Air_Fury"/>
+				<GameParameter Id="1351367891" Name="SS_Air_Fear"/>
+				<GameParameter Id="1601474789" Name="Inside_outside"/>
+				<GameParameter Id="2648548617" Name="SS_Air_Month"/>
+				<GameParameter Id="3002758120" Name="SS_Air_Freefall"/>
+				<GameParameter Id="3074696722" Name="SS_Air_Size"/>
+				<GameParameter Id="3203397129" Name="SS_Air_TimeOfDay"/>
+				<GameParameter Id="3715662592" Name="SS_Air_Storm"/>
+				<GameParameter Id="3847924954" Name="SS_Air_Presence"/>
+				<GameParameter Id="4160247818" Name="SS_Air_Turbulence"/>
+				<GameParameter Id="4258827653" Name="PlayerSize"/>
+			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="444815956" Name="PlayerLife">
+					<States>
+						<State Id="655265632" Name="Alive"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2044049779" Name="Dead"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="1085373737" Name="Character_Switch">
+					<States>
+						<State Id="6420585" Name="Mort_State"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2869933681" Name="Vita_State"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="2607556080" Name="Menu">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="1287511387" Name="Menu_open"/>
+						<State Id="1557918927" Name="Menu_closed"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="3858746980" Name="Monsters">
+					<States>
+						<State Id="290496626" Name="Monster_Aware"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="3000363985" Name="Monster_Unaware"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+			<AcousticTextures>
+				<AcousticTexture Id="504532776" Name="Brick">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="18"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="23"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="513139656" Name="Mountain">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="841620460" Name="Concrete">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="14"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1755085759" Name="Wood_Deep">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="1"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="8"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1873957695" Name="Anechoic">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1970351858" Name="Fabric">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="3"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="13"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="48"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="72"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2058049674" Name="Wood">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2412606308" Name="Carpet">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="46"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="45"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="76"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2637588553" Name="Tile">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="67"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="41"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2928161104" Name="Curtains">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="7"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="60"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="84"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3195498748" Name="Cork_Tiles">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="14"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="30"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="73"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3670307564" Name="Drywall">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="2"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4168643977" Name="Acoustic_Banner">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="37"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4262522749" Name="Wood_Bright">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="10"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="9"/>
+					</Properties>
+				</AcousticTexture>
+			</AcousticTextures>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{B2140A07-225D-77B8-F256-B7005A2F4C1D}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="48193526" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Menu_Buttonpress_3.wav</ShortName>
+					<CachePath>SFX/Menu_Buttonpress_3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="58134865" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita-Combat-Part1_P0_L16-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita-Combat-Part1_P0_L16-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="85094814" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Trans-to-Bridge_P0_L1_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Trans-to-Bridge_P0_L1_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="89838499" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hurt\Zombie Hurt 3.wav</ShortName>
+					<CachePath>SFX/Hurt/Zombie Hurt 3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="108599410" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hurt\Zombie Hurt 1.wav</ShortName>
+					<CachePath>SFX/Hurt/Zombie Hurt 1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="114483524" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Land5.wav</ShortName>
+					<CachePath>SFX/Mort_Land5_10C4C929.wem</CachePath>
+				</File>
+				<File Id="116134159" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Combat-Bridge_P0_L16-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Combat-Bridge_P0_L16-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="135606589" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Jump4.wav</ShortName>
+					<CachePath>SFX/Mort_Jump4_10C4C929.wem</CachePath>
+				</File>
+				<File Id="159078374" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Menu_Buttonpress_2.wav</ShortName>
+					<CachePath>SFX/Menu_Buttonpress_2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="163816093" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Attack.wav</ShortName>
+					<CachePath>SFX/Mort_Attack_C2459DBA.wem</CachePath>
+				</File>
+				<File Id="172167988" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-Part2_P1_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-Part2_P1_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="176176311" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\MG_Attack2.wav</ShortName>
+					<CachePath>SFX/Attack/MG_Attack2_2D62A103.wem</CachePath>
+				</File>
+				<File Id="214723242" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Idle\Zombie Idle 3.wav</ShortName>
+					<CachePath>SFX/Idle/Zombie Idle 3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="215138383" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Jump2.wav</ShortName>
+					<CachePath>SFX/Mort_Jump2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="226322425" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Die\Zombie Death 1.wav</ShortName>
+					<CachePath>SFX/Die/Zombie Death 1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="238500616" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-Part1_P1_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-Part1_P1_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="272317856" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-Intro_P0_L4_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-Intro_P0_L4_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="293976824" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\Zombie Attack 4.wav</ShortName>
+					<CachePath>SFX/Attack/Zombie Attack 4_10C4C929.wem</CachePath>
+				</File>
+				<File Id="296440283" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Jump1.wav</ShortName>
+					<CachePath>SFX/Mort_Jump1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="296857680" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="300634554" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\MG_Attack4.wav</ShortName>
+					<CachePath>SFX/Attack/MG_Attack4_23389985.wem</CachePath>
+				</File>
+				<File Id="333856058" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita-Death_P0_L2_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita-Death_P0_L2_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="338809125" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Intro_P0_L4_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Intro_P0_L4_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="344009234" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\Zombie Attack 2.wav</ShortName>
+					<CachePath>SFX/Attack/Zombie Attack 2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="349434695" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Death\MG_Death23wav.wav</ShortName>
+					<CachePath>SFX/Death/MG_Death23wav_10C4C929.wem</CachePath>
+				</File>
+				<File Id="361951733" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Death\MG_Death2.wav</ShortName>
+					<CachePath>SFX/Death/MG_Death2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="362200486" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita_Jump2.wav</ShortName>
+					<CachePath>SFX/Vita_Jump2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="385828461" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita_Land2.wav</ShortName>
+					<CachePath>SFX/Vita_Land2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="386250507" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita_Jump1.wav</ShortName>
+					<CachePath>SFX/Vita_Jump1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="417725099" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Damage\MG_Damage1.wav</ShortName>
+					<CachePath>SFX/Damage/MG_Damage1_38BD5E8A.wem</CachePath>
+				</File>
+				<File Id="426817473" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Die\Zombie Death Oh No.wav</ShortName>
+					<CachePath>SFX/Die/Zombie Death Oh No_10C4C929.wem</CachePath>
+				</File>
+				<File Id="434042305" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Land1.wav</ShortName>
+					<CachePath>SFX/Mort_Land1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="436764436" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hurt\Zombie Hurt 2.wav</ShortName>
+					<CachePath>SFX/Hurt/Zombie Hurt 2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="441216464" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Idle\Zombie Idle 4.wav</ShortName>
+					<CachePath>SFX/Idle/Zombie Idle 4_10C4C929.wem</CachePath>
+				</File>
+				<File Id="449338144" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Press_Statue.wav</ShortName>
+					<CachePath>SFX/Press_Statue_556C0BC2.wem</CachePath>
+				</File>
+				<File Id="461239599" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Land4.wav</ShortName>
+					<CachePath>SFX/Mort_Land4_10C4C929.wem</CachePath>
+				</File>
+				<File Id="461485039" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Idle\Zombie Idle 1wav.wav</ShortName>
+					<CachePath>SFX/Idle/Zombie Idle 1wav_10C4C929.wem</CachePath>
+				</File>
+				<File Id="491065244" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Idle\Zombie Idle 2.wav</ShortName>
+					<CachePath>SFX/Idle/Zombie Idle 2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="512946984" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Die\Zombie Death 3.wav</ShortName>
+					<CachePath>SFX/Die/Zombie Death 3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="531412824" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Death\MG_Death1.wav</ShortName>
+					<CachePath>SFX/Death/MG_Death1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="535907377" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-TranstoBridge_P0_L1_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-TranstoBridge_P0_L1_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="541855266" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\MG_Attack5.wav</ShortName>
+					<CachePath>SFX/Attack/MG_Attack5_3E5D3816.wem</CachePath>
+				</File>
+				<File Id="543390032" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Soundly Audio\Ambience, Forest, Birds, Wind In Trees 01 SND0432.wav</ShortName>
+					<CachePath>SFX/Soundly Audio/Ambience, Forest, Birds, Wind In Trees 01 SND0432_2F4947CC.wem</CachePath>
+				</File>
+				<File Id="545223625" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita_Jump3.wav</ShortName>
+					<CachePath>SFX/Vita_Jump3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="549888213" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Land\MG_Land4.wav</ShortName>
+					<CachePath>SFX/Land/MG_Land4_A090C94B.wem</CachePath>
+				</File>
+				<File Id="551043347" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Soundly Audio\Ambience, Underground, Cave, Wind, Cold, Howling 04 SND46582.wav</ShortName>
+					<CachePath>SFX/Soundly Audio/Ambience, Underground, Cave, Wind, Cold, Howling 04 SND46582_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="552511302" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\MG_Attack6.wav</ShortName>
+					<CachePath>SFX/Attack/MG_Attack6_2412BDD8.wem</CachePath>
+				</File>
+				<File Id="576497103" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Menu_Buttonpress_4.wav</ShortName>
+					<CachePath>SFX/Menu_Buttonpress_4_10C4C929.wem</CachePath>
+				</File>
+				<File Id="576851504" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Land2.wav</ShortName>
+					<CachePath>SFX/Mort_Land2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="586693879" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Damage\MG_Damage2.wav</ShortName>
+					<CachePath>SFX/Damage/MG_Damage2_DFE45355.wem</CachePath>
+				</File>
+				<File Id="596480423" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita_Land5.wav</ShortName>
+					<CachePath>SFX/Vita_Land5_10C4C929.wem</CachePath>
+				</File>
+				<File Id="619071790" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Jump5.wav</ShortName>
+					<CachePath>SFX/Mort_Jump5_10C4C929.wem</CachePath>
+				</File>
+				<File Id="646594090" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Damage\MG_Damage6.wav</ShortName>
+					<CachePath>SFX/Damage/MG_Damage6_F4CAFE2B.wem</CachePath>
+				</File>
+				<File Id="650908335" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Land\MG_land1.wav</ShortName>
+					<CachePath>SFX/Land/MG_land1_BD43F6D2.wem</CachePath>
+				</File>
+				<File Id="654172291" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\Zombie Attack 5.wav</ShortName>
+					<CachePath>SFX/Attack/Zombie Attack 5_10C4C929.wem</CachePath>
+				</File>
+				<File Id="676456315" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Bridge_P0_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Bridge_P0_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="679252140" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita-Combat-Bridge_P0_L16-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita-Combat-Bridge_P0_L16-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="687598303" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hurt\Zombie Hurt 5.wav</ShortName>
+					<CachePath>SFX/Hurt/Zombie Hurt 5_10C4C929.wem</CachePath>
+				</File>
+				<File Id="703100899" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Combat-Part2_P0_L16-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Combat-Part2_P0_L16-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="729551275" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Damage\MG_Damage5.wav</ShortName>
+					<CachePath>SFX/Damage/MG_Damage5_BE661423.wem</CachePath>
+				</File>
+				<File Id="749125424" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Menu_Buttonpress_1.wav</ShortName>
+					<CachePath>SFX/Menu_Buttonpress_1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="770540544" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Part2_P1_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Part2_P1_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="772875097" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Land3.wav</ShortName>
+					<CachePath>SFX/Mort_Land3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="774822206" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\MG_Attack1.wav</ShortName>
+					<CachePath>SFX/Attack/MG_Attack1_3B65022A.wem</CachePath>
+				</File>
+				<File Id="787532520" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita_Land1.wav</ShortName>
+					<CachePath>SFX/Vita_Land1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="847323117" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="860113352" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Die\Zombie Death 2.wav</ShortName>
+					<CachePath>SFX/Die/Zombie Death 2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="868372522" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\Zombie Attack 3.wav</ShortName>
+					<CachePath>SFX/Attack/Zombie Attack 3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="896784469" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Land\MG_land2.wav</ShortName>
+					<CachePath>SFX/Land/MG_land2_3FE35220.wem</CachePath>
+				</File>
+				<File Id="923864276" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\Zombie Attack 1.wav</ShortName>
+					<CachePath>SFX/Attack/Zombie Attack 1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="927779912" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita_Land3.wav</ShortName>
+					<CachePath>SFX/Vita_Land3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="940300102" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita_Land4.wav</ShortName>
+					<CachePath>SFX/Vita_Land4_10C4C929.wem</CachePath>
+				</File>
+				<File Id="968310455" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hurt\Zombie Hurt 4.wav</ShortName>
+					<CachePath>SFX/Hurt/Zombie Hurt 4_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1001759992" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Death_P0_L2_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Death_P0_L2_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="1002603611" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Part1_P1_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Part1_P1_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="1005873440" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Attack\MG_Attack3.wav</ShortName>
+					<CachePath>SFX/Attack/MG_Attack3_1E3A545F.wem</CachePath>
+				</File>
+				<File Id="1029191267" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Land\MG_Land5.wav</ShortName>
+					<CachePath>SFX/Land/MG_Land5_B5935A7F.wem</CachePath>
+				</File>
+				<File Id="1054246333" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-Bridge_P0_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-Bridge_P0_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="1062136237" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort_Jump3.wav</ShortName>
+					<CachePath>SFX/Mort_Jump3_10C4C929.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="2805769450" Name="Special_Effect_1" LibName="Wwise Flanger" LibId="8192003"/>
+				</ShareSets>
+			</Plugins>
+			<Events>
+				<Event Id="85412153" Name="Ambience" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="543390032"/>
+						<MediaRef Id="551043347"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="952003163" Name="Menu_Button_Press" DurationType="OneShot" DurationMin="4" DurationMax="4.8">
+					<MediaRefs>
+						<MediaRef Id="48193526"/>
+						<MediaRef Id="159078374"/>
+						<MediaRef Id="576497103"/>
+						<MediaRef Id="749125424"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4211465302" Name="Mort_Attack" DurationType="OneShot" DurationMin="6.8865857" DurationMax="8.151736">
+					<MediaRefs>
+						<MediaRef Id="163816093"/>
+						<MediaRef Id="176176311"/>
+						<MediaRef Id="300634554"/>
+						<MediaRef Id="541855266"/>
+						<MediaRef Id="552511302"/>
+						<MediaRef Id="774822206"/>
+						<MediaRef Id="1005873440"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2805769450"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="348163457" Name="Mort_Damage" DurationType="OneShot" DurationMin="1.2938882" DurationMax="1.6464285">
+					<MediaRefs>
+						<MediaRef Id="417725099"/>
+						<MediaRef Id="586693879"/>
+						<MediaRef Id="646594090"/>
+						<MediaRef Id="729551275"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3251561164" Name="Mort_Death" DurationType="OneShot" DurationMin="5.8452835" DurationMax="6.3041725">
+					<MediaRefs>
+						<MediaRef Id="349434695"/>
+						<MediaRef Id="361951733"/>
+						<MediaRef Id="531412824"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3154367434" Name="Mort_Jump" DurationType="OneShot" DurationMin="1.0182712" DurationMax="1.5701675">
+					<MediaRefs>
+						<MediaRef Id="135606589"/>
+						<MediaRef Id="215138383"/>
+						<MediaRef Id="296440283"/>
+						<MediaRef Id="619071790"/>
+						<MediaRef Id="1062136237"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3792100141" Name="Mort_Land" DurationType="OneShot" DurationMin="1.9873328" DurationMax="2.5612924">
+					<MediaRefs>
+						<MediaRef Id="114483524"/>
+						<MediaRef Id="434042305"/>
+						<MediaRef Id="461239599"/>
+						<MediaRef Id="549888213"/>
+						<MediaRef Id="576851504"/>
+						<MediaRef Id="650908335"/>
+						<MediaRef Id="772875097"/>
+						<MediaRef Id="896784469"/>
+						<MediaRef Id="1029191267"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3991942870" Name="Music" DurationType="Infinite">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="444815956" Id="655265632"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="1085373737" Id="6420585"/>
+									<MediaRefs>
+										<MediaRef Id="85094814"/>
+										<MediaRef Id="116134159"/>
+										<MediaRef Id="338809125"/>
+										<MediaRef Id="676456315"/>
+										<MediaRef Id="703100899"/>
+										<MediaRef Id="770540544"/>
+										<MediaRef Id="847323117"/>
+										<MediaRef Id="1002603611"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="444815956" Id="655265632"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="1085373737" Id="2869933681"/>
+									<MediaRefs>
+										<MediaRef Id="58134865"/>
+										<MediaRef Id="172167988"/>
+										<MediaRef Id="238500616"/>
+										<MediaRef Id="272317856"/>
+										<MediaRef Id="296857680"/>
+										<MediaRef Id="535907377"/>
+										<MediaRef Id="679252140"/>
+										<MediaRef Id="1054246333"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="444815956" Id="2044049779"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="1085373737" Id="6420585"/>
+									<MediaRefs>
+										<MediaRef Id="1001759992"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="444815956" Id="2044049779"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="1085373737" Id="2869933681"/>
+									<MediaRefs>
+										<MediaRef Id="333856058"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="4156760537" Name="Press_Switch" DurationType="OneShot" DurationMin="4.0583477" DurationMax="4.0583477">
+					<MediaRefs>
+						<MediaRef Id="449338144"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2975984098" Name="Vita_Jump" DurationType="OneShot" DurationMin="1.4158113" DurationMax="1.709171">
+					<MediaRefs>
+						<MediaRef Id="362200486"/>
+						<MediaRef Id="386250507"/>
+						<MediaRef Id="545223625"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4150497509" Name="Vita_Land" DurationType="OneShot" DurationMin="1.1580758" DurationMax="1.5917172">
+					<MediaRefs>
+						<MediaRef Id="385828461"/>
+						<MediaRef Id="596480423"/>
+						<MediaRef Id="787532520"/>
+						<MediaRef Id="927779912"/>
+						<MediaRef Id="940300102"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3473319566" Name="Zombie_Attack" DurationType="OneShot" DurationMin="0.76691383" DurationMax="1.4236686">
+					<MediaRefs>
+						<MediaRef Id="293976824"/>
+						<MediaRef Id="344009234"/>
+						<MediaRef Id="654172291"/>
+						<MediaRef Id="868372522"/>
+						<MediaRef Id="923864276"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2474416884" Name="Zombie_Death" DurationType="OneShot" DurationMin="1.0618693" DurationMax="4.01918">
+					<MediaRefs>
+						<MediaRef Id="226322425"/>
+						<MediaRef Id="426817473"/>
+						<MediaRef Id="512946984"/>
+						<MediaRef Id="860113352"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1361217281" Name="Zombie_Hurt" DurationType="OneShot" DurationMin="0.75216717" DurationMax="1.4236686">
+					<MediaRefs>
+						<MediaRef Id="89838499"/>
+						<MediaRef Id="108599410"/>
+						<MediaRef Id="436764436"/>
+						<MediaRef Id="687598303"/>
+						<MediaRef Id="968310455"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3548089160" Name="Zombie_Idle" DurationType="OneShot" DurationMin="1.9093655" DurationMax="2.5824475">
+					<MediaRefs>
+						<MediaRef Id="214723242"/>
+						<MediaRef Id="441216464"/>
+						<MediaRef Id="461485039"/>
+						<MediaRef Id="491065244"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<GameParameters>
+				<GameParameter Id="1601474789" Name="Inside_outside"/>
+			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="444815956" Name="PlayerLife">
+					<States>
+						<State Id="655265632" Name="Alive"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2044049779" Name="Dead"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="1085373737" Name="Character_Switch">
+					<States>
+						<State Id="6420585" Name="Mort_State"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2869933681" Name="Vita_State"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{68E80255-8F91-9B6B-401B-982C75B57BB2}</FileHash>
+</SoundBanksInfo>
