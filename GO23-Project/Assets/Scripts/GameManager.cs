@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private UiHandler uiHandler;
     private float vitaEnergy;
     private float mortEnergy;
-    private string switchString;
+    private string switchString = "";
     private Vector2 respawnPoint;
     private Dictionary<string, Vector2> checkpoints;
     private string currentCheckpoint;
