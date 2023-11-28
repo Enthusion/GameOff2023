@@ -9,17 +9,26 @@ public class Totem : Switch, IInteractable
     public float EnergyRequisite = 0;
     public int CharacterSpecificID = -1;
     private float currentEnergy;
+    private int activatedID = -1;
+    private Animator Anima;
     public override void Start()
     {
         if (GameManager.Instance.CheckSwitches(SwitchID)) Activated();
         base.Start();
+        Anima = GetComponent<Animator>();
+        if(CharacterSpecificID == 1){
+            activatedID = -2;
+        }
+        Anima.SetInteger("CharacterID", activatedID);
+        Anima.SetBool("Active", Active);
     }
 
     public virtual void Interact(PlayerController interactingPlayer)
     {
         if (!Active)
         {
-            if (CharacterSpecificID != -1 && interactingPlayer.characterId != CharacterSpecificID)
+            activatedID = interactingPlayer.characterId;
+            if (CharacterSpecificID != -1 && activatedID != CharacterSpecificID)
             {
                 //Display message about character needed to activate?
                 return;
@@ -46,11 +55,14 @@ public class Totem : Switch, IInteractable
     public override void Activating()
     {
         base.Activating();
+        Anima.SetInteger("CharacterID", activatedID);
         Reciever.ReciveActivator(switchWeight);
+        Activated();
     }
 
     public override void Activated()
     {
         base.Activated();
+        Anima.SetBool("Active", Active);
     }
 }
