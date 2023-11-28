@@ -21,9 +21,9 @@ public class PlayerShootState : PlayerAttackState
         {
             damageValue = baseDamage - balanceFactor;
         }
-        shootPoint = new Vector3(playerController.Body.position.x + (playerController.Sprite.flipX ? 0.6f : -0.6f), playerController.Body.position.y, 0);
+        shootPoint = new Vector3(playerController.Body.position.x + (!playerController.Sprite.flipX ? 0.6f : -0.6f), playerController.Body.position.y, 0);
         GameObject createdInstance = playerController.CreateObject(playerController.mainProjectile, shootPoint);
-        createdInstance.transform.right = new Vector3(shootPoint.x + (playerController.Sprite.flipX ? 1 : -1), shootPoint.y, 0) - createdInstance.transform.position;
+        createdInstance.transform.right = new Vector3(shootPoint.x + (!playerController.Sprite.flipX ? 1 : -1), shootPoint.y, 0) - createdInstance.transform.position;
         projectileInstance = createdInstance.GetComponent<Projectile>();
         projectileInstance.Initialization(playerController.gameObject, damageValue);
         if(inJump) stateMachine.ChangeState(playerController.JumpState);

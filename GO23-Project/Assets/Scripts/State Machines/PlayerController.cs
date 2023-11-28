@@ -55,11 +55,11 @@ public class PlayerController : Controller
         IdleState = new PlayerIdleState(this, stateMachine, "idle");
         MoveState = new PlayerMoveState(this, stateMachine, "move");
         JumpState = new PlayerJumpState(this, stateMachine, "jump");
-        ShootState = new PlayerShootState(this, stateMachine, "shoot");
+        ShootState = new PlayerShootState(this, stateMachine, "fall");// TODO: Replace placeholder animation
         FallState = new PlayerFallState(this, stateMachine, "fall");
         WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
         FollowState = new PlayerFollowState(this, stateMachine, "follow");
-        HurtState = new PlayerHurtState(this, stateMachine, "fall"); //TODO: Placeholder animation
+        HurtState = new PlayerHurtState(this, stateMachine, "fall"); //TODO: Replace placeholder animation
 
         characterName = playerData.characterName;
         characterId = playerData.characterId;
