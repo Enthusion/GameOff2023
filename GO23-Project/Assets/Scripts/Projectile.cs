@@ -27,6 +27,11 @@ public class Projectile : MonoBehaviour
         {
             body.velocity = transform.right * Speed;
         }
+
+        lifeTime -= Time.deltaTime;
+        if(lifeTime <= 0){
+            Terminate();
+        }
     }
 
     public virtual void OnTriggerEnter2D(Collider2D col)
