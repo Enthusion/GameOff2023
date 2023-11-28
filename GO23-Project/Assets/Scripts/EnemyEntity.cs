@@ -29,6 +29,12 @@ public class EnemyEntity : LivingEntity
         }
     }
 
+    public override void Die()
+    {
+        base.Die();
+        Destroy(gameObject);
+    }
+
     protected void OnCollisionEnter2D(Collision2D col)
     {
         if (contactDamage)
