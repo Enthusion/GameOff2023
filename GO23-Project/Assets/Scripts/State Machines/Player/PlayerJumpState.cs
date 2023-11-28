@@ -16,6 +16,9 @@ public class PlayerJumpState : PlayerAbilityState
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 7.0f) ? initialSpeed : 7.0f;
         //Add initial jump force
+        if(1 - playerController.Body.gravityScale < playerController.jumpTime){
+            runtime = 1 - playerController.Body.gravityScale;
+        }
         playerController.SetVelocityY(playerController.jumpForce);
     }
 
@@ -28,9 +31,13 @@ public class PlayerJumpState : PlayerAbilityState
         if (movementInput > 0) playerController.Sprite.flipX = false;
         else if (movementInput < 0) playerController.Sprite.flipX = true;
         //Variable jump height
-        if (runtime < playerController.jumpTime && Input.GetButton("Jump"))
+        if (runtime < playerController.jumpTime && playerController.Body.gravityScale > 0.8f)
         {
-            playerController.Body.AddForce(Vector2.up * playerController.jumpForce * 1.66f);
+            playerController.SetGravityScale(1 - runtime);
+            if (Input.GetButton("Jump"))
+            {
+                playerController.Body.AddForce(Vector2.up * playerController.jumpForce * 1.66f);
+            }
         } //Slightly decrease gravity near peak of jump
         else if (runtime >= playerController.jumpTime && playerController.Body.velocity.y < 1.5f)
         {
