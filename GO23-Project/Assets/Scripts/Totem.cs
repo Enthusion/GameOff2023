@@ -13,9 +13,9 @@ public class Totem : Switch, IInteractable
     private Animator Anima;
     public override void Start()
     {
+        Anima = GetComponent<Animator>();
         if (GameManager.Instance.CheckSwitches(SwitchID)) Activated();
         base.Start();
-        Anima = GetComponent<Animator>();
         if(CharacterSpecificID == 1){
             activatedID = -2;
         }
