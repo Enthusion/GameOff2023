@@ -19,6 +19,7 @@ public class Projectile : MonoBehaviour
     public virtual void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        lifeTime = Range / Speed;
     }
 
     public virtual void Update()
