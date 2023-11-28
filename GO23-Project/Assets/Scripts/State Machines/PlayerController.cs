@@ -27,6 +27,7 @@ public class PlayerController : Controller
     public bool Active;
     public bool Following;
     public Vector2 initialColliderSize { get; private set; }
+    public float sinceLastGrounded { get; private set; }
     public PlayerData playerData;
     public string characterName { get; private set; }
     public int characterId { get; private set; }
@@ -119,8 +120,15 @@ public class PlayerController : Controller
             transform.localScale = new Vector3(newScale, newScale, newScale);
 
         }
+        if(sinceLastGrounded < 5.0f){
+            sinceLastGrounded += Time.deltaTime;
+        }
     }
-    public bool GroundCheck() => Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
+    public bool GroundCheck(){
+        bool onGround = Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
+        if(onGround) sinceLastGrounded = 0.0f;
+        return onGround;
+    }
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
     public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
     public void SetGravityScale(float newGravity) => Body.gravityScale = newGravity;

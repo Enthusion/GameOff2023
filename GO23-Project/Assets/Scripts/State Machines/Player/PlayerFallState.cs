@@ -53,7 +53,7 @@ public class PlayerFallState : PlayerState
             // playerController.SetGravityScale(0.8f + runtime * 1.5f);
 
             //Coyote time
-            if (!fromJump)
+            if (!fromJump && playerController.sinceLastGrounded < playerController.jumpTime)
             {
                 if (Input.GetButtonDown("Jump"))
                 {
