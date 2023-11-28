@@ -30,7 +30,8 @@ public class Projectile : MonoBehaviour
         }
 
         lifeTime -= Time.deltaTime;
-        if(lifeTime <= 0){
+        if (lifeTime <= 0)
+        {
             Terminate();
         }
     }
@@ -54,8 +55,8 @@ public class Projectile : MonoBehaviour
                 }
             }
             damageableEntity.TakeDamage(damage, origin);
-            Terminate();
         }
+        Terminate();
     }
 
     public virtual void Initialization(GameObject sourceObj, float damageVal, bool overideStats = false, float newSpeed = 1, float newRange = 10, float newKnockback = 10)
@@ -71,7 +72,8 @@ public class Projectile : MonoBehaviour
         lifeTime = Range / Speed;
     }
 
-    public virtual void Terminate(){
+    public virtual void Terminate()
+    {
         //Any special effects for projectile termination
         Destroy(gameObject);
     }
