@@ -38,6 +38,7 @@ public class PlayerController : Controller
     private LayerMask isGround;
     private LayerMask isInteractable;
     public float baseDamage { get; private set; }
+    public GameObject mainProjectile { get; private set; }
     public float currentEnergy { get; private set; }
     [SerializeField]
     private GameObject groundPoint1;
@@ -70,6 +71,7 @@ public class PlayerController : Controller
         isGround = playerData.isGround;
         isInteractable = playerData.isInteractable;
         baseDamage = playerData.baseDamage;
+        mainProjectile = playerData.mainProjectile;
 
         Active = primaryPlayer;
         
