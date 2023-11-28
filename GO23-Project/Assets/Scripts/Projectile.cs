@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public virtual void Initialization(GameObject sourceObj, float damageVal, bool overideStats = false, float newSpeed = 1, float newRange = 10)
+    public virtual void Initialization(GameObject sourceObj, float damageVal, bool overideStats = false, float newSpeed = 1, float newRange = 10, float newKnockback = 10)
     {
         origin = sourceObj;
         damage = damageVal;
@@ -65,6 +65,7 @@ public class Projectile : MonoBehaviour
         {
             Speed = newSpeed;
             Range = newRange;
+            KnockbackForce = newKnockback;
         }
         lifeTime = Range / Speed;
     }
