@@ -30,6 +30,11 @@ public class PlayerJumpState : PlayerAbilityState
         playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 2));
         if (movementInput > 0) playerController.Sprite.flipX = false;
         else if (movementInput < 0) playerController.Sprite.flipX = true;
+
+        if(Input.GetButtonDown("Fire1")){
+            stateMachine.ChangeState(playerController.ShootState);
+        }
+
         //Variable jump height
         if (runtime < playerController.jumpTime && playerController.Body.gravityScale > 0.8f)
         {

@@ -32,6 +32,11 @@ public class PlayerFallState : PlayerState
         playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 2));
         if (movementInput > 0) playerController.Sprite.flipX = false;
         else if (movementInput < 0) playerController.Sprite.flipX = true;
+
+        if(Input.GetButtonDown("Fire1")){
+            stateMachine.ChangeState(playerController.ShootState);
+        }
+        
         //Increase gravity scale to fall faster once falling for JumpTime
         if (runtime >= playerController.jumpTime)
         {

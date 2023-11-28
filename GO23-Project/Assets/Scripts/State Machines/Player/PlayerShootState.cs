@@ -26,7 +26,7 @@ public class PlayerShootState : PlayerAttackState
         createdInstance.transform.right = new Vector3(shootPoint.x + (playerController.Sprite.flipX ? 1 : -1), shootPoint.y, 0) - createdInstance.transform.position;
         projectileInstance = createdInstance.GetComponent<Projectile>();
         projectileInstance.Initialization(playerController.gameObject, damageValue);
-        if(inJump) playerController.stateMachine.ChangeState(playerController.JumpState);
+        if(inJump) stateMachine.ChangeState(playerController.JumpState);
         else abilityTriggered = true;
     }
 }
