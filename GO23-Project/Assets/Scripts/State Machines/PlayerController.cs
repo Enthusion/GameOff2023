@@ -9,7 +9,7 @@ public class PlayerController : Controller
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
-    public PlayerSlashState SlashState { get; private set; }
+    public PlayerShootState ShootState { get; private set; }
     public PlayerFallState FallState { get; private set; }
     public PlayerWaitState WaitState { get; private set; }
     public PlayerFollowState FollowState { get; private set; }
@@ -55,7 +55,7 @@ public class PlayerController : Controller
         IdleState = new PlayerIdleState(this, stateMachine, "idle");
         MoveState = new PlayerMoveState(this, stateMachine, "move");
         JumpState = new PlayerJumpState(this, stateMachine, "jump");
-        SlashState = new PlayerSlashState(this, stateMachine, "basicAttack");
+        ShootState = new PlayerShootState(this, stateMachine, "shoot");
         FallState = new PlayerFallState(this, stateMachine, "fall");
         WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
         FollowState = new PlayerFollowState(this, stateMachine, "follow");
@@ -162,4 +162,5 @@ public class PlayerController : Controller
             }
         }
     }
+    public GameObject CreateObject(GameObject prefab, Vector3 location) => Instantiate(prefab, location, transform.rotation);
 }

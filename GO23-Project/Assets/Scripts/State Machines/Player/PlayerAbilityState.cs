@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAbilityState : PlayerState
 {
     protected bool abilityTriggered;
-    private bool isGrounded;
+    protected bool isGrounded;
     public PlayerAbilityState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
