@@ -26,3 +26,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   baseDamage: 5
+  mainProjectile: {fileID: 7490066593872598780, guid: 5fc63cd3cb8457e4bb87be05067dbf86, type: 3}
