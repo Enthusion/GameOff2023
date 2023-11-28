@@ -16,9 +16,10 @@ public class PlayerAttackState : PlayerAbilityState
         base.Enter();
         baseDamage = playerController.baseDamage;
         initialVelocity = playerController.Body.velocity;
-        if(playerController.Body.gravityScale < 1.0f && playerController.Body.gravityScale > 0.8f){
+        if(!isGrounded && playerController.Body.gravityScale < 1.0f && playerController.Body.gravityScale > 1-playerController.jumpTime){
             inJump = true;
         }
+        else inJump = false;
         balanceFactor = GameManager.Instance.GetBalance();
     }
 }

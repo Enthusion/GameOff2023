@@ -15,11 +15,12 @@ public class PlayerJumpState : PlayerAbilityState
         //Set a horizontal speed capacity based on either the speed when entering the sate or 5, whatever is greater
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 7.0f) ? initialSpeed : 7.0f;
-        //Add initial jump force
-        if(1 - playerController.Body.gravityScale < playerController.jumpTime){
+        //Jump time is set to 0.16 so a gravity scale of 0.84 is over jumptime
+        if(1 - playerController.Body.gravityScale <= playerController.jumpTime){
             runtime = 1 - playerController.Body.gravityScale;
         }
-        playerController.SetVelocityY(playerController.jumpForce);
+        //Add initial jump force
+        if(runtime == 0) playerController.SetVelocityY(playerController.jumpForce);
     }
 
     public override void FrameUpdate()
