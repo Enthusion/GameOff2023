@@ -48,6 +48,7 @@ public class Projectile : MonoBehaviour
                 }
             }
             damageableEntity.TakeDamage(damage, origin);
+            Terminate();
         }
     }
 
@@ -63,4 +64,8 @@ public class Projectile : MonoBehaviour
         lifeTime = Range / Speed;
     }
 
+    public virtual void Terminate(){
+        //Any special effects for projectile termination
+        Destroy(gameObject);
+    }
 }
