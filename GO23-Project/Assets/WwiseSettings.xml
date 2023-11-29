@@ -5,14 +5,14 @@
   <SoundbankPath>Audio</SoundbankPath>
   <CreatedPicker>true</CreatedPicker>
   <CreateWwiseGlobal>true</CreateWwiseGlobal>
-  <CreateWwiseListener>true</CreateWwiseListener>
+  <CreateWwiseListener>false</CreateWwiseListener>
   <ObjectReferenceAutoCleanup>true</ObjectReferenceAutoCleanup>
   <ShowMissingRigidBodyWarning>true</ShowMissingRigidBodyWarning>
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <WwiseInstallationPathMac>/Applications/Audiokinetic/Wwise 2022.1.8.8316/Wwise.app</WwiseInstallationPathMac>
   <WwiseInstallationPathWindows />
-  <WwiseProjectPath>../../../../../../Applications/Audiokinetic/Wwise 2021.1.13.8036/Wwise-101_v2021.1/Lesson 1/gameoff 2023 ver 2021/gameoff 2023 ver 2021.wproj</WwiseProjectPath>
-  <UseWaapi>true</UseWaapi>
+  <WwiseProjectPath>../GO23-Project_WwiseProject/GO23-Project_WwiseProject.wproj</WwiseProjectPath>
+  <UseWaapi>false</UseWaapi>
   <WaapiPort>8080</WaapiPort>
   <WaapiIP>127.0.0.1</WaapiIP>
   <XMLTranslatorTimeout>10</XMLTranslatorTimeout>
