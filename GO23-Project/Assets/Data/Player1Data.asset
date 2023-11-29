@@ -17,7 +17,7 @@ MonoBehaviour:
   primaryPlayer: 1
   moveForce: 6
   maxSpeed: 10
-  jumpForce: 3.5
+  jumpForce: 3.6
   jumpTime: 0.16
   isGround:
     serializedVersion: 2
