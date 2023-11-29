@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     private UiHandler uiHandler;
+    private PlayerController vita;
+    private PlayerController mort;
+    private int activeID;
     private float vitaEnergy;
     private float mortEnergy;
     private string switchString = "";
@@ -24,8 +27,36 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-    public void SetUI(UiHandler UiObject){
+    public void SetUI(UiHandler UiObject)
+    {
         uiHandler = UiObject;
+    }
+
+    public void SetPlayers(PlayerController player1, PlayerController player2)
+    {
+        if (player1.characterId == 0)
+        {
+            vita = player1;
+            mort = player2;
+        }
+        else
+        {
+            mort = player1;
+            vita = player2;
+        }
+        if(activeID == 0){
+            // IF SCENE IS NOT ZERO
+            mort.ForceToFollow();
+            mort.Following = true;
+            vita.ForceToActive();
+            vita.Active = true;
+        }
+        else if(activeID == 1){
+            vita.ForceToFollow();
+            vita.Following = true;
+            mort.ForceToActive();
+            mort.Active = true;
+        }
     }
 
     public float UpdateEnergy(float newValue, int playerId)
@@ -44,9 +75,10 @@ public class GameManager : MonoBehaviour
         uiHandler?.LogStats();
         return characterBalance * GetBalance();
     }
-    public float GetEnergy(int characterId){
-        if(characterId == 0) return vitaEnergy;
-        else if(characterId == 1) return mortEnergy;
+    public float GetEnergy(int characterId)
+    {
+        if (characterId == 0) return vitaEnergy;
+        else if (characterId == 1) return mortEnergy;
         else return -1;
     }
     public float GetBalance()
@@ -55,19 +87,23 @@ public class GameManager : MonoBehaviour
         if (greaterEnergy == 0) return 0;
         return (vitaEnergy - mortEnergy) / greaterEnergy;
     }
-    public void UpdateHealth(float newValue, int playerId){
-        if(newValue > 15) newValue = 15;
-        if(playerId == 0){
+    public void UpdateHealth(float newValue, int playerId)
+    {
+        if (newValue > 15) newValue = 15;
+        if (playerId == 0)
+        {
             vitaHealth = newValue;
         }
-        else if(playerId == 1){
+        else if (playerId == 1)
+        {
             mortHealth = newValue;
         }
         uiHandler?.LogStats();
     }
-    public float GetHealth(int characterId){
-        if(characterId == 0) return vitaHealth;
-        else if(characterId == 1) return mortHealth;
+    public float GetHealth(int characterId)
+    {
+        if (characterId == 0) return vitaHealth;
+        else if (characterId == 1) return mortHealth;
         else return -1;
     }
     public void UpdateSwitches(string ID, bool status)
