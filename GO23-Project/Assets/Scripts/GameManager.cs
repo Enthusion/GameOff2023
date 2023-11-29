@@ -59,6 +59,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateActiveCharacter(){
+        if(vita.Active){
+            activeID = 0;
+        }
+        else if(mort.Active){
+            activeID = 1;
+        }
+        else{
+            Debug.Log("No active characters");
+            return;
+        }
+    }
+
+    public int GetActiveCharacter(){
+        return activeID;
+    }
+
     public float UpdateEnergy(float newValue, int playerId)
     {
         float characterBalance = 0;

@@ -91,7 +91,7 @@ public class PlayerController : Controller
         controller2 = secondaryPlayer.GetComponent<PlayerController>();
 
         initialColliderSize = Collider.size;
-        currentEnergy = 0.0f; //TODO set based on GameManager in future;
+        currentEnergy = GameManager.Instance.GetEnergy(characterId);
 
         IdleState.Ready();
         MoveState.Ready();
@@ -100,7 +100,7 @@ public class PlayerController : Controller
         WaitState.Ready();
         FollowState.Ready();
 
-        if (primaryPlayer) stateMachine.Iniitialize(FallState);
+        if (GameManager.Instance.GetActiveCharacter() == characterId) stateMachine.Iniitialize(FallState);
         else stateMachine.Iniitialize(WaitState);
     }
     public override void Update()
