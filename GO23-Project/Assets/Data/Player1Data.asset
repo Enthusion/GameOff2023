@@ -15,9 +15,9 @@ MonoBehaviour:
   characterName: Vita
   characterId: 0
   primaryPlayer: 1
-  moveForce: 10
-  maxSpeed: 15
-  jumpForce: 5
+  moveForce: 6
+  maxSpeed: 10
+  jumpForce: 3.5
   jumpTime: 0.16
   isGround:
     serializedVersion: 2
