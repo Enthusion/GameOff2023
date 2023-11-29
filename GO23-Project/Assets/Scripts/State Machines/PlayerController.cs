@@ -158,6 +158,13 @@ public class PlayerController : Controller
     {
         stateMachine.ChangeState(WaitState);
     }
+    public void ForceToFollow()
+    {
+        stateMachine.ChangeState(FollowState);
+    }
+    public void ForceToActive(){
+        stateMachine.ChangeState(FallState);
+    }
     public void Interaction(){
         Collider2D[] possibleInteractions = new Collider2D[3];
         Physics2D.OverlapCollider(Collider, interactionFilter,possibleInteractions);
