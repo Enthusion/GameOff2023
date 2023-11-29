@@ -26,6 +26,7 @@ public class PlayerController : Controller
     public PlayerController controller2 { get; private set; }
     public bool Active;
     public bool Following;
+    public bool DefaultToWait = false;
     public Vector2 initialColliderSize { get; private set; }
     public float sinceLastGrounded { get; private set; }
     public PlayerData playerData;
@@ -101,7 +102,9 @@ public class PlayerController : Controller
         FollowState.Ready();
 
         if (GameManager.Instance.GetActiveCharacter() == characterId) stateMachine.Iniitialize(FallState);
-        else stateMachine.Iniitialize(WaitState);
+        else if(DefaultToWait) stateMachine.Iniitialize(WaitState);
+        else stateMachine.Iniitialize(FollowState);
+        GameManager.Instance.SetPlayer(this);
     }
     public override void Update()
     {

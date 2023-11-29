@@ -32,30 +32,15 @@ public class GameManager : MonoBehaviour
         uiHandler = UiObject;
     }
 
-    public void SetPlayers(PlayerController player1, PlayerController player2)
+    public void SetPlayer(PlayerController player)
     {
-        if (player1.characterId == 0)
+        if (player.characterId == 0)
         {
-            vita = player1;
-            mort = player2;
+            vita = player;
         }
         else
         {
-            mort = player1;
-            vita = player2;
-        }
-        if(activeID == 0){
-            // IF SCENE IS NOT ZERO
-            mort.ForceToFollow();
-            mort.Following = true;
-            vita.ForceToActive();
-            vita.Active = true;
-        }
-        else if(activeID == 1){
-            vita.ForceToFollow();
-            vita.Following = true;
-            mort.ForceToActive();
-            mort.Active = true;
+            mort = player;
         }
     }
 
