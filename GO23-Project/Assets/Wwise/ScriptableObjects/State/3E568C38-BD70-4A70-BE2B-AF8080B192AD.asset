@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad49dbd4e00442568cd6bfcf9c19bce, type: 3}
+  m_Name: 3E568C38-BD70-4A70-BE2B-AF8080B192AD
+  m_EditorClassIdentifier: 
+  objectName: Vita_State
+  id: 2869933681
+  guid: 3E568C38-BD70-4A70-BE2B-AF8080B192AD
+  WwiseStateGroupReference: {fileID: 11400000, guid: a5de5886b56344c10abafe414860c2eb, type: 2}
