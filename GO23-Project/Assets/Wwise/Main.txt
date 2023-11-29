@@ -1,0 +1,176 @@
+Event	ID	Name			Wwise Object Path	Notes
+	85412153	Ambience			\Default Work Unit\Gameplay\Ambience	
+	348163457	Mort_Damage			\Default Work Unit\Player\Mort\Mort_Damage	
+	391042987	Gameplay_Theme			\Music\Gameplay_Theme	
+	952003163	Menu_Button_Press			\Default Work Unit\UI\Menu_Button_Press	
+	1041138814	Menu_Theme			\Music\Menu_Theme	
+	1361217281	Zombie_Hurt			\Default Work Unit\Gameplay\Zombies\Zombie_Hurt	
+	1604597930	Death_Vita			\Default Work Unit\Player\Vita\Death_Vita	
+	1667650021	Pickup_Sound			\Default Work Unit\Items\Pickup_Sound	
+	2016779262	Vita_Attack			\Default Work Unit\Player\Vita\Vita_Attack	
+	2129636626	Movement			\Default Work Unit\Player\Movement	
+	2229411229	SwapToMort			\Default Work Unit\Player\CharacterSwap\SwapToMort	
+	2474416884	Zombie_Death			\Default Work Unit\Gameplay\Zombies\Zombie_Death	
+	2515911793	SwapToVita			\Default Work Unit\Player\CharacterSwap\SwapToVita	
+	2975984098	Vita_Jump			\Default Work Unit\Player\Vita\Vita_Jump	
+	3154367434	Mort_Jump			\Default Work Unit\Player\Mort\Mort_Jump	
+	3251561164	Mort_Death			\Default Work Unit\Player\Mort\Mort_Death	
+	3306940243	Press_Start			\Default Work Unit\UI\Press_Start	
+	3473319566	Zombie_Attack			\Default Work Unit\Gameplay\Zombies\Zombie_Attack	
+	3548089160	Zombie_Idle			\Default Work Unit\Gameplay\Zombies\Zombie_Idle	
+	3792100141	Mort_Land			\Default Work Unit\Player\Mort\Mort_Land	
+	3872065017	Menu_Switch_Buttons			\Default Work Unit\UI\Menu_Switch_Buttons	
+	4150497509	Vita_Land			\Default Work Unit\Player\Vita\Vita_Land	
+	4156760537	Press_Switch			\Default Work Unit\Items\Press_Switch	
+	4162013705	Vita_Damage			\Default Work Unit\Player\Vita\Vita_Damage	
+	4211465302	Mort_Attack			\Default Work Unit\Player\Mort\Mort_Attack	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	444815956	PlayerLife			\Gameplay\PlayerLife	
+	1085373737	Character_Switch			\Gameplay\Character_Switch	
+	2607556080	Menu			\Gameplay\Menu	
+	3858746980	Monsters			\Gameplay\Monsters	
+
+State	ID	Name	State Group			Notes
+	655265632	Alive	PlayerLife			
+	748895195	None	PlayerLife			
+	2044049779	Dead	PlayerLife			
+	6420585	Mort_State	Character_Switch			
+	748895195	None	Character_Switch			
+	2869933681	Vita_State	Character_Switch			
+	748895195	None	Menu			
+	1287511387	Menu_open	Menu			
+	1557918927	Menu_closed	Menu			
+	290496626	Monster_Aware	Monsters			
+	748895195	None	Monsters			
+	3000363985	Monster_Unaware	Monsters			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	36809296	Monster_Unaware	Monsters	\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Trans-to-Bridge_P0_L1_75bpm_3-4\Mort-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4		
+	36869632	Monster_Unaware	Monsters	\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Bridge_P0_L16_75bpm_3-4\Mort-Combat-Bridge_P0_L16-75bpm_3-4		
+	102101104	Monster_Unaware	Monsters	\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-Bridge_P0_L16_75bpm_3-4\Vita-Combat-Bridge_P0_L16-75bpm_3-4		
+	574032937	Menu_open	Menu	\Interactive Music Hierarchy\Music\Gameplay		
+	585071526	Monster_Unaware	Monsters	\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-Part2_P1_L16_75bpm_3-4\Vita-Combat-Part1_P0_L16-75bpm_3-4		
+	612018263	Monster_Unaware	Monsters	\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-TranstoBridge_P0_L1_75bpm_3-4\Vita-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4		
+	638119411	Menu_open	Menu	\Actor-Mixer Hierarchy\Gameplay\Ambience		
+	927327112	Monster_Unaware	Monsters	\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Part2_P1_L16_75bpm_3-4\Mort-Combat-Part2_P0_L16-75bpm_3-4		
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1601474789	Inside_outside			\Default Work Unit\Inside_outside	
+
+Effect plug-ins	ID	Name	Type				Notes
+	48620415	Have_U_Ever_Been_Outside	Wwise RoomVerb			
+	1588715066	Echoes_Linear	Wwise Delay			
+	2805769450	Special_Effect_1	Wwise Flanger			
+	3604890626	High_Pass_60Hz	Wwise Parametric EQ			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	48193526	Menu_Buttonpress_3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Menu_Buttonpress_3_10C4C929.wem		\Actor-Mixer Hierarchy\Menu & UI\Button_Press\Menu_Buttonpress_3		846816
+	58134865	Vita-Combat-Part1_P0_L16-75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita-Combat-Part1_P0_L16-75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-Part2_P1_L16_75bpm_3-4\Vita-Combat-Part1_P0_L16-75bpm_3-4		7620576
+	85094814	Trans-to-Bridge_P0_L1_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Trans-to-Bridge_P0_L1_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Trans-to-Bridge_P0_L1_75bpm_3-4\Trans-to-Bridge_P0_L1_75bpm_3-4		1270176
+	86270152	Vita_Attack5	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Attacl\Vita_Attack5_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Attack\Vita_Attack5		186916
+	89838499	Zombie Hurt 3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Hurt\Zombie Hurt 3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Hurt\Zombie Hurt 3		208528
+	100575831	Vita_Attack3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Attacl\Vita_Attack3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Attack\Vita_Attack3		211100
+	108599410	Zombie Hurt 1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Hurt\Zombie Hurt 1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Hurt\Zombie Hurt 1		237136
+	114483524	Mort_Land5	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Land5_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Land\Mort_Land5		212456
+	116134159	Mort-Combat-Bridge_P0_L16-75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort-Combat-Bridge_P0_L16-75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Bridge_P0_L16_75bpm_3-4\Mort-Combat-Bridge_P0_L16-75bpm_3-4		7620576
+	124563012	Vita_Death	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Damage\Vita_Death_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Vita_Death		227992
+	132336236	click	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Equipment, Tactical, Flashlight, Torch, Small, Plastic, Switch Button On Or Off SND25824_CBF341F2.wem		\Actor-Mixer Hierarchy\Menu & UI\click		33200
+	135606589	Mort_Jump4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Jump4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Jump\Mort_Jump4		261528
+	159078374	Menu_Buttonpress_2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Menu_Buttonpress_2_10C4C929.wem		\Actor-Mixer Hierarchy\Menu & UI\Button_Press\Menu_Buttonpress_2		745572
+	163816093	Mort_Attack	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Attack_C2459DBA.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Attack		1286364
+	172167988	Vita-Part2_P1_L16_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita\Vita-Part2_P1_L16_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-Part2_P1_L16_75bpm_3-4\Vita-Part2_P1_L16_75bpm_3-4		8043936
+	176176311	MG_Attack2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\MG_Attack2_2D62A103.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Attack\MG_Attack2		382032
+	214723242	Zombie Idle 3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Idle\Zombie Idle 3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Idle\Zombie Idle 3		414384
+	215138383	Mort_Jump2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Jump2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Jump\Mort_Jump2		221408
+	216392317	Vita_Jump3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Jump\Vita_Jump3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Jump\Vita_Jump3		210244
+	225343879	Menu_Part2_P0_L8_68bpm4-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Menu_Part2_P0_L8_68bpm4-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Menu_theme\Menu_Part2_P0_L8_68bpm4-4\Menu_Part2_P0_L8_68bpm4-4		6848568
+	226322425	Zombie Death 1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Die\Zombie Death 1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Death\Zombie Death 1		330848
+	238500616	Vita-Part1_P1_L16_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita\Vita-Part1_P1_L16_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-Part1_P1_L16_75bpm_3-4\Vita-Part1_P1_L16_75bpm_3-4		8043936
+	243196701	Vita_Damage2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Damage\Vita_Damage2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Damage\Vita_Damage2		194140
+	258876245	Vita_Damage4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Damage\Vita_Damage4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Damage\Vita_Damage4		198500
+	272317856	Vita-Intro_P0_L4_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita\Vita-Intro_P0_L4_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-Intro_P0_L4_75bpm_3-4\Vita-Intro_P0_L4_75bpm_3-4		2540256
+	290809608	Vita_Land4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Fall\Vita_Land4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Fall\Vita_Land4		170256
+	293976824	Zombie Attack 4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\Zombie Attack 4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Attack\Zombie Attack 4		148936
+	296440283	Mort_Jump1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Jump1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Jump\Mort_Jump1		218592
+	296857680	Vita-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-TranstoBridge_P0_L1_75bpm_3-4\Vita-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4		1270176
+	300634554	MG_Attack4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\MG_Attack4_23389985.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Attack\MG_Attack4		331628
+	301021922	Vita_atack	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Weapons, Sword, Swing Fast, Whoosh, Metal SND34535 1_5DC76BB8.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Vita_atack		96024
+	307565988	Vita_Attack4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Attacl\Vita_Attack4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Attack\Vita_Attack4		201356
+	333856058	Vita-Death_P0_L2_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita-Death_P0_L2_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Death\Vita-Death_P0_L2_75bpm_3-4\Vita-Death_P0_L2_75bpm_3-4		1270176
+	338809125	Mort-Intro_P0_L4_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort-Intro_P0_L4_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Intro_P0_L4_75bpm_3-4\Mort-Intro_P0_L4_75bpm_3-4		2469696
+	344009234	Zombie Attack 2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\Zombie Attack 2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Attack\Zombie Attack 2		143424
+	361951733	MG_Death2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Death\MG_Death2_DD3FA592.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Death\MG_Death2		967532
+	362200486	Vita_Jump2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita_Jump2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Vita_Jump\Vita_Jump2		282040
+	385828461	Vita_Land2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita_Land2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Vita_Land\Vita_Land2		265116
+	386250507	Vita_Jump1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita_Jump1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Vita_Jump\Vita_Jump1		264696
+	396790410	Vita_Land3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Fall\Vita_Land3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Fall\Vita_Land3		189648
+	398985676	Vita_Attack2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Attacl\Vita_Attack2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Attack\Vita_Attack2		201056
+	417725099	MG_Damage1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Damage\MG_Damage1_38BD5E8A.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Damage\MG_Damage1		228336
+	426817473	Zombie Death Oh No	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Die\Zombie Death Oh No_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Death\Zombie Death Oh No		198548
+	434042305	Mort_Land1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Land1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Land\Mort_Land1		104432
+	434630446	Vita_Attack1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Attacl\Vita_Attack1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Attack\Vita_Attack1		207044
+	436466479	Vita_Land1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Fall\Vita_Land1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Fall\Vita_Land1		188372
+	436764436	Zombie Hurt 2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Hurt\Zombie Hurt 2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Hurt\Zombie Hurt 2		140668
+	441216464	Zombie Idle 4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Idle\Zombie Idle 4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Idle\Zombie Idle 4		430072
+	461239599	Mort_Land4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Land4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Land\Mort_Land4		176896
+	461485039	Zombie Idle 1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Idle\Zombie Idle 1wav_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Idle\Zombie Idle 1		359868
+	491065244	Zombie Idle 2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Idle\Zombie Idle 2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Idle\Zombie Idle 2		356936
+	512946984	Zombie Death 3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Die\Zombie Death 3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Death\Zombie Death 3		352896
+	517676308	Impact_Zombies	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Gore, Flesh, Drop, Impact, Hit, Short, Bloody, Wet 01 SND9893_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Impact_Zombies		407536
+	517917962	Impact_Player_03	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Fight, Impact, Punch, Body SND14128_CA85934E.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Universal\impact_Player_ran\Impact_Player_03		120224
+	518429796	Movement	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Movement_C06FCA27.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Universal\Movement		3293652
+	521311561	Swap_swoosh	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Swooshes, Swish, Wood Stick, Heavy SND0419_91EE6F76.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Universal\Swap_swoosh		107212
+	535907377	Vita-TranstoBridge_P0_L1_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita\Vita-TranstoBridge_P0_L1_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-TranstoBridge_P0_L1_75bpm_3-4\Vita-TranstoBridge_P0_L1_75bpm_3-4		1270176
+	541855266	MG_Attack5	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\MG_Attack5_3E5D3816.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Attack\MG_Attack5		223100
+	543390032	Outside_Ambience	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Ambience, Forest, Birds, Wind In Trees 01 SND0432_2F4947CC.wem		\Actor-Mixer Hierarchy\Gameplay\Ambience\Outside_Ambience		14451012
+	545223625	Vita_Jump3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita_Jump3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Vita_Jump\Vita_Jump3		284672
+	549888213	MG_Land4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Land\MG_Land4_A090C94B.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Land\MG_Land4		388972
+	551043347	Inside_Ambience	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Ambience, Underground, Cave, Wind, Cold, Howling 04 SND46582_D79FB2B7.wem		\Actor-Mixer Hierarchy\Gameplay\Ambience\Inside_Ambience		23040096
+	552511302	MG_Attack6	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\MG_Attack6_2412BDD8.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Attack\MG_Attack6		249792
+	576497103	Menu_Buttonpress_4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Menu_Buttonpress_4_10C4C929.wem		\Actor-Mixer Hierarchy\Menu & UI\Button_Press\Menu_Buttonpress_4		742112
+	576851504	Mort_Land2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Land2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Land\Mort_Land2		130824
+	580748092	Pickup	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Pickup_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Items\Pickup		705696
+	586693879	MG_Damage2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Damage\MG_Damage2_DFE45355.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Damage\MG_Damage2		285124
+	596480423	Vita_Land5	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita_Land5_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Vita_Land\Vita_Land5		216528
+	619071790	Mort_Jump5	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Jump5_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Jump\Mort_Jump5		193768
+	646594090	MG_Damage6	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Damage\MG_Damage6_F4CAFE2B.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Damage\MG_Damage6		290524
+	650908335	MG_land1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Land\MG_land1_BD43F6D2.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Land\MG_land1		342652
+	654172291	Zombie Attack 5	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\Zombie Attack 5_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Attack\Zombie Attack 5		237136
+	659300209	Press Start	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Press Start_10C4C929.wem		\Actor-Mixer Hierarchy\Menu & UI\Press Start		1790040
+	675515408	Menu_Intro_P0_L12_68bpm4-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Menu_Intro_P0_L12_68bpm4-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Menu_theme\Menu_Intro_P0_L12_68bpm4-4\Menu_Intro_P0_L12_68bpm4-4		9688604
+	676456315	Bridge_P0_L16_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Bridge_P0_L16_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Bridge_P0_L16_75bpm_3-4\Bridge_P0_L16_75bpm_3-4		7620576
+	679252140	Vita-Combat-Bridge_P0_L16-75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita-Combat-Bridge_P0_L16-75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-Bridge_P0_L16_75bpm_3-4\Vita-Combat-Bridge_P0_L16-75bpm_3-4		7620576
+	687598303	Zombie Hurt 5	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Hurt\Zombie Hurt 5_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Hurt\Zombie Hurt 5		209572
+	703100899	Mort-Combat-Part2_P0_L16-75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort-Combat-Part2_P0_L16-75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Part2_P1_L16_75bpm_3-4\Mort-Combat-Part2_P0_L16-75bpm_3-4		7620576
+	729551275	MG_Damage5	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Damage\MG_Damage5_BE661423.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Damage\MG_Damage5		244620
+	744076384	Vita_Damage3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Damage\Vita_Damage3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Damage\Vita_Damage3		195664
+	749125424	Menu_Buttonpress_1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Menu_Buttonpress_1_10C4C929.wem		\Actor-Mixer Hierarchy\Menu & UI\Button_Press\Menu_Buttonpress_1		705696
+	761957545	Vita_Land2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Fall\Vita_Land2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Fall\Vita_Land2		166488
+	770540544	Mort-Part2_P1_L16_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort-Part2_P1_L16_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Part2_P1_L16_75bpm_3-4\Mort-Part2_P1_L16_75bpm_3-4		8043936
+	772875097	Mort_Land3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Land3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Land\Mort_Land3		142004
+	774822206	MG_Attack1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\MG_Attack1_3B65022A.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Attack\MG_Attack1		294860
+	780464774	Impact_Player	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Fight, Impact, Punch, Body SND14128_3081B7C6.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Universal\impact_Player_ran\Impact_Player		120224
+	786814858	Impact_Player_02	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Fight, Impact, Punch, Body SND14128_0DA5ADDB.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Universal\impact_Player_ran\Impact_Player_02		113240
+	787532520	Vita_Land1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita_Land1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Vita_Land\Vita_Land1		250616
+	819315811	Menu_Part1_P0_L16_68bpm4-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Menu_Part1_P0_L16_68bpm4-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Menu_theme\Menu_Part1_P0_L16_68bpm4-4\Menu_Part1_P0_L16_68bpm4-4		12220068
+	847323117	Mort-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Trans-to-Bridge_P0_L1_75bpm_3-4\Mort-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4		1270176
+	850144918	Vita Jump2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Jump\Vita Jump2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Jump\Vita Jump2		198440
+	860113352	Zombie Death 2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Die\Zombie Death 2_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Death\Zombie Death 2		507248
+	865160234	Vita_Jump4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Jump\Vita_Jump4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Jump\Vita_Jump4		190336
+	868372522	Zombie Attack 3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\Zombie Attack 3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Attack\Zombie Attack 3		226112
+	896784469	MG_land2	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Land\MG_land2_3FE35220.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Land\MG_land2		315384
+	923864276	Zombie Attack 1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\Zombie Attack 1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Attack\Zombie Attack 1		187524
+	927779912	Vita_Land3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita_Land3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Vita_Land\Vita_Land3		237152
+	940300102	Vita_Land4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita_Land4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Vita_Land\Vita_Land4		238716
+	968310455	Zombie Hurt 4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Hurt\Zombie Hurt 4_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Enemies\Zombies\Hurt\Zombie Hurt 4		217840
+	1001759992	Mort-Death_P0_L2_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort-Death_P0_L2_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Death\Mort-Death_P0_L2_75bpm_3-4\Mort-Death_P0_L2_75bpm_3-4		1270176
+	1002603611	Mort-Part1_P1_L16_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort-Part1_P1_L16_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Mort\Mort-Part1_P1_L16_75bpm_3-4\Mort-Part1_P1_L16_75bpm_3-4		8043936
+	1003587238	Vita_jump1	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Grunts\Jump\Vita_jump1_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Vita\Grunts\Jump\Vita_jump1		190728
+	1005873440	MG_Attack3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Attack\MG_Attack3_1E3A545F.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Attack\MG_Attack3		295716
+	1029191267	MG_Land5	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Land\MG_Land5_B5935A7F.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Grunts\Grunt_Land\MG_Land5		416628
+	1034985004	Impact_Player_01	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Soundly Audio\Fight, Impact, Punch, Body SND14128_DC72984A.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Universal\impact_Player_ran\Impact_Player_01		146764
+	1054246333	Vita-Bridge_P0_L16_75bpm_3-4	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Vita\Vita-Bridge_P0_L16_75bpm_3-4_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Gameplay\Vita\Vita-Bridge_P0_L16_75bpm_3-4\Vita-Bridge_P0_L16_75bpm_3-4		7620576
+	1055515638	Switch_Press	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Press_Statue2wav_BC845049.wem		\Actor-Mixer Hierarchy\Gameplay\Items\Switch_Press		1379716
+	1062136237	Mort_Jump3	Z:\Applications\Audiokinetic\Wwise 2021.1.13.8036\Wwise-101_v2021.1\Lesson 1\gameoff 2023 ver 2021\.cache\Mac\SFX\Mort_Jump3_10C4C929.wem		\Actor-Mixer Hierarchy\Gameplay\Characters\Mort\Mort_Jump\Mort_Jump3		190400
+

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55df89261329846609eacda95a0e2edf, type: 3}
+  m_Name: 3FE1DDF4-6AAE-4592-8F39-A86A7D5B5408
+  m_EditorClassIdentifier: 
+  objectName: SwapToVita
+  id: 2515911793
+  guid: 3FE1DDF4-6AAE-4592-8F39-A86A7D5B5408

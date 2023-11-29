@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>Z:/Applications/Audiokinetic/Wwise 2021.1.13.8036/Wwise-101_v2021.1/Lesson 1/gameoff 2023 ver 2021/</ProjectRoot>
+		<SourceFilesRoot>Z:/Applications/Audiokinetic/Wwise 2021.1.13.8036/Wwise-101_v2021.1/Lesson 1/gameoff 2023 ver 2021/.cache/Windows/</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>Z:/Applications/Audiokinetic/Wwise 2021.1.13.8036/Wwise-101_v2021.1/Lesson 1/gameoff 2023 ver 2021/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F38B1BBF-3D27-D9BC-C447-7316D309F9B6}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="215992295" Name="Player_Health"/>
+				<GameParameter Id="822163944" Name="SS_Air_RPM"/>
+				<GameParameter Id="1029930033" Name="SS_Air_Fury"/>
+				<GameParameter Id="1351367891" Name="SS_Air_Fear"/>
+				<GameParameter Id="1601474789" Name="Inside_outside"/>
+				<GameParameter Id="2648548617" Name="SS_Air_Month"/>
+				<GameParameter Id="3002758120" Name="SS_Air_Freefall"/>
+				<GameParameter Id="3074696722" Name="SS_Air_Size"/>
+				<GameParameter Id="3203397129" Name="SS_Air_TimeOfDay"/>
+				<GameParameter Id="3715662592" Name="SS_Air_Storm"/>
+				<GameParameter Id="3847924954" Name="SS_Air_Presence"/>
+				<GameParameter Id="4160247818" Name="SS_Air_Turbulence"/>
+				<GameParameter Id="4258827653" Name="PlayerSize"/>
+			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="444815956" Name="PlayerLife">
+					<States>
+						<State Id="655265632" Name="Alive"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2044049779" Name="Dead"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="2607556080" Name="Menu">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="1287511387" Name="Menu_open"/>
+						<State Id="1557918927" Name="Menu_closed"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="3858746980" Name="Monsters">
+					<States>
+						<State Id="290496626" Name="Monster_Aware"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="3000363985" Name="Monster_Unaware"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+			<SwitchGroups>
+				<SwitchGroup Id="1085373737" Name="Character_Switch">
+					<Switches>
+						<Switch Id="6420585" Name="Mort_State"/>
+						<Switch Id="2869933681" Name="Vita_State"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+			<AcousticTextures>
+				<AcousticTexture Id="504532776" Name="Brick">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="18"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="23"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="513139656" Name="Mountain">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="841620460" Name="Concrete">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="14"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1755085759" Name="Wood_Deep">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="1"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="8"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1873957695" Name="Anechoic">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1970351858" Name="Fabric">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="3"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="13"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="48"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="72"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2058049674" Name="Wood">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2412606308" Name="Carpet">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="46"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="45"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="76"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2637588553" Name="Tile">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="67"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="41"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2928161104" Name="Curtains">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="7"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="60"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="84"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3195498748" Name="Cork_Tiles">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="14"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="30"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="73"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3670307564" Name="Drywall">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="2"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4168643977" Name="Acoustic_Banner">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="37"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4262522749" Name="Wood_Bright">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="10"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="9"/>
+					</Properties>
+				</AcousticTexture>
+			</AcousticTextures>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{08BCEDEB-50A1-6767-B543-DA3DD02B61CC}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="58134865" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita-Combat-Part1_P0_L16-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita-Combat-Part1_P0_L16-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="85094814" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Trans-to-Bridge_P0_L1_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Trans-to-Bridge_P0_L1_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="116134159" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Combat-Bridge_P0_L16-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Combat-Bridge_P0_L16-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="172167988" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-Part2_P1_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-Part2_P1_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="238500616" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-Part1_P1_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-Part1_P1_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="272317856" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-Intro_P0_L4_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-Intro_P0_L4_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="296857680" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="333856058" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita-Death_P0_L2_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita-Death_P0_L2_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="338809125" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Intro_P0_L4_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Intro_P0_L4_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="449338144" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Press_Statue.wav</ShortName>
+					<CachePath>SFX/Press_Statue_556C0BC2.wem</CachePath>
+				</File>
+				<File Id="535907377" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-TranstoBridge_P0_L1_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-TranstoBridge_P0_L1_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="676456315" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Bridge_P0_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Bridge_P0_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="679252140" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita-Combat-Bridge_P0_L16-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita-Combat-Bridge_P0_L16-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="703100899" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Combat-Part2_P0_L16-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Combat-Part2_P0_L16-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="770540544" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Part2_P1_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Part2_P1_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="847323117" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Combat-Trans-to-Bridge_P0_L1-75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="1001759992" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Death_P0_L2_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Death_P0_L2_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="1002603611" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mort-Part1_P1_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Mort-Part1_P1_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="1054246333" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vita\Vita-Bridge_P0_L16_75bpm_3-4.wav</ShortName>
+					<CachePath>SFX/Vita/Vita-Bridge_P0_L16_75bpm_3-4_D79FB2B7.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3991942870" Name="Music" DurationType="Infinite">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="444815956" Id="655265632"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="Switch" GroupId="1085373737" Id="6420585"/>
+									<MediaRefs>
+										<MediaRef Id="85094814"/>
+										<MediaRef Id="116134159"/>
+										<MediaRef Id="338809125"/>
+										<MediaRef Id="676456315"/>
+										<MediaRef Id="703100899"/>
+										<MediaRef Id="770540544"/>
+										<MediaRef Id="847323117"/>
+										<MediaRef Id="1002603611"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="444815956" Id="655265632"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="Switch" GroupId="1085373737" Id="2869933681"/>
+									<MediaRefs>
+										<MediaRef Id="58134865"/>
+										<MediaRef Id="172167988"/>
+										<MediaRef Id="238500616"/>
+										<MediaRef Id="272317856"/>
+										<MediaRef Id="296857680"/>
+										<MediaRef Id="535907377"/>
+										<MediaRef Id="679252140"/>
+										<MediaRef Id="1054246333"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="444815956" Id="2044049779"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="Switch" GroupId="1085373737" Id="2869933681"/>
+									<MediaRefs>
+										<MediaRef Id="333856058"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="444815956" Id="2044049779"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="Switch" GroupId="1085373737" Id="6420585"/>
+									<MediaRefs>
+										<MediaRef Id="1001759992"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="4156760537" Name="Press_Switch" DurationType="OneShot" DurationMin="4.0583477" DurationMax="4.0583477">
+					<MediaRefs>
+						<MediaRef Id="449338144"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<StateGroups>
+				<StateGroup Id="444815956" Name="PlayerLife">
+					<States>
+						<State Id="655265632" Name="Alive"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2044049779" Name="Dead"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+			<SwitchGroups>
+				<SwitchGroup Id="1085373737" Name="Character_Switch">
+					<Switches>
+						<Switch Id="6420585" Name="Mort_State"/>
+						<Switch Id="2869933681" Name="Vita_State"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{E9618083-03DC-4B26-F995-DA6D223D5E39}</FileHash>
+</SoundBanksInfo>
