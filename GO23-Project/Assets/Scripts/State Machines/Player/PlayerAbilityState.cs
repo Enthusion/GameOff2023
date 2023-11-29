@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAbilityState : PlayerState
 {
     protected bool abilityTriggered;
-    private bool isGrounded;
+    protected bool isGrounded;
     public PlayerAbilityState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
@@ -21,6 +21,7 @@ public class PlayerAbilityState : PlayerState
         base.FrameUpdate();
         if(abilityTriggered){
             if(isGrounded && playerController.Body.velocity.y < 0.01f){
+                playerController.SetGravityScale(1.0f);
                 stateMachine.ChangeState(playerController.IdleState);
             }
             else{

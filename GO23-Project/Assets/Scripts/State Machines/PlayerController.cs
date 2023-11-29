@@ -9,14 +9,16 @@ public class PlayerController : Controller
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
-    public PlayerSlashState SlashState { get; private set; }
+    public PlayerShootState ShootState { get; private set; }
     public PlayerFallState FallState { get; private set; }
     public PlayerWaitState WaitState { get; private set; }
     public PlayerFollowState FollowState { get; private set; }
+    public PlayerHurtState HurtState { get; private set; }
 
     public Animator Anima { get; private set; }
     public Rigidbody2D Body { get; private set; }
     public CapsuleCollider2D Collider { get; private set; }
+    // public BoxCollider2D TriggerCollider { get; private set; }
     public SpriteRenderer Sprite { get; private set; }
 
     [SerializeField]
@@ -24,7 +26,9 @@ public class PlayerController : Controller
     public PlayerController controller2 { get; private set; }
     public bool Active;
     public bool Following;
+    public bool DefaultToWait = false;
     public Vector2 initialColliderSize { get; private set; }
+    public float sinceLastGrounded { get; private set; }
     public PlayerData playerData;
     public string characterName { get; private set; }
     public int characterId { get; private set; }
@@ -34,12 +38,16 @@ public class PlayerController : Controller
     public float jumpForce { get; private set; }
     public float jumpTime { get; private set; }
     private LayerMask isGround;
+    private LayerMask isInteractable;
     public float baseDamage { get; private set; }
+    public GameObject mainProjectile { get; private set; }
     public float currentEnergy { get; private set; }
     [SerializeField]
     private GameObject groundPoint1;
     [SerializeField]
     private GameObject groundPoint2;
+    private ContactFilter2D interactionFilter = new ContactFilter2D();
+    private float targetScale = 1;
 
 
     public override void Awake()
@@ -49,10 +57,11 @@ public class PlayerController : Controller
         IdleState = new PlayerIdleState(this, stateMachine, "idle");
         MoveState = new PlayerMoveState(this, stateMachine, "move");
         JumpState = new PlayerJumpState(this, stateMachine, "jump");
-        SlashState = new PlayerSlashState(this, stateMachine, "basicAttack");
+        ShootState = new PlayerShootState(this, stateMachine, "fall");// TODO: Replace placeholder animation
         FallState = new PlayerFallState(this, stateMachine, "fall");
         WaitState = new PlayerWaitState(this, stateMachine, "idle"); //TODO idle is placeholder animation
         FollowState = new PlayerFollowState(this, stateMachine, "follow");
+        HurtState = new PlayerHurtState(this, stateMachine, "fall"); //TODO: Replace placeholder animation
 
         characterName = playerData.characterName;
         characterId = playerData.characterId;
@@ -62,9 +71,14 @@ public class PlayerController : Controller
         jumpForce = playerData.jumpForce;
         jumpTime = playerData.jumpTime;
         isGround = playerData.isGround;
+        isInteractable = playerData.isInteractable;
         baseDamage = playerData.baseDamage;
+        mainProjectile = playerData.mainProjectile;
 
         Active = primaryPlayer;
+        
+        interactionFilter.SetLayerMask(isInteractable);
+        interactionFilter.useTriggers = true;
     }
     // Start is called before the first frame update
     public override void Start()
@@ -72,12 +86,13 @@ public class PlayerController : Controller
         Anima = GetComponent<Animator>();
         Body = GetComponent<Rigidbody2D>();
         Collider = GetComponent<CapsuleCollider2D>();
+        // TriggerCollider = GetComponent<BoxCollider2D>();
         Sprite = GetComponent<SpriteRenderer>();
 
         controller2 = secondaryPlayer.GetComponent<PlayerController>();
 
         initialColliderSize = Collider.size;
-        currentEnergy = 0.0f; //TODO set based on GameManager in future;
+        currentEnergy = GameManager.Instance.GetEnergy(characterId);
 
         IdleState.Ready();
         MoveState.Ready();
@@ -86,11 +101,37 @@ public class PlayerController : Controller
         WaitState.Ready();
         FollowState.Ready();
 
-        if (primaryPlayer) stateMachine.Iniitialize(FallState);
-        else stateMachine.Iniitialize(WaitState);
+        if (GameManager.Instance.GetActiveCharacter() == characterId) stateMachine.Iniitialize(FallState);
+        else if(DefaultToWait) stateMachine.Iniitialize(WaitState);
+        else stateMachine.Iniitialize(FollowState);
+        GameManager.Instance.SetPlayer(this);
     }
+    public override void Update()
+    {
+        base.Update();
+        float initialScale = transform.localScale.x;
+        if(initialScale != targetScale){
+            float newScale = initialScale;
+            if(initialScale < targetScale){
+                newScale += Time.deltaTime;
+                newScale = Mathf.Clamp(newScale, initialScale, targetScale);
+            }
+            else{
+                newScale -= Time.deltaTime;
+                newScale = Mathf.Clamp(newScale, targetScale, initialScale);
+            }
+            transform.localScale = new Vector3(newScale, newScale, newScale);
 
-    public bool GroundCheck() => Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
+        }
+        if(sinceLastGrounded < 5.0f){
+            sinceLastGrounded += Time.deltaTime;
+        }
+    }
+    public bool GroundCheck(){
+        bool onGround = Physics2D.OverlapArea(groundPoint1.transform.position, groundPoint2.transform.position, isGround);
+        if(onGround) sinceLastGrounded = 0.0f;
+        return onGround;
+    }
     public void SetVelocityX(float xVelocity) => Body.velocity = new Vector2(xVelocity, Body.velocity.y);
     public void SetVelocityY(float yVelocity) => Body.velocity = new Vector2(Body.velocity.x, yVelocity);
     public void SetGravityScale(float newGravity) => Body.gravityScale = newGravity;
@@ -99,17 +140,45 @@ public class PlayerController : Controller
     public void AdjustScale(float scaleFactor) => transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
     public void SetScale(float scaleFactor)
     {
-        float minSize = 0.33333333333f;
-        float maxSize = 1.25f;
-        scaleFactor = Mathf.Clamp(scaleFactor, minSize, maxSize);
-        transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        float minSize = 0.5f;
+        float maxSize = 1.2f;
+        targetScale = Mathf.Clamp(scaleFactor, minSize, maxSize);
     }
     public void AdjustEnergy(float energy)
     {
         currentEnergy = Mathf.Clamp(currentEnergy + energy, 0, 100);
         float balance = GameManager.Instance.UpdateEnergy(currentEnergy, characterId);
-        Debug.Log(characterName + "'s current energy: " + currentEnergy + "\nScale tilt: " + balance);
+        // Debug.Log(characterName + "'s current energy: " + currentEnergy + "\nScale tilt: " + balance);
         SetScale(1 + balance);
         controller2.SetScale(1 - balance);
     }
+    public void ApplyKnockback(Vector2 knockbackForce)
+    {
+        stateMachine.ChangeState(HurtState);
+        Body.velocity = knockbackForce;
+    }
+    public void ForceToWaiting()
+    {
+        stateMachine.ChangeState(WaitState);
+    }
+    public void ForceToFollow()
+    {
+        stateMachine.ChangeState(FollowState);
+    }
+    public void ForceToActive(){
+        stateMachine.ChangeState(FallState);
+    }
+    public void Interaction(){
+        Collider2D[] possibleInteractions = new Collider2D[3];
+        Physics2D.OverlapCollider(Collider, interactionFilter,possibleInteractions);
+        for (int i = 0; i < possibleInteractions.Length; i++)
+        {
+            if(possibleInteractions[i] == null) break;
+            if(possibleInteractions[i].TryGetComponent(out IInteractable interactableObject)){
+                interactableObject.Interact(this);
+                break;
+            }
+        }
+    }
+    public GameObject CreateObject(GameObject prefab, Vector3 location) => Instantiate(prefab, location, transform.rotation);
 }

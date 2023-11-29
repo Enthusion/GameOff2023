@@ -15,11 +15,15 @@ MonoBehaviour:
   characterName: Mort
   characterId: 1
   primaryPlayer: 0
-  moveForce: 10
-  maxSpeed: 15
-  jumpForce: 5
+  moveForce: 6
+  maxSpeed: 10
+  jumpForce: 3.6
   jumpTime: 0.16
   isGround:
     serializedVersion: 2
     m_Bits: 64
+  isInteractable:
+    serializedVersion: 2
+    m_Bits: 1
   baseDamage: 6
+  mainProjectile: {fileID: 1792741599867483461, guid: 71cdeafcec1f8504faccab01d3c83c5a, type: 3}

@@ -33,6 +33,14 @@ public class PlayerGroundedState : PlayerState
             }
         }
 
+        if(Input.GetButtonDown("Fire1")){
+            stateMachine.ChangeState(playerController.ShootState);
+        }
+
+        if(Input.GetButtonDown("Interact")){
+            playerController.Interaction();
+        }
+
         if (Input.GetKeyDown("q"))
         {
             playerController.AdjustEnergy(25f);
@@ -49,5 +57,11 @@ public class PlayerGroundedState : PlayerState
     {
         base.PhysicsUpdate();
         playerVelocity = playerController.Body.velocity;
+    }
+
+    public override void Exit()
+    {
+        GameManager.Instance.SetRespawnPoint(playerController.transform.position);
+        base.Exit();
     }
 }

@@ -22,11 +22,6 @@ public class CameraScript : MonoBehaviour
     private float distcaneMax = 7.5f;
     private Vector3 targetPosition;
 
-    //public AK.Wwise.Event SwapToMort;
-    //public AK.Wwise.Event SwapToVita;
-
-    public GameObject Testsound;
-
     private void Start()
     {
         target1 = subject1.GetComponent<PlayerController>();
@@ -38,11 +33,6 @@ public class CameraScript : MonoBehaviour
     {
         if (!target1.Active) activeTarget = target2;
         else activeTarget = target1;
-        if (activeTarget.characterId == 0)
-        {
-            //SwapToVita.Post(gameObject);
-        }
-        else Instantiate(Testsound); //SwapToMort.Post(gameObject);
         lookOffset = activeTarget.Sprite.flipX ? -0.75f : 2.25f;
         targetPosition = new Vector3(activeTarget.transform.position.x + offsetToCenter.x + lookOffset, activeTarget.transform.position.y + offsetToCenter.y, transform.position.z);
         float distanceTo = Vector3.Distance(transform.position, targetPosition);
@@ -64,6 +54,4 @@ public class CameraScript : MonoBehaviour
         }
         transform.position = Vector3.Lerp(transform.position, targetPosition, panSpeed * Time.deltaTime);
     }
-
-
 }

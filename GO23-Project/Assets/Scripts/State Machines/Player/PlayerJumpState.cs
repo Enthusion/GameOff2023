@@ -15,8 +15,12 @@ public class PlayerJumpState : PlayerAbilityState
         //Set a horizontal speed capacity based on either the speed when entering the sate or 5, whatever is greater
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 7.0f) ? initialSpeed : 7.0f;
+        //Jump time is set to 0.16 so a gravity scale of 0.84 is over jumptime
+        if(1 - playerController.Body.gravityScale <= playerController.jumpTime){
+            runtime = 1 - playerController.Body.gravityScale;
+        }
         //Add initial jump force
-        playerController.SetVelocityY(playerController.jumpForce);
+        if(runtime == 0) playerController.SetVelocityY(playerController.jumpForce);
     }
 
     public override void FrameUpdate()
@@ -27,10 +31,19 @@ public class PlayerJumpState : PlayerAbilityState
         playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 2));
         if (movementInput > 0) playerController.Sprite.flipX = false;
         else if (movementInput < 0) playerController.Sprite.flipX = true;
+
+        if(Input.GetButtonDown("Fire1")){
+            stateMachine.ChangeState(playerController.ShootState);
+        }
+
         //Variable jump height
-        if (runtime < playerController.jumpTime && Input.GetButton("Jump"))
+        if (runtime < playerController.jumpTime && playerController.Body.gravityScale > 0.8f)
         {
-            playerController.Body.AddForce(Vector2.up * playerController.jumpForce * 1.66f);
+            playerController.SetGravityScale(1 - runtime);
+            if (Input.GetButton("Jump"))
+            {
+                playerController.Body.AddForce(Vector2.up * playerController.jumpForce * 1.66f);
+            }
         } //Slightly decrease gravity near peak of jump
         else if (runtime >= playerController.jumpTime && playerController.Body.velocity.y < 1.5f)
         {

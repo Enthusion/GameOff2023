@@ -15,11 +15,15 @@ MonoBehaviour:
   characterName: Vita
   characterId: 0
   primaryPlayer: 1
-  moveForce: 10
-  maxSpeed: 15
-  jumpForce: 5
+  moveForce: 6
+  maxSpeed: 10
+  jumpForce: 3.6
   jumpTime: 0.16
   isGround:
     serializedVersion: 2
     m_Bits: 64
+  isInteractable:
+    serializedVersion: 2
+    m_Bits: 1
   baseDamage: 5
+  mainProjectile: {fileID: 7490066593872598780, guid: 5fc63cd3cb8457e4bb87be05067dbf86, type: 3}
