@@ -148,5 +148,11 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName){
         SceneManager.LoadScene(sceneName);
+        if(ResetStatsOnLoad){
+            vitaEnergy = 0;
+            mortEnergy = 0;
+            vitaHealth = 15;
+            mortHealth = 15;
+        }
     }
 }
