@@ -11,6 +11,7 @@ public class State
     protected Controller controller;
     protected StateMachine stateMachine;
     protected float runtime;
+    protected float physicsRuntime;
 
     public State(Controller controller, StateMachine stateMachine)
     {
@@ -21,11 +22,14 @@ public class State
     public virtual void Enter()
     {
         runtime = 0.0f;
+        physicsRuntime = 0.0f;
     }
     public virtual void FrameUpdate()
     {
         runtime += Time.deltaTime;
     }
-    public virtual void PhysicsUpdate() { }
+    public virtual void PhysicsUpdate() {
+        physicsRuntime += Time.fixedDeltaTime;
+    }
     public virtual void Exit() { }
 }
