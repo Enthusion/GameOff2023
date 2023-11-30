@@ -8,6 +8,7 @@ public class PlayerJumpState : PlayerAbilityState
     private float speedCap;
     private bool releasedJump;
     private float sinceReleased;
+    private float balance;
     public PlayerJumpState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
@@ -18,13 +19,16 @@ public class PlayerJumpState : PlayerAbilityState
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 7.0f) ? initialSpeed : 7.0f;
         releasedJump = false;
+        balance = GameManager.Instance.GetBalance();
+        balance = playerController.characterId == 0 ? balance : -balance;
+        Debug.Log("Blance: " + balance);
         //Jump time is set to 0.16 so a gravity scale of 0.84 is over jumptime
         if (1 - playerController.Body.gravityScale <= playerController.jumpTime)
         {
             runtime = 1 - playerController.Body.gravityScale;
         }
         //Add initial jump force
-        if (runtime == 0) playerController.SetVelocityY(playerController.jumpForce * 1.33f);
+        if (runtime == 0) playerController.SetVelocityY(playerController.jumpForce * (1.35f + (balance < 0 ? balance * 0.2f : balance * 1.15f) * 0.175f));
     }
 
     public override void FrameUpdate()
@@ -60,7 +64,7 @@ public class PlayerJumpState : PlayerAbilityState
         }
         if (!releasedJump)
         {
-            if(playerController.Body.velocity.y < 1.25f) playerController.Body.AddForce(Vector2.up * (playerController.jumpForce + 0.15f) * physicsRuntime);
+            if(playerController.Body.velocity.y < 1.25f) playerController.Body.AddForce(Vector2.up * (playerController.jumpForce + (1.1f * balance)) * physicsRuntime);
             if (physicsRuntime < playerController.jumpTime)
             {
                 playerController.SetGravityScale(1 - physicsRuntime);
