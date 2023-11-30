@@ -11,5 +11,5 @@ public class CollectibleEntity : MonoBehaviour
     }
 
     public virtual void playerContact(PlayerController player){ }
-    public virtual void Collected(){ }
+    public virtual void Collected(PlayerController collector){ }
 }
