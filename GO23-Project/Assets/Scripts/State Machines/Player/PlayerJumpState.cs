@@ -6,6 +6,7 @@ public class PlayerJumpState : PlayerAbilityState
 {
     private float initialSpeed;
     private float speedCap;
+    private bool releasedJump;
     public PlayerJumpState(Controller controller, StateMachine stateMachine, string stateName) : base(controller, stateMachine, stateName)
     { }
 
@@ -15,6 +16,7 @@ public class PlayerJumpState : PlayerAbilityState
         //Set a horizontal speed capacity based on either the speed when entering the sate or 5, whatever is greater
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 7.0f) ? initialSpeed : 7.0f;
+        releasedJump = false;
         //Jump time is set to 0.16 so a gravity scale of 0.84 is over jumptime
         if(1 - playerController.Body.gravityScale <= playerController.jumpTime){
             runtime = 1 - playerController.Body.gravityScale;
@@ -37,10 +39,15 @@ public class PlayerJumpState : PlayerAbilityState
         }
 
         //Variable jump height
+        if(Input.GetButtonUp("Jump")){
+            releasedJump = true;
+            playerController.Body.AddForce(Vector2.down * playerController.jumpForce * 2);
+        }
+
         if (runtime < playerController.jumpTime && playerController.Body.gravityScale > 0.8f)
         {
             playerController.SetGravityScale(1 - runtime);
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump") && !releasedJump)
             {
                 playerController.Body.AddForce(Vector2.up * playerController.jumpForce * 1.66f);
             }
