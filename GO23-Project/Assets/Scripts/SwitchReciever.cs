@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SwitchReciever : MonoBehaviour
 {
+    public bool Active { get; protected set; }
     protected int neededActivations;
     protected int currentActivations;
     protected bool activatedAtStart;
@@ -30,9 +31,16 @@ public class SwitchReciever : MonoBehaviour
     public virtual void FixedUpdate() { }
     public virtual void ReciveActivator(int switchWeight = 1)
     {
+        bool initiallyActive = Active;
         currentActivations += switchWeight;
-        if (currentActivations >= neededActivations) Activating();
+        if (currentActivations >= neededActivations && !initiallyActive) Activating();
+        else if (initiallyActive) Deactivating();
     }
     public virtual void Activating() { }
-    public virtual void Activated() { }
+    public virtual void Activated() {
+        Active = true;
+    }
+    public virtual void Deactivating() {
+        Active = false;
+    }
 }
