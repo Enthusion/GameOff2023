@@ -33,9 +33,9 @@ public class PlayerGroundedState : PlayerState
             }
         }
 
-        if(Input.GetButtonDown("Fire1")){
-            stateMachine.ChangeState(playerController.ShootState);
-        }
+        // if(Input.GetButtonDown("Fire1")){
+        //     stateMachine.ChangeState(playerController.ShootState);
+        // }
 
         if(Input.GetButtonDown("Interact")){
             playerController.Interaction();

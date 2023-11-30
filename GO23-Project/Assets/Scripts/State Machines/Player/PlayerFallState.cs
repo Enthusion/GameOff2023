@@ -33,9 +33,9 @@ public class PlayerFallState : PlayerState
         if (movementInput > 0) playerController.Sprite.flipX = false;
         else if (movementInput < 0) playerController.Sprite.flipX = true;
 
-        if(Input.GetButtonDown("Fire1")){
-            stateMachine.ChangeState(playerController.ShootState);
-        }
+        // if(Input.GetButtonDown("Fire1")){
+        //     stateMachine.ChangeState(playerController.ShootState);
+        // }
         
         //Increase gravity scale to fall faster once falling for JumpTime
         if (runtime >= playerController.jumpTime)
