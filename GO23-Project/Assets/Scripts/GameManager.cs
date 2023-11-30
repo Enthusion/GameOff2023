@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private string currentCheckpoint;
     private float vitaHealth;
     private float mortHealth;
+    public bool ResetStatsOnLoad;
 
     public void Awake()
     {
@@ -144,4 +145,8 @@ public class GameManager : MonoBehaviour
         else respawnPoint1 = position;
     }
     public Vector2 GetRespawnPoint(int characterId) => (characterId == 0) ? respawnPoint0 : respawnPoint1;
+
+    public void LoadScene(string sceneName){
+        SceneManager.LoadScene(sceneName);
+    }
 }
