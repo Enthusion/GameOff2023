@@ -61,7 +61,7 @@ public class PlayerGroundedState : PlayerState
 
     public override void Exit()
     {
-        GameManager.Instance.SetRespawnPoint(playerController.transform.position);
+        // GameManager.Instance.SetRespawnPoint(playerController.transform.position);
         base.Exit();
     }
 }

@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     private float vitaEnergy;
     private float mortEnergy;
     private string switchString = "";
-    private Vector2 respawnPoint;
+    private Vector2 respawnPoint0;
+    private Vector2 respawnPoint1;
     private Dictionary<string, Vector2> checkpoints;
     private string currentCheckpoint;
     private float vitaHealth;
@@ -138,6 +139,9 @@ public class GameManager : MonoBehaviour
         currentCheckpoint = ID;
     }
     public Vector2 GetCheckpoint() => checkpoints[currentCheckpoint];
-    public void SetRespawnPoint(Vector2 position) => respawnPoint = position;
-    public Vector2 GetRespawnPoint() => (respawnPoint != null || respawnPoint != Vector2.zero) ? respawnPoint : checkpoints[currentCheckpoint];
+    public void SetRespawnPoint(int characterId, Vector2 position){
+        if(characterId == 0) respawnPoint0 = position;
+        else respawnPoint1 = position;
+    }
+    public Vector2 GetRespawnPoint(int characterId) => (characterId == 0) ? respawnPoint0 : respawnPoint1;
 }
