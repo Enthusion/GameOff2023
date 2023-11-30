@@ -20,8 +20,8 @@ public class PlayerFallState : PlayerState
         //Set a horizontal speed capacity based on either the speed when entering the sate or 5, whatever is greater
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 5.0f) ? initialSpeed : 5.0f;
-        // Check if fall is from a jump (in jump gravity is set to 0.8 near peak)
-        fromJump = playerController.Body.gravityScale == 0.8f;
+        // Check if fall is from a jump (when switching from jump to fall gravity is set to 1.1)
+        fromJump = playerController.Body.gravityScale == 1.1f;
     }
 
     public override void FrameUpdate()
