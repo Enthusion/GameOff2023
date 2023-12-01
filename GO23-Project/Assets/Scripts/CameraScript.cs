@@ -39,8 +39,10 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        PlayerController lastActiveTarget = activeTarget;
         if (!target1.Active) activeTarget = target2;
         else activeTarget = target1;
+        if(lastActiveTarget != activeTarget) GameManager.Instance?.UpdateActiveCharacter();
         lookOffset = activeTarget.Sprite.flipX ? -0.75f : 2.25f;
         targetPosition = new Vector3(activeTarget.transform.position.x + offsetToCenter.x + lookOffset, activeTarget.transform.position.y + offsetToCenter.y, transform.position.z);
         //Constrain the camera

@@ -90,6 +90,8 @@ public class PlayerController : Controller
         Sprite = GetComponent<SpriteRenderer>();
 
         controller2 = secondaryPlayer.GetComponent<PlayerController>();
+        GameManager.Instance?.SetPlayer(this);
+        GameManager.Instance?.SetPlayer(controller2);
 
         initialColliderSize = Collider.size;
         currentEnergy = GameManager.Instance.GetEnergy(characterId);
@@ -104,7 +106,6 @@ public class PlayerController : Controller
         if (GameManager.Instance.GetActiveCharacter() == characterId) stateMachine.Iniitialize(FallState);
         else if(DefaultToWait) stateMachine.Iniitialize(WaitState);
         else stateMachine.Iniitialize(FollowState);
-        GameManager.Instance.SetPlayer(this);
     }
     public override void Update()
     {
@@ -167,6 +168,9 @@ public class PlayerController : Controller
     }
     public void ForceToActive(){
         stateMachine.ChangeState(FallState);
+    }
+    public void UpdateActiveStatus(){
+        GameManager.Instance.UpdateActiveCharacter();
     }
     public void Interaction(){
         Collider2D[] possibleInteractions = new Collider2D[3];

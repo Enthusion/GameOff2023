@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "MainMenu"){
             AudioManager.Instance?.StartMusic("Menu");
         }
+        else{
+            AudioManager.Instance?.StartMusic("Vita");
+            AudioManager.Instance?.PlayAmbience();
+        }
     }
     public void SetUI(UiHandler UiObject)
     {
