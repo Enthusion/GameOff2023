@@ -75,6 +75,7 @@ public class CameraScript : MonoBehaviour
             panSpeed = switchSpeed;
         }
         transform.position = Vector3.Lerp(transform.position, targetPosition, panSpeed * Time.deltaTime);
+        AudioManager.Instance.SetPosition(targetPosition);
     }
 
     public void SetXBounds(bool maxMin, float xLimiter, Vector3 origin)
