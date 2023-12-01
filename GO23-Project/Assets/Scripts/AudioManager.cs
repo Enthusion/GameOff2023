@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; set; }
     public AudioSource MenuIntro;
     public AudioSource MenuMain;
+    public AudioSource MenuMain2;
     public AudioSource Ambience;
     public AudioSource VitaIntro;
     public AudioSource VitaMain;
@@ -50,6 +51,24 @@ public class AudioManager : MonoBehaviour
             if(introPlay2 != null){
                 afterIntro2.Play();
             }
+            if(introPlay1 == MenuIntro || introPlay1 == MenuMain || introPlay1 == MenuMain2){
+                if(introPlay1 == MenuIntro){
+                    introPlay1 = MenuMain;
+                    afterIntro1 = MenuMain2;
+                }
+                else if(introPlay1 == MenuMain){
+                    introPlay1 = MenuMain2;
+                    afterIntro1 = MenuMain;
+                }
+                else if(introPlay1 == MenuMain2){
+                    introPlay1 = MenuMain;
+                    afterIntro1 = MenuMain2;
+                }
+                introPlay1.loop = false;
+                afterIntro1.loop = false;
+                waitingOnIntro = true;
+                return;
+            }
             waitingOnIntro = false;
         }
     }
@@ -67,7 +86,7 @@ public class AudioManager : MonoBehaviour
             MenuIntro.Play();
             introPlay1 = MenuIntro;
             afterIntro1 = MenuMain;
-            afterIntro1.loop = true;
+            afterIntro1.loop = false;
         }
         else if (name == "Vita" || name == "Mort")
         {
