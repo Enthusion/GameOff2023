@@ -28,7 +28,11 @@ public class PlayerJumpState : PlayerAbilityState
             runtime = 1 - playerController.Body.gravityScale;
         }
         //Add initial jump force
-        if (runtime == 0) playerController.SetVelocityY(playerController.jumpForce * (1.35f + (balance < 0 ? balance * 0.2f : balance * 1.15f) * 0.175f));
+        if (runtime == 0)
+        {
+            playerController.SetVelocityY(playerController.jumpForce * (1.35f + (balance < 0 ? balance * 0.2f : balance * 1.15f) * 0.175f));
+            AudioManager.Instance?.PlaySound("Jump" + playerController.characterName);
+        }
     }
 
     public override void FrameUpdate()
@@ -64,7 +68,7 @@ public class PlayerJumpState : PlayerAbilityState
         }
         if (!releasedJump)
         {
-            if(playerController.Body.velocity.y < 1.25f) playerController.Body.AddForce(Vector2.up * (playerController.jumpForce + (1.1f * balance)) * physicsRuntime);
+            if (playerController.Body.velocity.y < 1.25f) playerController.Body.AddForce(Vector2.up * (playerController.jumpForce + (1.1f * balance)) * physicsRuntime);
             if (physicsRuntime < playerController.jumpTime)
             {
                 playerController.SetGravityScale(1 - physicsRuntime);
