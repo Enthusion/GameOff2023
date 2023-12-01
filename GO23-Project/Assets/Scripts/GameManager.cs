@@ -29,9 +29,16 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
+
+    public void Start(){
+        if(SceneManager.GetActiveScene().name == "MainMenu"){
+            AudioManager.Instance?.StartMusic("Menu");
+        }
+    }
     public void SetUI(UiHandler UiObject)
     {
         uiHandler = UiObject;
+        uiHandler.LogStats();
     }
 
     public void SetPlayer(PlayerController player)
@@ -49,9 +56,11 @@ public class GameManager : MonoBehaviour
     public void UpdateActiveCharacter(){
         if(vita.Active){
             activeID = 0;
+            AudioManager.Instance?.SwitchCharacterTracks(true);
         }
         else if(mort.Active){
             activeID = 1;
+            AudioManager.Instance?.SwitchCharacterTracks(false);
         }
         else{
             Debug.Log("No active characters");
@@ -148,6 +157,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName){
         SceneManager.LoadScene(sceneName);
+        if(sceneName == "Room001"){
+            AudioManager.Instance?.StartMusic("Vita");
+            AudioManager.Instance?.PlayAmbience();
+        }
         if(ResetStatsOnLoad){
             vitaEnergy = 0;
             mortEnergy = 0;
