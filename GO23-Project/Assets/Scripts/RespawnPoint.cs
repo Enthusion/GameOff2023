@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class RespawnPont : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void OnTriggerEnter2D(Collider2D col){
+        if(TryGetComponent<PlayerController>(out PlayerController player)){
+            GameManager.Instance.SetRespawnPoint(player.characterId, transform.position);
+        }
     }
 }
