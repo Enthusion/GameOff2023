@@ -15,13 +15,14 @@ public class AudioManager : MonoBehaviour
     public AudioSource VitaMain;
     public AudioSource MortIntro;
     public AudioSource MortMain;
-    private CameraScript cam;
+    public AudioSource JumpVita;
+    public AudioSource JumpMort;
     private AudioSource introPlay1;
     private AudioSource afterIntro1;
     private AudioSource introPlay2;
     private AudioSource afterIntro2;
     private bool waitingOnIntro;
-    private Dictionary<string, AudioSource> soundLibrary;
+    private Dictionary<string, AudioSource> soundLibrary = new Dictionary<string, AudioSource>();
 
     public void Awake()
     {
@@ -30,13 +31,15 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
         }
-        soundLibrary.Add("Ambience", Ambience);
-        soundLibrary.Add("MenuIntro", MenuIntro);
-        soundLibrary.Add("MenuMain", MenuMain);
-        soundLibrary.Add("VitaIntro", VitaIntro);
-        soundLibrary.Add("VitaMain", VitaMain);
-        soundLibrary.Add("MortIntro", MortIntro);
-        soundLibrary.Add("MortMain", MortMain);
+        // soundLibrary.Add("Ambience", Ambience);
+        // soundLibrary.Add("MenuIntro", MenuIntro);
+        // soundLibrary.Add("MenuMain", MenuMain);
+        // soundLibrary.Add("VitaIntro", VitaIntro);
+        // soundLibrary.Add("VitaMain", VitaMain);
+        // soundLibrary.Add("MortIntro", MortIntro);
+        // soundLibrary.Add("MortMain", MortMain);
+        soundLibrary.Add("JumpVita", JumpVita);
+        soundLibrary.Add("JumpMort", JumpMort);
     }
 
     public void Update()
