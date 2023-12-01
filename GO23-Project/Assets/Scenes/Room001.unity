@@ -241,8 +241,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4762528436940266662, guid: 6e6264455b77e2748bc9ea72b6537bfd, type: 3}
       propertyPath: DestinationScene
-      value: 
-      objectReference: {fileID: 102900000, guid: bd54a83605356414d9f66b25e0e9dc10, type: 3}
+      value: Room002
+      objectReference: {fileID: 0}
     - target: {fileID: 4762528436940266663, guid: 6e6264455b77e2748bc9ea72b6537bfd, type: 3}
       propertyPath: m_Name
       value: SceneGate

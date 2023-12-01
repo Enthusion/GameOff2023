@@ -9366,6 +9366,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4762528436940266662, guid: 6e6264455b77e2748bc9ea72b6537bfd, type: 3}
+      propertyPath: DestinationScene
+      value: MainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4762528436940266663, guid: 6e6264455b77e2748bc9ea72b6537bfd, type: 3}
       propertyPath: m_Name
       value: SceneGate

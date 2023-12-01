@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+// using UnityEngine
 using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    public SceneAsset firstLevel;
+    [SerializeField]
+    public string firstLevel;
     public void PlayGame(){
-        GameManager.Instance.LoadScene(firstLevel.name);
+        GameManager.Instance.LoadScene(firstLevel);
     }
 }
