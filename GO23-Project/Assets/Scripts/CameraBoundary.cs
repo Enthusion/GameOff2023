@@ -10,22 +10,48 @@ public class CameraBoundary : MonoBehaviour
     private bool constrainY;
     private float xLimit = 8.9f;
     private float yLimit = 5.0f;
-    
+
     private CameraScript mainCam;
     // Start is called before the first frame update
     void Start()
     {
         Camera cam = FindObjectOfType<Camera>();
         mainCam = cam?.GetComponent<CameraScript>();
-        if(mainCam == null){
+        if (mainCam == null)
+        {
             Debug.Log("No camera found");
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        float camX = mainCam.transform.position.x;
+        float camY = mainCam.transform.position.y;
+        bool maxOrMin;
+        float xConstraint = 0;
+        float yConstraint = 0;
+
+        if (constrainX)
+        {
+            maxOrMin = camX > transform.position.x;
+            if (camX > transform.position.x - xLimit && camX < transform.position.x + xLimit)
+            {
+                xConstraint = transform.position.x + (maxOrMin ? xLimit : -xLimit);
+            }
+            mainCam.SetXBounds(maxOrMin, xConstraint, transform.position);
+        }
+
+        if (constrainY)
+        {
+            maxOrMin = camY > transform.position.y;
+            if (camY > transform.position.y - xLimit && camY < transform.position.y + yLimit)
+            {
+                yConstraint = transform.position.y + (maxOrMin ? yLimit : -yLimit);
+            }
+            mainCam.SetYBounds(maxOrMin, yConstraint, transform.position);
+        }
+
     }
 }
