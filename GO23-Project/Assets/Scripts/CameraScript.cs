@@ -21,6 +21,14 @@ public class CameraScript : MonoBehaviour
     private float distanceMin = 0.001f;
     private float distcaneMax = 7.5f;
     private Vector3 targetPosition;
+    private Vector3 constraintPointXMax;
+    private Vector3 constraintPointXMin;
+    private Vector3 constraintPointYMax;
+    private Vector3 constraintPointYMin;
+    private float xMax = 0;
+    private float xMin = 0;
+    private float yMax = 0;
+    private float yMin = 0;
 
     private void Start()
     {
@@ -54,4 +62,40 @@ public class CameraScript : MonoBehaviour
         }
         transform.position = Vector3.Lerp(transform.position, targetPosition, panSpeed * Time.deltaTime);
     }
+
+    public void SetXBounds(bool maxMin, float xLimiter, Vector3 origin)
+    {
+        bool valueFilled = (maxMin ? xMax : xMin) != 0;
+        //If the constrain is already set and incoming constraint is not from the point currently providing the constraint
+        if (valueFilled && origin != (maxMin ? constraintPointXMax : constraintPointXMin)) return;
+        if (maxMin)
+        {
+            xMax = xLimiter;
+            constraintPointXMax = origin;
+        }
+        else
+        {
+            xMin = xLimiter;
+            constraintPointXMin = origin;
+        }
+    }
+
+    public void SetYBounds(bool maxMin, float yLimiter, Vector3 origin)
+    {
+        bool valueFilled = (maxMin ? yMax : yMin) != 0;
+        //If the constrain is already set and incoming constraint is not from the point currently providing the constraint
+        if (valueFilled && origin != (maxMin ? constraintPointYMax : constraintPointYMin)) return;
+        if (maxMin)
+        {
+            yMax = yLimiter;
+            constraintPointYMax = origin;
+        }
+        else
+        {
+            yMin = yLimiter;
+            constraintPointYMin = origin;
+        }
+    }
+
+
 }
