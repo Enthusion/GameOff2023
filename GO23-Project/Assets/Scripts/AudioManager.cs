@@ -31,13 +31,13 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
         }
-        // soundLibrary.Add("Ambience", Ambience);
-        // soundLibrary.Add("MenuIntro", MenuIntro);
-        // soundLibrary.Add("MenuMain", MenuMain);
-        // soundLibrary.Add("VitaIntro", VitaIntro);
-        // soundLibrary.Add("VitaMain", VitaMain);
-        // soundLibrary.Add("MortIntro", MortIntro);
-        // soundLibrary.Add("MortMain", MortMain);
+        soundLibrary.Add("Ambience", Ambience);
+        soundLibrary.Add("MenuIntro", MenuIntro);
+        soundLibrary.Add("MenuMain", MenuMain);
+        soundLibrary.Add("VitaIntro", VitaIntro);
+        soundLibrary.Add("VitaMain", VitaMain);
+        soundLibrary.Add("MortIntro", MortIntro);
+        soundLibrary.Add("MortMain", MortMain);
         soundLibrary.Add("JumpVita", JumpVita);
         soundLibrary.Add("JumpMort", JumpMort);
     }
