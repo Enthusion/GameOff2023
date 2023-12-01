@@ -41,16 +41,16 @@ public class PlayerGroundedState : PlayerState
             playerController.Interaction();
         }
 
-        if (Input.GetKeyDown("q"))
-        {
-            playerController.AdjustEnergy(33.33f);
-            // playerController2.AdjustScale(-0.25f);
-        }
-        if (Input.GetKeyDown("r"))
-        {
-            playerController.AdjustEnergy(-33.33f);
-            // playerController2.AdjustScale(0.25f);
-        }
+        // if (Input.GetKeyDown("q"))
+        // {
+        //     playerController.AdjustEnergy(33.33f);
+        //     // playerController2.AdjustScale(-0.25f);
+        // }
+        // if (Input.GetKeyDown("r"))
+        // {
+        //     playerController.AdjustEnergy(-33.33f);
+        //     // playerController2.AdjustScale(0.25f);
+        // }
     }
 
     public override void PhysicsUpdate()
