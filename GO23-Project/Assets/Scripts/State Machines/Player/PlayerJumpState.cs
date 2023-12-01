@@ -21,7 +21,7 @@ public class PlayerJumpState : PlayerAbilityState
         releasedJump = false;
         balance = GameManager.Instance.GetBalance();
         balance = playerController.characterId == 0 ? balance : -balance;
-        Debug.Log("Blance: " + balance);
+        // Debug.Log("Blance: " + balance);
         //Jump time is set to 0.16 so a gravity scale of 0.84 is over jumptime
         if (1 - playerController.Body.gravityScale <= playerController.jumpTime)
         {
