@@ -32,11 +32,13 @@ public class CameraBoundary : MonoBehaviour
         bool maxOrMin;
         float xConstraint = 0;
         float yConstraint = 0;
+        float maxDistance;
 
         if (constrainX)
         {
             maxOrMin = camX > transform.position.x;
-            if (camX > transform.position.x - xLimit && camX < transform.position.x + xLimit)
+            maxDistance = xLimit * 1.25f;
+            if (Mathf.Abs(mainCam.transform.position.x - transform.position.x) < maxDistance && camY > transform.position.y - yLimit && camY < transform.position.y + yLimit)
             {
                 xConstraint = transform.position.x + (maxOrMin ? xLimit : -xLimit);
             }
@@ -46,7 +48,8 @@ public class CameraBoundary : MonoBehaviour
         if (constrainY)
         {
             maxOrMin = camY > transform.position.y;
-            if (camY > transform.position.y - xLimit && camY < transform.position.y + yLimit)
+            maxDistance = yLimit * 1.25f;
+            if (Mathf.Abs(mainCam.transform.position.y - transform.position.y) < maxDistance && camX > transform.position.x - xLimit && camX < transform.position.x + xLimit)
             {
                 yConstraint = transform.position.y + (maxOrMin ? yLimit : -yLimit);
             }
