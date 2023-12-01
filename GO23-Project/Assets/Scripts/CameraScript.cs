@@ -43,6 +43,20 @@ public class CameraScript : MonoBehaviour
         else activeTarget = target1;
         lookOffset = activeTarget.Sprite.flipX ? -0.75f : 2.25f;
         targetPosition = new Vector3(activeTarget.transform.position.x + offsetToCenter.x + lookOffset, activeTarget.transform.position.y + offsetToCenter.y, transform.position.z);
+        //Constrain the camera
+        if(xMax != 0 && targetPosition.x > xMax){
+            targetPosition = new Vector3(xMax, targetPosition.y, targetPosition.z);
+        }
+        if(xMin != 0 && targetPosition.x < xMin){
+            targetPosition = new Vector3(xMin, targetPosition.y, targetPosition.z);
+        }
+        if(yMax != 0 && targetPosition.y > yMax){
+            targetPosition = new Vector3(targetPosition.x, yMax, targetPosition.z);
+        }
+        if(yMin != 0 && targetPosition.y < yMin){
+            targetPosition = new Vector3(targetPosition.x, yMin, targetPosition.z);
+        }
+        
         float distanceTo = Vector3.Distance(transform.position, targetPosition);
         if (distanceTo <= distanceMin)
         {
