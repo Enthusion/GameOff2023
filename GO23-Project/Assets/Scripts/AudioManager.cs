@@ -80,6 +80,7 @@ public class AudioManager : MonoBehaviour
 
     public void StartMusic(string name)
     {
+        Debug.Log(name);
         if (name == "Menu")
         {
             MenuIntro.loop = false;
@@ -92,12 +93,17 @@ public class AudioManager : MonoBehaviour
         {
             VitaIntro.loop = false;
             MortIntro.loop = false;
+            VitaIntro.Play();
+            MortIntro.Play();
             introPlay1 = (name == "Vita") ? VitaIntro : MortIntro;
             afterIntro1 = (name == "Vita") ? VitaMain : MortMain;
             introPlay2 = (name == "Vita") ? MortIntro : VitaIntro;
             afterIntro2 = (name == "Vita") ? MortMain : VitaMain;
             afterIntro1.loop = true;
             afterIntro2.loop = true;
+        }
+        else{
+            Debug.Log("Start music unrecognized: " + name);
         }
         waitingOnIntro = true;
     }
@@ -113,9 +119,9 @@ public class AudioManager : MonoBehaviour
     }
 
     public void SwitchCharacterTracks(bool vitaOrMort){
-        VitaIntro.mute = vitaOrMort;
-        MortIntro.mute = !vitaOrMort;
-        VitaMain.mute = vitaOrMort;
+        VitaIntro.mute = !vitaOrMort;
+        MortIntro.mute = vitaOrMort;
+        VitaMain.mute = !vitaOrMort;
         MortIntro.mute = vitaOrMort;
     }
 
