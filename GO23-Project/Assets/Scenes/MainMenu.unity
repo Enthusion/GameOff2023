@@ -2247,7 +2247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -45.69171, y: -100.93683}
+  m_AnchoredPosition: {x: -45.69171, y: -116}
   m_SizeDelta: {x: 611.4319, y: 672.9393}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1208768981
@@ -2263,7 +2263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: baa0a5c1f8aeb3a40bfd4a17038b4105, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2283,8 +2283,30 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n<b>Controls</b>\nMovemnet:\nWASD\nJump:\nSpace\nInteract\n F\nSwap Characters:\nTab\nWait/Follow
-    Toggle:\nE"
+  m_Text: '
+
+    <b>Controls</b>
+
+    Movemnet:
+
+    WASD
+
+    Jump:
+
+    Space
+
+    Interact:
+
+    F
+
+    Swap
+    Characters:
+
+    Tab
+
+    Wait/Follow Toggle:
+
+    E'
 --- !u!222 &1208768982
 CanvasRenderer:
   m_ObjectHideFlags: 0
