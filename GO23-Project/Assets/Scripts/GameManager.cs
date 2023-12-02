@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
+        if(GameManager.Instance != null){
+            Destroy(this);
+            return;
+        }
         DontDestroyOnLoad(gameObject);
         if (Instance == null)
         {
