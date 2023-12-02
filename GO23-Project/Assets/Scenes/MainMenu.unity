@@ -209,6 +209,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6341507474660633954, guid: c710429a20223d34b9123a16563e14e6, type: 3}
+      propertyPath: ResetStatsOnLoad
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6341507474660633964, guid: c710429a20223d34b9123a16563e14e6, type: 3}
       propertyPath: m_Name
       value: Game Manager
@@ -574,8 +578,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.63514787, g: 0.9150943, b: 0.51366144, a: 1}
     m_HighlightedColor: {r: 0.61640346, g: 0.4816661, b: 0.8301887, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.63529414, g: 0.91372555, b: 0.5137255, a: 1}
+    m_SelectedColor: {r: 0.6156863, g: 0.48235297, b: 0.8313726, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
