@@ -33,24 +33,24 @@ public class PlayerGroundedState : PlayerState
             }
         }
 
-        if(Input.GetButtonDown("Fire1")){
-            stateMachine.ChangeState(playerController.ShootState);
-        }
+        // if(Input.GetButtonDown("Fire1")){
+        //     stateMachine.ChangeState(playerController.ShootState);
+        // }
 
         if(Input.GetButtonDown("Interact")){
             playerController.Interaction();
         }
 
-        if (Input.GetKeyDown("q"))
-        {
-            playerController.AdjustEnergy(25f);
-            // playerController2.AdjustScale(-0.25f);
-        }
-        if (Input.GetKeyDown("r"))
-        {
-            playerController.AdjustEnergy(-25f);
-            // playerController2.AdjustScale(0.25f);
-        }
+        // if (Input.GetKeyDown("q"))
+        // {
+        //     playerController.AdjustEnergy(33.33f);
+        //     // playerController2.AdjustScale(-0.25f);
+        // }
+        // if (Input.GetKeyDown("r"))
+        // {
+        //     playerController.AdjustEnergy(-33.33f);
+        //     // playerController2.AdjustScale(0.25f);
+        // }
     }
 
     public override void PhysicsUpdate()
@@ -61,7 +61,7 @@ public class PlayerGroundedState : PlayerState
 
     public override void Exit()
     {
-        GameManager.Instance.SetRespawnPoint(playerController.transform.position);
+        // GameManager.Instance.SetRespawnPoint(playerController.transform.position);
         base.Exit();
     }
 }

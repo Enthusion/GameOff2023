@@ -20,8 +20,8 @@ public class PlayerFallState : PlayerState
         //Set a horizontal speed capacity based on either the speed when entering the sate or 5, whatever is greater
         initialSpeed = Mathf.Abs(playerController.Body.velocity.x);
         speedCap = (initialSpeed >= 5.0f) ? initialSpeed : 5.0f;
-        // Check if fall is from a jump (in jump gravity is set to 0.8 near peak)
-        fromJump = playerController.Body.gravityScale == 0.8f;
+        // Check if fall is from a jump (when switching from jump to fall gravity is set to 1.1)
+        fromJump = playerController.Body.gravityScale == 1.1f;
     }
 
     public override void FrameUpdate()
@@ -29,13 +29,13 @@ public class PlayerFallState : PlayerState
         base.FrameUpdate();
         //Air control
         float movementInput = Input.GetAxis("Horizontal");
-        playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 2));
+        playerController.Body.AddForce(Vector2.right * movementInput * (playerController.moveForce / 1.75f));
         if (movementInput > 0) playerController.Sprite.flipX = false;
         else if (movementInput < 0) playerController.Sprite.flipX = true;
 
-        if(Input.GetButtonDown("Fire1")){
-            stateMachine.ChangeState(playerController.ShootState);
-        }
+        // if(Input.GetButtonDown("Fire1")){
+        //     stateMachine.ChangeState(playerController.ShootState);
+        // }
         
         //Increase gravity scale to fall faster once falling for JumpTime
         if (runtime >= playerController.jumpTime)

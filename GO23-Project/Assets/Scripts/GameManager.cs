@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,23 +13,40 @@ public class GameManager : MonoBehaviour
     private float vitaEnergy;
     private float mortEnergy;
     private string switchString = "";
-    private Vector2 respawnPoint;
+    private Vector2 respawnPoint0;
+    private Vector2 respawnPoint1;
     private Dictionary<string, Vector2> checkpoints;
     private string currentCheckpoint;
     private float vitaHealth;
     private float mortHealth;
+    public bool ResetStatsOnLoad;
 
     public void Awake()
     {
+        if(GameManager.Instance != null){
+            Destroy(this);
+            return;
+        }
         DontDestroyOnLoad(gameObject);
         if (Instance == null)
         {
             Instance = this;
         }
     }
+
+    public void Start(){
+        if(SceneManager.GetActiveScene().name == "MainMenu"){
+            AudioManager.Instance?.StartMusic("Menu");
+        }
+        else{
+            AudioManager.Instance?.StartMusic("Vita");
+            AudioManager.Instance?.PlayAmbience();
+        }
+    }
     public void SetUI(UiHandler UiObject)
     {
         uiHandler = UiObject;
+        uiHandler.LogStats();
     }
 
     public void SetPlayer(PlayerController player)
@@ -37,19 +54,24 @@ public class GameManager : MonoBehaviour
         if (player.characterId == 0)
         {
             vita = player;
+            AudioManager.Instance?.SwitchCharacterTracks(vita.Active);
+
         }
         else
         {
             mort = player;
+            AudioManager.Instance?.SwitchCharacterTracks(!mort.Active);
         }
     }
 
     public void UpdateActiveCharacter(){
         if(vita.Active){
             activeID = 0;
+            AudioManager.Instance?.SwitchCharacterTracks(true);
         }
         else if(mort.Active){
             activeID = 1;
+            AudioManager.Instance?.SwitchCharacterTracks(false);
         }
         else{
             Debug.Log("No active characters");
@@ -138,6 +160,30 @@ public class GameManager : MonoBehaviour
         currentCheckpoint = ID;
     }
     public Vector2 GetCheckpoint() => checkpoints[currentCheckpoint];
-    public void SetRespawnPoint(Vector2 position) => respawnPoint = position;
-    public Vector2 GetRespawnPoint() => (respawnPoint != null || respawnPoint != Vector2.zero) ? respawnPoint : checkpoints[currentCheckpoint];
+    public void SetRespawnPoint(int characterId, Vector2 position){
+        if(characterId == 0) respawnPoint0 = position;
+        else respawnPoint1 = position;
+    }
+    public Vector2 GetRespawnPoint(int characterId) => (characterId == 0) ? respawnPoint0 : respawnPoint1;
+
+    public void LoadScene(string sceneName){
+        SceneManager.LoadScene(sceneName);
+        if(sceneName != "MainMenu"){
+            AudioManager.Instance?.StopMusic("Menu");
+        }
+        else{
+            AudioManager.Instance?.StartMusic("Menu");
+            AudioManager.Instance?.StopMusic("Vita");
+        }
+        if(sceneName == "Room001"){
+            AudioManager.Instance?.StartMusic("Vita");
+            AudioManager.Instance?.PlayAmbience();
+        }
+        if(ResetStatsOnLoad){
+            vitaEnergy = 0;
+            mortEnergy = 0;
+            vitaHealth = 15;
+            mortHealth = 15;
+        }
+    }
 }

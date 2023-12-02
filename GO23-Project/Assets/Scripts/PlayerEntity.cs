@@ -41,4 +41,9 @@ public class PlayerEntity : LivingEntity
         base.Die();
     }
     public void KnockbackInfo(Vector2 knockbackForce) => kbForce = knockbackForce;
+    public void Respawn(){
+        Vector2 respawnLocation = GameManager.Instance.GetRespawnPoint(playerContol.characterId);
+        playerContol.transform.position = respawnLocation;
+        if(playerContol.controller2.Following) playerContol.controller2.transform.position = respawnLocation;
+    }
 }
