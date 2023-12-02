@@ -29,12 +29,13 @@ public class CameraScript : MonoBehaviour
     private float xMin = 0;
     private float yMax = 0;
     private float yMin = 0;
+    private bool inactivePlayerfollwing;
 
     private void Start()
     {
         target1 = subject1.GetComponent<PlayerController>();
         target2 = subject2.GetComponent<PlayerController>();
-        activeTarget = target1.primaryPlayer ? target1 : target2;
+        activeTarget = target1.characterId == GameManager.Instance.GetActiveCharacter() ? target1 : target2;
     }
     // Update is called once per frame
     private void Update()
@@ -42,23 +43,52 @@ public class CameraScript : MonoBehaviour
         PlayerController lastActiveTarget = activeTarget;
         if (!target1.Active) activeTarget = target2;
         else activeTarget = target1;
-        if(lastActiveTarget != activeTarget) GameManager.Instance?.UpdateActiveCharacter();
+        inactivePlayerfollwing = target1.Following || target2.Following;
+        if (lastActiveTarget != activeTarget) GameManager.Instance?.UpdateActiveCharacter();
+        if (target1.Active && target2.Active)
+        {
+            Debug.Log("Two active characters detected!");
+            activeTarget = target1.characterId == GameManager.Instance.GetActiveCharacter() ? target1 : target2;
+            activeTarget.ForceToActive();
+            if (target1 == activeTarget)
+            {
+                if (inactivePlayerfollwing) target2.ForceToFollow();
+                else target2.ForceToWaiting();
+            }
+            else
+            {
+                if (inactivePlayerfollwing) target1.ForceToFollow();
+                else target1.ForceToWaiting();
+            }
+
+        }
+        else if (!target1.Active && !target2.Active)
+        {
+            Debug.Log("Two inactive characters detected!");
+            target1.ForceToActive();
+            if (inactivePlayerfollwing) target2.ForceToFollow();
+            else target2.ForceToWaiting();
+        }
         lookOffset = activeTarget.Sprite.flipX ? -0.75f : 2.25f;
         targetPosition = new Vector3(activeTarget.transform.position.x + offsetToCenter.x + lookOffset, activeTarget.transform.position.y + offsetToCenter.y, transform.position.z);
         //Constrain the camera
-        if(xMax != 0 && targetPosition.x < xMax){
+        if (xMax != 0 && targetPosition.x < xMax)
+        {
             targetPosition = new Vector3(xMax, targetPosition.y, targetPosition.z);
         }
-        if(xMin != 0 && targetPosition.x > xMin){
+        if (xMin != 0 && targetPosition.x > xMin)
+        {
             targetPosition = new Vector3(xMin, targetPosition.y, targetPosition.z);
         }
-        if(yMax != 0 && targetPosition.y < yMax){
+        if (yMax != 0 && targetPosition.y < yMax)
+        {
             targetPosition = new Vector3(targetPosition.x, yMax, targetPosition.z);
         }
-        if(yMin != 0 && targetPosition.y > yMin){
+        if (yMin != 0 && targetPosition.y > yMin)
+        {
             targetPosition = new Vector3(targetPosition.x, yMin, targetPosition.z);
         }
-        
+
         float distanceTo = Vector3.Distance(transform.position, targetPosition);
         if (distanceTo <= distanceMin)
         {

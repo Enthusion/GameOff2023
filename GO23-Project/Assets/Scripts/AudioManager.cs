@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
-using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -48,19 +47,24 @@ public class AudioManager : MonoBehaviour
         if (waitingOnIntro && introPlay1 != null && !introPlay1.isPlaying)
         {
             afterIntro1.Play();
-            if(introPlay2 != null){
+            if (introPlay2 != null)
+            {
                 afterIntro2.Play();
             }
-            if(introPlay1 == MenuIntro || introPlay1 == MenuMain || introPlay1 == MenuMain2){
-                if(introPlay1 == MenuIntro){
+            if (introPlay1 == MenuIntro || introPlay1 == MenuMain || introPlay1 == MenuMain2)
+            {
+                if (introPlay1 == MenuIntro)
+                {
                     introPlay1 = MenuMain;
                     afterIntro1 = MenuMain2;
                 }
-                else if(introPlay1 == MenuMain){
+                else if (introPlay1 == MenuMain)
+                {
                     introPlay1 = MenuMain2;
                     afterIntro1 = MenuMain;
                 }
-                else if(introPlay1 == MenuMain2){
+                else if (introPlay1 == MenuMain2)
+                {
                     introPlay1 = MenuMain;
                     afterIntro1 = MenuMain2;
                 }
@@ -72,15 +76,16 @@ public class AudioManager : MonoBehaviour
             waitingOnIntro = false;
         }
     }
-    public void PlayAmbience()
+    public void PlayAmbience(bool play = true)
     {
+        if(!play)Ambience.Stop();
         Ambience.Play();
         Ambience.loop = true;
     }
 
     public void StartMusic(string name)
     {
-        Debug.Log(name);
+        // Debug.Log(name);
         if (name == "Menu")
         {
             MenuIntro.loop = false;
@@ -102,27 +107,48 @@ public class AudioManager : MonoBehaviour
             afterIntro1.loop = true;
             afterIntro2.loop = true;
         }
-        else{
+        else
+        {
             Debug.Log("Start music unrecognized: " + name);
         }
         waitingOnIntro = true;
     }
 
-    public void PlaySound(string soundKey, bool looping = false){
-        if(!soundLibrary.ContainsKey(soundKey)){
+    public void StopMusic(string name)
+    {
+        if (name == "Menu")
+        {
+            MenuIntro.Stop();
+            MenuMain.Stop();
+            MenuMain2.Stop();
+        }
+        else if (name == "Vita" || name == "Mort"){
+            VitaIntro.Stop();
+            VitaMain.Stop();
+            MortIntro.Stop();
+            MortMain.Stop();
+        }
+    }
+
+    public void PlaySound(string soundKey, bool looping = false, bool play = true)
+    {
+        if (!soundLibrary.ContainsKey(soundKey))
+        {
             Debug.Log("Sound, \"" + soundKey + "\" was not found in library!");
             return;
         }
         AudioSource selectedSound = soundLibrary[soundKey];
         selectedSound.loop = looping;
-        selectedSound.Play();
+        if(play)selectedSound.Play();
+        else selectedSound.Stop();
     }
 
-    public void SwitchCharacterTracks(bool vitaOrMort){
+    public void SwitchCharacterTracks(bool vitaOrMort)
+    {
         VitaIntro.mute = !vitaOrMort;
         MortIntro.mute = vitaOrMort;
         VitaMain.mute = !vitaOrMort;
-        MortIntro.mute = vitaOrMort;
+        MortMain.mute = vitaOrMort;
     }
 
     public void SetPosition(Vector2 newPosition) => transform.position = newPosition;

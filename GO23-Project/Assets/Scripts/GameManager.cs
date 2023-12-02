@@ -50,10 +50,13 @@ public class GameManager : MonoBehaviour
         if (player.characterId == 0)
         {
             vita = player;
+            AudioManager.Instance?.SwitchCharacterTracks(vita.Active);
+
         }
         else
         {
             mort = player;
+            AudioManager.Instance?.SwitchCharacterTracks(!mort.Active);
         }
     }
 
@@ -161,6 +164,13 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName){
         SceneManager.LoadScene(sceneName);
+        if(sceneName != "MainMenu"){
+            AudioManager.Instance?.StopMusic("Menu");
+        }
+        else{
+            AudioManager.Instance?.StartMusic("Menu");
+            AudioManager.Instance?.StopMusic("Vita");
+        }
         if(sceneName == "Room001"){
             AudioManager.Instance?.StartMusic("Vita");
             AudioManager.Instance?.PlayAmbience();
